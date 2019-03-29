@@ -13,7 +13,7 @@ import SwiftReorder
 
 class ViewController: UIViewController {
     
-    var arr = [Task](){
+    var arr = [(Task,Bool)](){
         didSet{
             self.mainTaskTable.reloadData()
         }
@@ -37,7 +37,7 @@ class ViewController: UIViewController {
         
         taskManager.shared.getAllTask { (taskArr, error) in
             if error == nil{
-                self.arr = taskArr
+                self.arr = taskArr.map({($0,false)})
             }else{
                 //alert
             }
@@ -75,7 +75,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource,TableViewRe
             return spacer
         }
         let cell = mainTaskTable.dequeueReusableCell(withIdentifier: "cell") as! tasksTableViewCell
-        cell.taskLabel.text = arr[indexPath.row].name
+        cell.taskLabel.text = arr[indexPath.row].0.name
         
         let lastRowIndex = mainTaskTable.numberOfRows(inSection: tableView.numberOfSections-1)
         if (indexPath.row == lastRowIndex - 1) {

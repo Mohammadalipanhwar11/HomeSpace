@@ -13,12 +13,7 @@ class moveGroupViewController: UIViewController {
     
     let groupItems = ["New","Today","Tomorrow", "Archive", "Later-Family", "Later-Work", "Later-Misc"]
     @IBOutlet weak var TableView: UITableView!
-    @IBOutlet weak var archiveButton: UIButton!
-    @IBOutlet weak var later_familyButton: UIButton!
-    @IBOutlet weak var later_workButton: UIButton!
-    @IBOutlet weak var later_miscButton: UIButton!
-    @IBOutlet weak var tomorrowButton: UIButton!
-    @IBOutlet weak var todayButton: UIButton!
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,22 +26,7 @@ class moveGroupViewController: UIViewController {
 
  
     
-    @IBAction func archive(_ sender: Any) {
-    }
-    @IBAction func laterFamily(_ sender: Any) {
-    }
-    @IBAction func later_work(_ sender: Any) {
-    }
-    @IBAction func later_misc(_ sender: Any) {
-    }
-    @IBAction func tomorrow(_ sender: Any) {
-    }
-    @IBAction func today(_ sender: Any) {
-    }
-    @IBAction func new(_ sender: Any) {
 
-        
-    }
     @objc func cellButtonAction(_ sender: UIButton) {
         _ = navigationController?.popToRootViewController(animated: true)
         sender.layer.borderColor = UIColor.orange.cgColor

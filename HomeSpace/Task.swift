@@ -7,14 +7,14 @@
 //
 
 import Foundation
-
+import FirebaseFirestore
 
 struct Task : Codable {
     
     let date : String?
     let name : String?
     var id : String? = ""
-
+    
     static var shared = [Task]()
     
     init(name:String, date: String) {
@@ -38,6 +38,7 @@ struct Task : Codable {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         date = try values.decodeIfPresent(String.self, forKey: .date)
         name = try values.decodeIfPresent(String.self, forKey: .name)
+        
     }
     
     

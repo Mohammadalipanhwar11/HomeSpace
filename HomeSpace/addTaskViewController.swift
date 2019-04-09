@@ -120,7 +120,7 @@ class addTaskViewController: UIViewController,UITextViewDelegate,SFSpeechRecogni
             if result != nil {
                 
                 self.str = result?.bestTranscription.formattedString
-                print(result?.bestTranscription.formattedString)
+                print(result?.bestTranscription.formattedString as Any)
                 
                 isFinal = (result?.isFinal)!
             }

@@ -6,6 +6,11 @@
 //  Copyright © 2019 MohammadAli. All rights reserved.
 //
 
+//
+
+
+
+
 import UIKit
 import SwiftReorder
 
@@ -13,7 +18,7 @@ import SwiftReorder
 
 class ViewController: UIViewController {
     
-    var arr = [(Task,Bool)](){
+    var arr = [Task](){
         didSet{
             self.mainTaskTable.reloadData()
         }
@@ -37,13 +42,14 @@ class ViewController: UIViewController {
         
         taskManager.shared.getAllTask { (taskArr, error) in
             if error == nil{
-                taskArr.forEach({ (t) in
-                    if self.arr.contains(where: {$0.0.id != t.id}){
-                        self.arr.append((t,false))
-                    }else{
-                        self.arr.append((t,true))
-                    }
-                })
+                  self.arr = taskArr
+//                taskArr.forEach({ (t) in
+//                    if self.arr.contains(where: {$0.0.id != t.id}){
+//                        self.arr.append((t,false))
+//                    }else{
+//                        self.arr.append((t,true))
+//                    }
+//                })
             }else{
                 //alert
             }
@@ -81,14 +87,11 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource,TableViewRe
             return spacer
         }
         let cell = mainTaskTable.dequeueReusableCell(withIdentifier: "cell") as! tasksTableViewCell
-        cell.taskLabel.text = arr[indexPath.row].0.name
+        cell.taskLabel.text = arr[indexPath.row].name
         
-        let lastRowIndex = mainTaskTable.numberOfRows(inSection: tableView.numberOfSections-1)
-        if self.arr[indexPath.row].1 {
-            cell.View.layer.borderColor = UIColor.orange.cgColor
-        }else{
-            cell.View.layer.borderColor = UIColor.blue.cgColor
-        }
+    
+        
+        
         
         return cell
     }

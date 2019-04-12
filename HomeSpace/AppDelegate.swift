@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
         IQKeyboardManager.shared.enable = true
 
-        // Override point for customization after application launch.
+//        taskManager.shared.updateMaxOrder()
         return true
     }
 

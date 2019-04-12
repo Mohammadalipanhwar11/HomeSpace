@@ -16,14 +16,48 @@ class taskManager {
     typealias TasksCompletion = (_ tasks:[Task],_ error:String?)->Void
     typealias SucessCompletion = (_ error:String?)->Void
 
+  
+    
     func addTask(task:Task,completion:@escaping SucessCompletion){
-        Firestore.firestore().collection("tasks").addDocument(data: task.toDic) { (err) in
-            if err != nil {
-                print(err?.localizedDescription as Any)
-            }
-            completion(nil)
+        let maxOrderRef = Firestore.firestore().collection("maxOrder").document("rank")
+        let taskRef = Firestore.firestore().collection("maxOrder").document("rank")
 
+        Firestore.firestore().runTransaction({ (transactions, err) -> Any? in
+            let rankDoc = try! transactions.getDocument(maxOrderRef)
+            var newRank = 0.0
+            var updatedtask = task
+            if let rank = rankDoc.data()?["rank"] as? Double{
+                newRank = rank + 10
+                updatedtask.rank = newRank
+                Firestore.firestore().collection("tasks").addDocument(data: updatedtask.toDic) { (err) in
+                    if err != nil {
+                        print(err?.localizedDescription as Any)
+                    }
+                    completion(nil)
+                    transactions.updateData(["rank":newRank], forDocument: maxOrderRef)
+                }
+                return newRank
+            }else{
+                Firestore.firestore().collection("tasks").addDocument(data: updatedtask.toDic) { (err) in
+                    if err != nil {
+                        print(err?.localizedDescription as Any)
+                    }
+                    completion(nil)
+                    transactions.setData(["rank":0], forDocument: maxOrderRef)
+                }
+                return newRank
+            }
+
+         
+        }) { (data, error) in
+            if let error = error {
+                print("Transaction failed: \(error)")
+            } else {
+                print("Transaction successfully committed!")
+            }
         }
+
+      
     }
     
     func getAllTask(completion:@escaping TasksCompletion){

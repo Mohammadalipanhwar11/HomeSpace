@@ -17,7 +17,8 @@ class addTaskViewController: UIViewController,UITextViewDelegate,SFSpeechRecogni
     @IBOutlet weak var recordButton: UIButton!
     @IBOutlet weak var mainText: UITextView!
     
-    
+    var oldIndex:[Int]?
+    var index1:Int = 0
     var str:String?
     
     let speechRecognizer        = SFSpeechRecognizer(locale: Locale(identifier: "en-US"))
@@ -177,11 +178,17 @@ class addTaskViewController: UIViewController,UITextViewDelegate,SFSpeechRecogni
             self.recordButton.setTitle("Stop Recording", for: .normal)
         }
     }
+    func increase(){
+        index1 += 10
+    }
+    
+    
     @IBAction func end(_ sender: Any) {
         
         if str != nil {
             let t = Task(name: self.str!, date: "\(Date())")
             taskManager.shared.addTask(task: t, completion: { (err) in
+                self.oldIndex?.append(10)
                 
             })
         }else{

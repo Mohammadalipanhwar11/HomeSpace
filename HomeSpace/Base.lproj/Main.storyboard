@@ -201,7 +201,6 @@
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="end:" destination="1dW-b4-6wq" eventType="touchUpInside" id="dEC-0B-BgK"/>
-                                    <segue destination="foZ-ro-VNs" kind="show" id="lpp-fQ-Wod"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C0H-Uh-Kmx">
@@ -245,7 +244,6 @@
                                 <connections>
                                     <action selector="done:" destination="1dW-b4-6wq" eventType="touchUpInside" id="iwu-wN-4tL"/>
                                     <action selector="new:" destination="foZ-ro-VNs" eventType="touchUpInside" id="2ey-kA-zyu"/>
-                                    <segue destination="foZ-ro-VNs" kind="show" id="kaL-Ji-8gk"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -273,6 +271,7 @@
                         <outlet property="endButton" destination="HAa-4k-qAo" id="0gb-Wv-uRy"/>
                         <outlet property="mainText" destination="70n-f5-B1W" id="ZXD-80-jym"/>
                         <outlet property="recordButton" destination="og8-D5-YtD" id="rmN-Zt-BJp"/>
+                        <segue destination="foZ-ro-VNs" kind="show" identifier="groups" id="thZ-Li-olm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4AW-mR-ij1" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -306,6 +305,9 @@
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QYO-yQ-A7B">
                                                     <rect key="frame" x="92" y="22" width="229" height="45"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="45" id="yLO-Ar-4hU"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                     <state key="normal" title="New"/>
                                                     <userDefinedRuntimeAttributes>
@@ -322,7 +324,7 @@
                                                             <real key="value" value="3"/>
                                                         </userDefinedRuntimeAttribute>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius1">
-                                                            <real key="value" value="10"/>
+                                                            <real key="value" value="0.0"/>
                                                         </userDefinedRuntimeAttribute>
                                                         <userDefinedRuntimeAttribute type="color" keyPath="borderColor1">
                                                             <color key="value" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -393,7 +395,4 @@
         <image name="record" width="182" height="182"/>
         <image name="search" width="34.5" height="32"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="lpp-fQ-Wod"/>
-    </inferredMetricsTieBreakers>
 </document>

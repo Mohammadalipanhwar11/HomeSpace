@@ -102,7 +102,6 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource,TableViewRe
         let item = arr[sourceIndexPath.row]
         arr.remove(at: sourceIndexPath.row)
         arr.insert(item, at: destinationIndexPath.row)
-        
     }
     
     

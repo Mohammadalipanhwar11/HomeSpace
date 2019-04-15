@@ -212,12 +212,7 @@ class addTaskViewController: UIViewController,UITextViewDelegate,SFSpeechRecogni
         
         
         if mainText.text != "type" && mainText.text != ""{
-            let t = Task(name: mainText.text, date: "\(Date())")
-            
-            
-            taskManager.shared.addTask(task:t) { (err) in
-                
-            }
+           performSegue(withIdentifier: "groups", sender: self)
         }else{
             let alert = UIAlertController(title: "No Text Found", message: "Please type Someting to continoue", preferredStyle: UIAlertController.Style.alert)
             let action = UIAlertAction(title: "Ok", style: UIAlertAction.Style.cancel) { (action) in
@@ -230,6 +225,12 @@ class addTaskViewController: UIViewController,UITextViewDelegate,SFSpeechRecogni
         mainText.text = ""
 
    
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "groups" {
+            let dest = segue.destination as! moveGroupViewController
+            dest.textData = mainText.text
+        }
     }
     
 

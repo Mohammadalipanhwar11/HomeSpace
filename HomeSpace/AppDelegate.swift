@@ -21,6 +21,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         IQKeyboardManager.shared.enable = true
 
 //        taskManager.shared.updateMaxOrder()
+      //  taskManager.shared.add()
+       
         return true
     }
 

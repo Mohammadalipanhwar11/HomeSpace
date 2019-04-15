@@ -19,50 +19,67 @@ class taskManager {
   
     
     func addTask(task:Task,completion:@escaping SucessCompletion){
-        let maxOrderRef = Firestore.firestore().collection("maxOrder").document("rank")
-        let taskRef = Firestore.firestore().collection("maxOrder").document("rank")
-
-        Firestore.firestore().runTransaction({ (transactions, err) -> Any? in
-            let rankDoc = try! transactions.getDocument(maxOrderRef)
-            var newRank = 0.0
-            var updatedtask = task
-            if let rank = rankDoc.data()?["rank"] as? Double{
-                newRank = rank + 10
-                updatedtask.rank = newRank
-                Firestore.firestore().collection("tasks").addDocument(data: updatedtask.toDic) { (err) in
-                    if err != nil {
-                        print(err?.localizedDescription as Any)
-                    }
-                    completion(nil)
-                    transactions.updateData(["rank":newRank], forDocument: maxOrderRef)
+        Firestore.firestore().collection("tasks").order(by: "rank", descending: true).limit(to: 1)
+            .getDocuments { (data, err) in
+                var rank = 0.0
+                if let object = data?.documents.first?.data(){
+                    let json = try! JSONSerialization.data(withJSONObject: object, options: .prettyPrinted)
+                    let maxTask = try! JSONDecoder().decode(Task.self, from: json)
+                    rank = maxTask.rank!
+                    rank += 10
                 }
-                return newRank
-            }else{
-                Firestore.firestore().collection("tasks").addDocument(data: updatedtask.toDic) { (err) in
-                    if err != nil {
-                        print(err?.localizedDescription as Any)
-                    }
-                    completion(nil)
-                    transactions.setData(["rank":0], forDocument: maxOrderRef)
+                var updated = task
+                updated.rank = rank
+                Firestore.firestore().collection("tasks").addDocument(data: updated.toDic) { (err) in
+                    completion(err?.localizedDescription)
                 }
-                return newRank
-            }
-
-         
-        }) { (data, error) in
-            if let error = error {
-                print("Transaction failed: \(error)")
-            } else {
-                print("Transaction successfully committed!")
-            }
         }
-
-      
     }
+    
+    func add(){
+        Firestore.firestore().collection("tasks").document().setData(["rank" : 5])
+    }
+//
+//    func show(){
+//        let sfReference = Firestore.firestore().collection("cities").document("SF")
+//
+//        Firestore.firestore().runTransaction({ (transaction, errorPointer) -> Any? in
+//            let sfDocument: DocumentSnapshot
+//            do {
+//                try sfDocument = transaction.getDocument(sfReference)
+//            } catch let fetchError as NSError {
+//                errorPointer?.pointee = fetchError
+//                return nil
+//            }
+//
+//            guard let oldPopulation = sfDocument.data()?["population"] as? Int else {
+//                let error = NSError(
+//                    domain: "AppErrorDomain",
+//                    code: -1,
+//                    userInfo: [
+//                        NSLocalizedDescriptionKey: "Unable to retrieve population from snapshot \(sfDocument)"
+//                    ]
+//                )
+//                errorPointer?.pointee = error
+//                return nil
+//            }
+//
+//            // Note: this could be done without a transaction
+//            //       by updating the population using FieldValue.increment()
+//            transaction.updateData(["population": oldPopulation + 1], forDocument: sfReference)
+//            return nil
+//        }) { (object, error) in
+//            if let error = error {
+//                print("Transaction failed: \(error)")
+//            } else {
+//                print("Transaction successfully committed!")
+//            }
+//        }
+//            }
     
     func getAllTask(completion:@escaping TasksCompletion){
         
-        Firestore.firestore().collection("tasks")
+        Firestore.firestore().collection("tasks").order(by: "rank", descending: false)
             .addSnapshotListener { taskSnap, error in
                 taskSnap?.documentChanges.forEach({ (task) in
                     let object = task.document.data()

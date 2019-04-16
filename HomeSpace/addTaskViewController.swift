@@ -120,7 +120,7 @@ class addTaskViewController: UIViewController,UITextViewDelegate,SFSpeechRecogni
             
             if result != nil {
                 
-                self.str = result?.bestTranscription.formattedString
+                self.mainText.text = result?.bestTranscription.formattedString
                 print(result?.bestTranscription.formattedString as Any)
                 
                 isFinal = (result?.isFinal)!
@@ -173,24 +173,19 @@ class addTaskViewController: UIViewController,UITextViewDelegate,SFSpeechRecogni
             self.recognitionRequest?.endAudio()
             self.recordButton.isEnabled = false
             self.recordButton.setTitle("Start Recording", for: .normal)
+            self.recordButton.setImage(UIImage(named: "record"), for: UIControl.State.normal)
         } else {
             self.startRecording()
-            self.recordButton.setTitle("Stop Recording", for: .normal)
+            self.recordButton.setImage(UIImage(named: "pause"), for: UIControl.State.normal)
         }
     }
-    func increase(){
-        index1 += 10
-    }
+
     
     
     @IBAction func end(_ sender: Any) {
         
-        if str != nil {
-            let t = Task(name: self.str!, date: "\(Date())")
-            taskManager.shared.addTask(task: t, completion: { (err) in
-                self.oldIndex?.append(10)
-                
-            })
+        if mainText.text != "type" && mainText.text != ""{
+            performSegue(withIdentifier: "groups", sender: self)
         }else{
             let alert = UIAlertController(title: "No Voice", message: "Please Say Someting to continoue", preferredStyle: UIAlertController.Style.alert)
             let action = UIAlertAction(title: "Ok", style: UIAlertAction.Style.cancel) { (action) in

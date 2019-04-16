@@ -32,7 +32,11 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        let date = Date()
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MMM dd"
+        let result = formatter.string(from: date)
+        dateOfToday.text = result
         mainTaskTable.allowsSelection = false
         mainTaskTable.reorder.delegate = self
         mainTaskTable.delegate = self
@@ -102,6 +106,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource,TableViewRe
         let item = arr[sourceIndexPath.row]
         arr.remove(at: sourceIndexPath.row)
         arr.insert(item, at: destinationIndexPath.row)
+        tableView.reorder.spacerCellStyle = .transparent
     }
     
     

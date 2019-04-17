@@ -46,7 +46,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		115AD55C5B9B055904023265 /* Pods-HomeSpace.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HomeSpace.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HomeSpace/Pods-HomeSpace.debug.xcconfig"; sourceTree = "<group>"; };
+		232603890BF9BF9387FCADDA /* Pods-HomeSpaceUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HomeSpaceUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HomeSpaceUITests/Pods-HomeSpaceUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		273ADEA4F27DB9C81A0A10A7 /* Pods-HomeSpaceUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HomeSpaceUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-HomeSpaceUITests/Pods-HomeSpaceUITests.release.xcconfig"; sourceTree = "<group>"; };
 		4A4A173C63466D1140D69724 /* Pods-HomeSpaceUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HomeSpaceUITests.debug.xcconfig"; path = "Target Support Files/Pods-HomeSpaceUITests/Pods-HomeSpaceUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		4B0A4D7EE805A42106B4DC58 /* Pods-HomeSpace.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HomeSpace.release.xcconfig"; path = "Pods/Target Support Files/Pods-HomeSpace/Pods-HomeSpace.release.xcconfig"; sourceTree = "<group>"; };
 		53F9299AFE62181D7F1E0F61 /* Pods-HomeSpace.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HomeSpace.release.xcconfig"; path = "Target Support Files/Pods-HomeSpace/Pods-HomeSpace.release.xcconfig"; sourceTree = "<group>"; };
 		55CFAE3A0FE8C51FD14AAE2E /* Pods_HomeSpace.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HomeSpace.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A9673BEFF33C950491C855B /* Pods-HomeSpace.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HomeSpace.debug.xcconfig"; path = "Target Support Files/Pods-HomeSpace/Pods-HomeSpace.debug.xcconfig"; sourceTree = "<group>"; };
@@ -74,6 +78,8 @@
 		C289C5B9223945200042C00D /* tasksTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tasksTableViewCell.swift; sourceTree = "<group>"; };
 		C28E2EB022392C1200175556 /* moveGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = moveGroupViewController.swift; sourceTree = "<group>"; };
 		C28E2EB222392E7F00175556 /* designableButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = designableButton.swift; sourceTree = "<group>"; };
+		D0EB2141CC7166790F93C2F3 /* Pods-HomeSpaceTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HomeSpaceTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HomeSpaceTests/Pods-HomeSpaceTests.debug.xcconfig"; sourceTree = "<group>"; };
+		D4B684BD99C1B611CCCE1352 /* Pods-HomeSpaceTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HomeSpaceTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-HomeSpaceTests/Pods-HomeSpaceTests.release.xcconfig"; sourceTree = "<group>"; };
 		D6EBC693928EE0DBE87893C2 /* Pods-HomeSpaceUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HomeSpaceUITests.release.xcconfig"; path = "Target Support Files/Pods-HomeSpaceUITests/Pods-HomeSpaceUITests.release.xcconfig"; sourceTree = "<group>"; };
 		E2DF5F84224A629300EA0C09 /* groupsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = groupsTableViewCell.swift; sourceTree = "<group>"; };
 		E5DC2273CFF1FA4006E954F0 /* Pods_HomeSpaceUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HomeSpaceUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -126,6 +132,12 @@
 				B9CA4E11498A27B59AB3D72D /* Pods-HomeSpaceTests.release.xcconfig */,
 				4A4A173C63466D1140D69724 /* Pods-HomeSpaceUITests.debug.xcconfig */,
 				D6EBC693928EE0DBE87893C2 /* Pods-HomeSpaceUITests.release.xcconfig */,
+				115AD55C5B9B055904023265 /* Pods-HomeSpace.debug.xcconfig */,
+				4B0A4D7EE805A42106B4DC58 /* Pods-HomeSpace.release.xcconfig */,
+				D0EB2141CC7166790F93C2F3 /* Pods-HomeSpaceTests.debug.xcconfig */,
+				D4B684BD99C1B611CCCE1352 /* Pods-HomeSpaceTests.release.xcconfig */,
+				232603890BF9BF9387FCADDA /* Pods-HomeSpaceUITests.debug.xcconfig */,
+				273ADEA4F27DB9C81A0A10A7 /* Pods-HomeSpaceUITests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -356,9 +368,12 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-HomeSpace/Pods-HomeSpace-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/BoringSSL-GRPC/openssl_grpc.framework",
+				"${BUILT_PRODUCTS_DIR}/CodableFirebase/CodableFirebase.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/HPReorderTableView/HPReorderTableView.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftMoment/SwiftMoment.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftReorder/SwiftReorder.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC-C++/grpcpp.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
@@ -370,9 +385,12 @@
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl_grpc.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CodableFirebase.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HPReorderTableView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftMoment.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftReorder.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpcpp.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",

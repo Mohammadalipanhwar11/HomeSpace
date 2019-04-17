@@ -10,7 +10,9 @@ target 'HomeSpace' do
   pod 'Firebase/Firestore'
   pod 'IQKeyboardManagerSwift'
   pod 'SwiftReorder'
-
+  pod 'SwiftMoment'
+  pod 'HPReorderTableView'
+  pod 'CodableFirebase'
 
 
 

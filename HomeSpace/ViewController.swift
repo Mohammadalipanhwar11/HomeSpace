@@ -12,11 +12,12 @@
 
 
 import UIKit
-import SwiftReorder
-
+import HPReorderTableView
 
 
 class ViewController: UIViewController {
+    
+    
     
     var arr = [Task](){
         didSet{
@@ -26,7 +27,7 @@ class ViewController: UIViewController {
     
         
     @IBOutlet weak var dateOfToday: UILabel!
-    @IBOutlet weak var mainTaskTable: UITableView!
+    @IBOutlet weak var mainTaskTable: HPReorderTableView!
     
 
     
@@ -38,7 +39,6 @@ class ViewController: UIViewController {
         let result = formatter.string(from: date)
         dateOfToday.text = result
         mainTaskTable.allowsSelection = false
-        mainTaskTable.reorder.delegate = self
         mainTaskTable.delegate = self
         mainTaskTable.dataSource = self
         
@@ -75,7 +75,7 @@ class ViewController: UIViewController {
     
 }
 
-extension ViewController: UITableViewDelegate, UITableViewDataSource,TableViewReorderDelegate{
+extension ViewController: UITableViewDelegate, UITableViewDataSource{
 
     
     
@@ -87,9 +87,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource,TableViewRe
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let spacer = tableView.reorder.spacerCell(for: indexPath) {
-            return spacer
-        }
+        
         let cell = mainTaskTable.dequeueReusableCell(withIdentifier: "cell") as! tasksTableViewCell
         cell.taskLabel.text = arr[indexPath.row].name
         
@@ -102,11 +100,16 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource,TableViewRe
     
     
     
-    func tableView(_ tableView: UITableView, reorderRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+//    func tableView(_ tableView: UITableView, reorderRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+//        let item = arr[sourceIndexPath.row]
+//        arr.remove(at: sourceIndexPath.row)
+//        arr.insert(item, at: destinationIndexPath.row)
+//        tableView.reorder.spacerCellStyle = .transparent
+//    }
+    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         let item = arr[sourceIndexPath.row]
-        arr.remove(at: sourceIndexPath.row)
-        arr.insert(item, at: destinationIndexPath.row)
-        tableView.reorder.spacerCellStyle = .transparent
+                arr.remove(at: sourceIndexPath.row)
+                arr.insert(item, at: destinationIndexPath.row)
     }
     
     

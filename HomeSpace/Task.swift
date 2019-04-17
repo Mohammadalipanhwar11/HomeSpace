@@ -16,6 +16,8 @@ struct Task : Codable {
     var id : String? = ""
     var rank: Double? = 0
     
+    
+    
     static var shared = [Task]()
     
     init(name:String, date: String) {

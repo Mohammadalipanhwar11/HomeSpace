@@ -6,6 +6,7 @@ target 'HomeSpace' do
   use_frameworks!
 
   # Pods for HomeSpace
+
   pod 'Firebase/Core'
   pod 'Firebase/Firestore'
   pod 'IQKeyboardManagerSwift'
@@ -13,7 +14,6 @@ target 'HomeSpace' do
   pod 'SwiftMoment'
   pod 'HPReorderTableView'
   pod 'CodableFirebase'
-
 
 
   target 'HomeSpaceTests' do

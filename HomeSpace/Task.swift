@@ -8,10 +8,16 @@
 
 import Foundation
 import FirebaseFirestore
+import CodableFirebase
+
+extension DocumentReference: DocumentReferenceType {}
+extension GeoPoint: GeoPointType {}
+extension FieldValue: FieldValueType {}
+extension Timestamp: TimestampType {}
 
 struct Task : Codable {
     
-    let date : String?
+    let date : Timestamp?
     let name : String?
     var id : String? = ""
     var rank: Double? = 0
@@ -20,15 +26,15 @@ struct Task : Codable {
     
     static var shared = [Task]()
     
-    init(name:String, date: String) {
+    init(name:String, date: Date) {
         self.name = name
-        self.date = date
+        self.date = Timestamp(date: date)
     }
     
     var toDic: [String:Any]{
         return[
             "name":self.name ?? "",
-            "date":self.date ?? "",
+            "date":self.date ?? Date(),
             "rank":self.rank ?? 0
         ]
     }
@@ -42,7 +48,7 @@ struct Task : Codable {
     
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
-        date = try values.decodeIfPresent(String.self, forKey: .date)
+        date = try values.decodeIfPresent(Timestamp.self, forKey: .date)
         name = try values.decodeIfPresent(String.self, forKey: .name)
         rank = try values.decodeIfPresent(Double.self, forKey: .rank)
 

@@ -1,0 +1,28 @@
+# fastlane/Fastfile
+default_platform :ios
+
+platform :ios do
+  before_all do
+    setup_circle_ci
+    puts "Its working here"
+    end
+
+  desc "Runs all the tests"
+  lane :test do
+    scan
+  end
+
+  desc "Ad-hoc build"
+  lane :adhoc do
+    match(type: "adhoc",readonly: false)
+    gym(export_method: "ad-hoc")
+  end
+
+
+  lane :beta do
+    match(type: "appstore", readonly: is_ci)
+    gym(scheme: "HomeSpace")
+    increment_build_number
+    upload_to_testflight(skip_waiting_for_build_processing:true)
+  end
+end

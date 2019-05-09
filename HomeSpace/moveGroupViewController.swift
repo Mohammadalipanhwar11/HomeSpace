@@ -34,7 +34,7 @@ class moveGroupViewController: UIViewController {
         _ = navigationController?.popToRootViewController(animated: true)
         sender.layer.borderColor = UIColor.orange.cgColor
         sender.titleLabel?.textColor = UIColor.orange
-        let t = Task(name: textData!, date: "\(Date())")
+        let t = Task(name: textData!, date: Date())
         taskManager.shared.addTask(task:t) { (err) in
             
         }

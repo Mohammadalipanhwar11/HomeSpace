@@ -9,6 +9,7 @@
 import Foundation
 import FirebaseFirestore
 import Firebase
+import CodableFirebase
 
 class taskManager {
     
@@ -23,14 +24,18 @@ class taskManager {
             .getDocuments { (data, err) in
                 var rank = 0.0
                 if let object = data?.documents.first?.data(){
-                    let json = try! JSONSerialization.data(withJSONObject: object, options: .prettyPrinted)
-                    let maxTask = try! JSONDecoder().decode(Task.self, from: json)
+                    let maxTask = try! FirestoreDecoder().decode(Task.self, from: object)
+
+//                    let json = try! JSONSerialization.data(withJSONObject: object, options: .prettyPrinted)
+//                    let maxTask = try! JSONDecoder().decode(Task.self, from: json)
+                    
                     rank = maxTask.rank!
                     rank += 10
                 }
                 var updated = task
                 updated.rank = rank
-                Firestore.firestore().collection("tasks").addDocument(data: updated.toDic) { (err) in
+                let data = try! FirestoreEncoder().encode(updated)
+                Firestore.firestore().collection("tasks").addDocument(data: data) { (err) in
                     completion(err?.localizedDescription)
                 }
         }
@@ -83,12 +88,15 @@ class taskManager {
             .addSnapshotListener { taskSnap, error in
                 taskSnap?.documentChanges.forEach({ (task) in
                     let object = task.document.data()
-                    let json = try! JSONSerialization.data(withJSONObject: object, options: .prettyPrinted)
-                    var taskData = try! JSONDecoder().decode(Task.self, from: json)
+                    var taskData = try! FirestoreDecoder().decode(Task.self, from: object)
+
+//                    let json = try! JSONSerialization.data(withJSONObject: object, options: .prettyPrinted)
+//                    var taskData = try! JSONDecoder().decode(Task.self, from: json)
                     taskData.id = task.document.documentID
                     
                     if (task.type == .added) {
                         Task.shared.append(taskData)
+                        completion(Task.shared,nil)
                     }
                     if (task.type == .modified) {
                         let index = Task.shared.firstIndex(where: { $0.id ==  taskData.id})!
@@ -96,12 +104,23 @@ class taskManager {
                     }
                 })
                 if error == nil{
+                    Task.shared.sort(by: {$0.rank! < $1.rank!})
                     completion(Task.shared,nil)
                 }else{
                     completion([],error?.localizedDescription)
                 }
         }
 
+    }
+    
+    func updateTask(key:String,updatedRank:Double,completion:@escaping(_ success:Bool)->Void){
+        Firestore.firestore().collection("tasks").document(key).updateData(["rank" : updatedRank]) { (error) in
+            if error == nil{
+                completion(true)
+            }else{
+                completion(false)
+            }
+        }
     }
     
 }

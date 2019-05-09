@@ -40,10 +40,6 @@ class addTaskViewController: UIViewController,UITextViewDelegate,SFSpeechRecogni
         
     }
     
-
-    
-    
-    
     
     func textViewDidBeginEditing(_ textView: UITextView) {
         textView.textColor = UIColor.white
@@ -172,7 +168,7 @@ class addTaskViewController: UIViewController,UITextViewDelegate,SFSpeechRecogni
             self.audioEngine.stop()
             self.recognitionRequest?.endAudio()
             self.recordButton.isEnabled = false
-            self.recordButton.setTitle("Start Recording", for: .normal)
+//            self.recordButton.setTitle("Start Recording", for: .normal)
             self.recordButton.setImage(UIImage(named: "record"), for: UIControl.State.normal)
         } else {
             self.startRecording()
@@ -211,7 +207,13 @@ class addTaskViewController: UIViewController,UITextViewDelegate,SFSpeechRecogni
         }else{
             let alert = UIAlertController(title: "No Text Found", message: "Please type Someting to continoue", preferredStyle: UIAlertController.Style.alert)
             let action = UIAlertAction(title: "Ok", style: UIAlertAction.Style.cancel) { (action) in
-                
+                self.recordButton.isHidden = false
+                self.endButton.isHidden = true
+                self.doneButton.isHidden = true
+                self.mainText.textColor = UIColor(red: 0, green: 150/255, blue: 255/255, alpha: 1)
+                self.mainText.font = UIFont.boldSystemFont(ofSize: 40)
+                self.view.endEditing(true)
+                self.mainText.text = "type"
             }
             alert.addAction(action)
             self.present(alert, animated: true, completion: nil)
@@ -221,14 +223,13 @@ class addTaskViewController: UIViewController,UITextViewDelegate,SFSpeechRecogni
 
    
     }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "groups" {
             let dest = segue.destination as! moveGroupViewController
             dest.textData = mainText.text
         }
     }
-    
-
     
 }
 

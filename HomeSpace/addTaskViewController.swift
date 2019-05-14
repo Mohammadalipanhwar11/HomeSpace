@@ -16,6 +16,7 @@ class addTaskViewController: UIViewController,UITextViewDelegate,SFSpeechRecogni
     @IBOutlet weak var endButton: UIButton!
     @IBOutlet weak var recordButton: UIButton!
     @IBOutlet weak var mainText: UITextView!
+    @IBOutlet weak var recordConstraint: NSLayoutConstraint!
     
     var oldIndex:[Int]?
     var index1:Int = 0
@@ -36,19 +37,33 @@ class addTaskViewController: UIViewController,UITextViewDelegate,SFSpeechRecogni
         self.mainText.delegate = self
         setupSpeech()
 
-        
-        
+        mainText.becomeFirstResponder()
+//        recordConstraint.constant
+//        if mainText.text.count >= 5 {
+//            mainText.textColor = UIColor.white
+//            mainText.font = UIFont.boldSystemFont(ofSize: 17)
+//            mainText.text = ""
+//        }
     }
     
     
     func textViewDidBeginEditing(_ textView: UITextView) {
-        textView.textColor = UIColor.white
-        textView.font = UIFont.boldSystemFont(ofSize: 17)
-        textView.text = ""
-        recordButton.isHidden = true
-        endButton.isHidden = true
-        doneButton.isHidden = false
+      
         
+        
+   
+        endButton.isHidden = true
+        doneButton.isHidden = true
+        
+    }
+    func textViewDidChange(_ textView: UITextView) {
+        if mainText.text >= "type" {
+            mainText.textColor = UIColor.white
+            mainText.font = UIFont.boldSystemFont(ofSize: 17)
+            mainText.text = ""
+            recordButton.isHidden = true
+            doneButton.isHidden = false
+        }
     }
     
     func setupSpeech() {
@@ -161,19 +176,20 @@ class addTaskViewController: UIViewController,UITextViewDelegate,SFSpeechRecogni
 
  
     @IBAction func record(_ sender: Any) {
+        mainText.endEditing(true)
         endButton.isHidden = false
-        mainText.isHidden = true
+        mainText.isHidden = false
         
-        if audioEngine.isRunning {
-            self.audioEngine.stop()
-            self.recognitionRequest?.endAudio()
-            self.recordButton.isEnabled = false
-//            self.recordButton.setTitle("Start Recording", for: .normal)
-            self.recordButton.setImage(UIImage(named: "record"), for: UIControl.State.normal)
-        } else {
-            self.startRecording()
-            self.recordButton.setImage(UIImage(named: "pause"), for: UIControl.State.normal)
-        }
+//        if audioEngine.isRunning {
+//            self.audioEngine.stop()
+//            self.recognitionRequest?.endAudio()
+//            self.recordButton.isEnabled = false
+////            self.recordButton.setTitle("Start Recording", for: .normal)
+//            self.recordButton.setImage(UIImage(named: "record"), for: UIControl.State.normal)
+//        } else {
+//            self.startRecording()
+//            self.recordButton.setImage(UIImage(named: "pause"), for: UIControl.State.normal)
+//        }
     }
 
     

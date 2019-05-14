@@ -267,6 +267,7 @@
                         <outlet property="endButton" destination="HAa-4k-qAo" id="0gb-Wv-uRy"/>
                         <outlet property="mainText" destination="70n-f5-B1W" id="ZXD-80-jym"/>
                         <outlet property="recordButton" destination="og8-D5-YtD" id="rmN-Zt-BJp"/>
+                        <outlet property="recordConstraint" destination="vgv-92-chm" id="MoZ-xq-yqP"/>
                         <segue destination="foZ-ro-VNs" kind="show" identifier="groups" id="thZ-Li-olm"/>
                     </connections>
                 </viewController>

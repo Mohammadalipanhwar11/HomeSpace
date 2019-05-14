@@ -20,7 +20,7 @@ class taskManager {
   
     
     func addTask(task:Task,completion:@escaping SucessCompletion){
-        Firestore.firestore().collection("tasks").order(by: "rank", descending: true).limit(to: 1)
+        Firestore.firestore().collection("tasks").order(by: "rank", descending: false).limit(to: 1)
             .getDocuments { (data, err) in
                 var rank = 0.0
                 if let object = data?.documents.first?.data(){
@@ -31,7 +31,7 @@ class taskManager {
                     
                     rank = maxTask.rank!
                     rank += 10
-                }
+                } 
                 var updated = task
                 updated.rank = rank
                 let data = try! FirestoreEncoder().encode(updated)

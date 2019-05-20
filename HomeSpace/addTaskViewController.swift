@@ -179,17 +179,21 @@ class addTaskViewController: UIViewController,UITextViewDelegate,SFSpeechRecogni
         mainText.endEditing(true)
         endButton.isHidden = false
         mainText.isHidden = false
-        
-//        if audioEngine.isRunning {
-//            self.audioEngine.stop()
-//            self.recognitionRequest?.endAudio()
-//            self.recordButton.isEnabled = false
-////            self.recordButton.setTitle("Start Recording", for: .normal)
-//            self.recordButton.setImage(UIImage(named: "record"), for: UIControl.State.normal)
-//        } else {
-//            self.startRecording()
-//            self.recordButton.setImage(UIImage(named: "pause"), for: UIControl.State.normal)
-//        }
+        if mainText.text >= "type" {
+            mainText.textColor = UIColor.white
+            mainText.font = UIFont.boldSystemFont(ofSize: 17)
+            mainText.text = ""
+        }
+        if audioEngine.isRunning {
+            self.audioEngine.stop()
+            self.recognitionRequest?.endAudio()
+            self.recordButton.isEnabled = false
+//            self.recordButton.setTitle("Start Recording", for: .normal)
+            self.recordButton.setImage(UIImage(named: "record"), for: UIControl.State.normal)
+        } else {
+            self.startRecording()
+            self.recordButton.setImage(UIImage(named: "pause"), for: UIControl.State.normal)
+        }
     }
 
     

@@ -69,6 +69,24 @@ class ViewController: UIViewController {
 
 extension ViewController: UITableViewDelegate, UITableViewDataSource{
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.performSegue(withIdentifier: "edit", sender: self)
+    }
+    
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            print("Deleted")
+            
+            self.arr.remove(at: indexPath.row)
+            self.mainTaskTable.deleteRows(at: [indexPath], with: .automatic)
+        }
+    }
+    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return arr.count
@@ -82,7 +100,9 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
         cell.taskLabel.text = arr[indexPath.row].name
         let diff = moment(self.arr[indexPath.row].date!.dateValue()) - moment()
         let posDiff = diff.minutes * -1
-        print(posDiff)        
+        print(posDiff)
+       
+        
         return cell
     }
     

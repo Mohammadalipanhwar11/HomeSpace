@@ -24,6 +24,7 @@
 		C289C5BA223945200042C00D /* tasksTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C289C5B9223945200042C00D /* tasksTableViewCell.swift */; };
 		C28E2EB122392C1200175556 /* moveGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C28E2EB022392C1200175556 /* moveGroupViewController.swift */; };
 		C28E2EB322392E7F00175556 /* designableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C28E2EB222392E7F00175556 /* designableButton.swift */; };
+		E2904A3C2294148900EEE096 /* LPRTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2904A3B2294148900EEE096 /* LPRTableView.swift */; };
 		E2AF95062292A58100936F69 /* Ubuntu-B.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E2AF95052292A43600936F69 /* Ubuntu-B.ttf */; };
 		E2AF95082292C4B200936F69 /* editTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2AF95072292C4B200936F69 /* editTaskViewController.swift */; };
 		E2DF5F85224A629300EA0C09 /* groupsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DF5F84224A629300EA0C09 /* groupsTableViewCell.swift */; };
@@ -83,6 +84,7 @@
 		D0EB2141CC7166790F93C2F3 /* Pods-HomeSpaceTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HomeSpaceTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HomeSpaceTests/Pods-HomeSpaceTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D4B684BD99C1B611CCCE1352 /* Pods-HomeSpaceTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HomeSpaceTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-HomeSpaceTests/Pods-HomeSpaceTests.release.xcconfig"; sourceTree = "<group>"; };
 		D6EBC693928EE0DBE87893C2 /* Pods-HomeSpaceUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HomeSpaceUITests.release.xcconfig"; path = "Target Support Files/Pods-HomeSpaceUITests/Pods-HomeSpaceUITests.release.xcconfig"; sourceTree = "<group>"; };
+		E2904A3B2294148900EEE096 /* LPRTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LPRTableView.swift; sourceTree = "<group>"; };
 		E2AF95052292A43600936F69 /* Ubuntu-B.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ubuntu-B.ttf"; sourceTree = "<group>"; };
 		E2AF95072292C4B200936F69 /* editTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = editTaskViewController.swift; sourceTree = "<group>"; };
 		E2DF5F84224A629300EA0C09 /* groupsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = groupsTableViewCell.swift; sourceTree = "<group>"; };
@@ -172,6 +174,7 @@
 			isa = PBXGroup;
 			children = (
 				E2AF95052292A43600936F69 /* Ubuntu-B.ttf */,
+				E2904A3B2294148900EEE096 /* LPRTableView.swift */,
 				C267F504223920A400D7771F /* AppDelegate.swift */,
 				C267F506223920A400D7771F /* ViewController.swift */,
 				C289C5B522393DC10042C00D /* Task.swift */,
@@ -450,6 +453,7 @@
 			files = (
 				C289C5B822393F0D0042C00D /* taskManager.swift in Sources */,
 				E2DF5F85224A629300EA0C09 /* groupsTableViewCell.swift in Sources */,
+				E2904A3C2294148900EEE096 /* LPRTableView.swift in Sources */,
 				C25E60D1223A7B8100EE9AFE /* designableView.swift in Sources */,
 				C267F53322392B8D00D7771F /* addTaskViewController.swift in Sources */,
 				C28E2EB322392E7F00175556 /* designableButton.swift in Sources */,

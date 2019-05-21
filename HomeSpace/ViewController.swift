@@ -8,7 +8,6 @@
 
 import UIKit
 import SwiftMoment
-
 class ViewController: UIViewController {
     
     var arr = [Task](){
@@ -19,7 +18,7 @@ class ViewController: UIViewController {
     
         
     @IBOutlet weak var dateOfToday: UILabel!
-    @IBOutlet weak var mainTaskTable: UITableView!
+    @IBOutlet weak var mainTaskTable: LPRTableView!
     private var myReorderImage : UIImage? = UIImage(named: "image")!
     var timers = [Timer]()
     
@@ -30,10 +29,10 @@ class ViewController: UIViewController {
         formatter.dateFormat = "MMM dd"
         let result = formatter.string(from: date)
         dateOfToday.text = result
-        mainTaskTable.allowsSelection = false
+//        mainTaskTable.allowsSelection = false
         mainTaskTable.delegate = self
         mainTaskTable.dataSource = self
-        mainTaskTable.isEditing = true
+//        mainTaskTable.isEditing = true
        
         taskManager.shared.getAllTask { (taskArr, error) in
             if error == nil{
@@ -68,10 +67,13 @@ class ViewController: UIViewController {
 }
 
 extension ViewController: UITableViewDelegate, UITableViewDataSource{
+
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.performSegue(withIdentifier: "edit", sender: self)
-    }
+    
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        self.performSegue(withIdentifier: "edit", sender: self)
+//        print(indexPath.row)
+//    }
     
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -79,31 +81,30 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            print("Deleted")
-            
-            self.arr.remove(at: indexPath.row)
-            self.mainTaskTable.deleteRows(at: [indexPath], with: .automatic)
+        if (editingStyle == .delete) {
+            // handle delete (by removing the data from your array and updating the tableview)
         }
     }
-    
+
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return arr.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
+
         let cell = mainTaskTable.dequeueReusableCell(withIdentifier: "cell") as! tasksTableViewCell
-        cell.selectionStyle = .none
         cell.selectedBackgroundView?.backgroundColor = UIColor.black
         cell.taskLabel.text = arr[indexPath.row].name
         let diff = moment(self.arr[indexPath.row].date!.dateValue()) - moment()
         let posDiff = diff.minutes * -1
         print(posDiff)
-       
-        
+
+
         return cell
+    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
     }
     
     
@@ -113,7 +114,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
         // Initially both are zero which we will use in index path is 0 so that first element is always zero
         var previousElementRank:Double = 0.0
         var updatedRank:Double = 0.0
-        
+
         if destinationIndexPath.row == 0{
             // By default zero
             //previousElementRank = 0
@@ -123,7 +124,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
             // Dont make it zero again
             updatedRank = (destinationRank + after) / 2.0
 //            arr[destinationIndexPath.row].rank! += 0.0001
-            
+
             taskManager.shared.updateTask(key: arr[destinationIndexPath.row].id!, updatedRank: updatedRank) { (success) in
                 if success{
                     print("Updated")
@@ -153,7 +154,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
                     print("Failed")
                 }
             }
-            
+
         }else{
             // Get previous element rank
             previousElementRank = arr[(destinationIndexPath.row - 1)].rank!
@@ -168,8 +169,8 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
                 }
             }
         }
-       
-        
+
+
         // Update rank in current array
           arr[sourceIndexPath.row].rank = updatedRank
 //        if destinationIndexPath.row == 0 {
@@ -178,41 +179,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
             arr.remove(at: sourceIndexPath.row)
             arr.insert(item, at: destinationIndexPath.row)
     }
-    
-    func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    
-    
-    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
-        return .none
-    }
-    
-    func tableView(_ tableView: UITableView, shouldIndentWhileEditingRowAt indexPath: IndexPath) -> Bool {
-        return false
-    }
-    
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        for subViewA in cell.subviews {
-            subViewA.backgroundColor = UIColor.black
-            if (subViewA.classForCoder.description() == "UITableViewCellReorderControl") {
-                for subViewB in subViewA.subviews {
-                    if (subViewB.isKind(of: UIImageView.classForCoder())) {
-                        let imageView = subViewB as! UIImageView;
-                        if (myReorderImage != nil) {
-                            let myImage = imageView.image;
-                            myReorderImage = myImage?.withRenderingMode(UIImage.RenderingMode.alwaysTemplate);
-                        }
-                        imageView.image = myReorderImage;
-                        imageView.tintColor = UIColor(red: 0, green: 150/255, blue: 255/255, alpha: 1)
-                        break;
-                    }
-                }
-                break;
-            }
-        }
-    }
-    
-    
+
+
 }
 

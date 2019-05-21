@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="mrf-jF-s9K">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="DYd-d6-azB">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -29,7 +29,7 @@
                             <userLayoutGuide location="397" affinity="minY"/>
                         </userGuides>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="P9c-Qf-Wsp">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="P9c-Qf-Wsp" customClass="LPRTableView" customModule="HomeSpace" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="75" width="414" height="544"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
@@ -42,6 +42,9 @@
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iFz-pL-RBj">
                                                     <rect key="frame" x="10" y="21" width="394" height="43"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="43" id="TH1-U3-sfz"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" name="Ubuntu-Bold" family="Ubuntu" pointSize="17"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
@@ -49,10 +52,10 @@
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
-                                                <constraint firstItem="iFz-pL-RBj" firstAttribute="leading" secondItem="ean-5o-kSP" secondAttribute="leading" constant="10" id="Etd-h2-Vna"/>
-                                                <constraint firstAttribute="trailing" secondItem="iFz-pL-RBj" secondAttribute="trailing" constant="10" id="cMK-kQ-Led"/>
-                                                <constraint firstItem="iFz-pL-RBj" firstAttribute="top" secondItem="ean-5o-kSP" secondAttribute="top" constant="21" id="rDn-Qs-4An"/>
-                                                <constraint firstAttribute="bottom" secondItem="iFz-pL-RBj" secondAttribute="bottom" constant="21" id="xf5-U9-vUs"/>
+                                                <constraint firstItem="iFz-pL-RBj" firstAttribute="leading" secondItem="ean-5o-kSP" secondAttribute="leading" constant="10" id="HgO-AY-qGG"/>
+                                                <constraint firstItem="iFz-pL-RBj" firstAttribute="top" secondItem="ean-5o-kSP" secondAttribute="top" constant="21" id="VYq-2U-xOW"/>
+                                                <constraint firstAttribute="bottom" secondItem="iFz-pL-RBj" secondAttribute="bottom" constant="21" id="WcM-ar-92x"/>
+                                                <constraint firstAttribute="trailing" secondItem="iFz-pL-RBj" secondAttribute="trailing" constant="10" id="n1n-jF-tGV"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

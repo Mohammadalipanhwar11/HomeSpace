@@ -145,10 +145,10 @@
             </objects>
             <point key="canvasLocation" x="1634.7826086956522" y="131.25"/>
         </scene>
-        <!--View Controller-->
+        <!--Edit Task View Controller-->
         <scene sceneID="ne7-cG-YV4">
             <objects>
-                <viewController id="mrf-jF-s9K" sceneMemberID="viewController">
+                <viewController id="mrf-jF-s9K" customClass="editTaskViewController" customModule="HomeSpace" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Lva-mt-C9t">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -247,6 +247,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="O8a-ca-WAB"/>
                     </view>
+                    <connections>
+                        <outlet property="editText" destination="DO9-AP-uQl" id="KqI-nI-4zG"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8oR-0Y-ps4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

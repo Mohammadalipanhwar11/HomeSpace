@@ -82,6 +82,11 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if (editingStyle == .delete) {
+            self.mainTaskTable.deleteRows(at: [indexPath], with: .automatic)
+            self.arr.remove(at: indexPath.row)
+            taskManager.shared.deleteTask(key: arr[indexPath.row].id!) { (err) in
+                
+            }
             // handle delete (by removing the data from your array and updating the tableview)
         }
     }
@@ -89,6 +94,12 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return arr.count
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let object = arr[indexPath.row].name
+        let detailViewController = storyboard?.instantiateViewController(withIdentifier: "DetailViewController") as! editTaskViewController
+        navigationController?.pushViewController(detailViewController, animated: true)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

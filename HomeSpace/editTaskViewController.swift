@@ -10,6 +10,7 @@ import UIKit
 
 class editTaskViewController: UIViewController {
 
+    @IBOutlet weak var editText: UITextView!
     override func viewDidLoad() {
         super.viewDidLoad()
 

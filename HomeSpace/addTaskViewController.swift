@@ -16,6 +16,8 @@ class addTaskViewController: UIViewController,UITextViewDelegate,SFSpeechRecogni
     @IBOutlet weak var endButton: UIButton!
     @IBOutlet weak var recordButton: UIButton!
     @IBOutlet weak var mainText: UITextView!
+
+    @IBOutlet weak var backConstriant: NSLayoutConstraint!
     @IBOutlet weak var recordConstraint: NSLayoutConstraint!
     
     var oldIndex:[Int]?
@@ -38,13 +40,8 @@ class addTaskViewController: UIViewController,UITextViewDelegate,SFSpeechRecogni
         setupSpeech()
 
         mainText.becomeFirstResponder()
-//        recordConstraint.constant
-//        if mainText.text.count >= 5 {
-//            mainText.textColor = UIColor.white
-//            mainText.font = UIFont.boldSystemFont(ofSize: 17)
-//            mainText.text = ""
-//        }
     }
+
     
     
     func textViewDidBeginEditing(_ textView: UITextView) {
@@ -61,6 +58,8 @@ class addTaskViewController: UIViewController,UITextViewDelegate,SFSpeechRecogni
             mainText.textColor = UIColor.white
             mainText.font = UIFont.boldSystemFont(ofSize: 17)
             mainText.text = ""
+            mainText.cornerRadius = 3
+            mainText.borderWidth = 3
             recordButton.isHidden = true
             doneButton.isHidden = false
         }

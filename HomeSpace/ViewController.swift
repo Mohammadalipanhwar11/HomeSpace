@@ -10,17 +10,19 @@ import UIKit
 import SwiftMoment
 class ViewController: UIViewController {
     
+    var selectedText:String?
+    var selectedKey:String?
+    var timers = [Timer]()
     var arr = [Task](){
         didSet{
              //self.mainTaskTable.reloadData()
         }
     }
-    
+
         
     @IBOutlet weak var dateOfToday: UILabel!
     @IBOutlet weak var mainTaskTable: LPRTableView!
     private var myReorderImage : UIImage? = UIImage(named: "image")!
-    var timers = [Timer]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,6 +66,16 @@ class ViewController: UIViewController {
         
     }
     
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "edit" {
+            let dest = segue.destination as! editTaskViewController
+            dest.text = selectedText
+            dest.key1 = selectedKey
+        }
+    }
+    
 }
 
 extension ViewController: UITableViewDelegate, UITableViewDataSource{
@@ -80,16 +92,17 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
         return true
     }
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if (editingStyle == .delete) {
-            self.mainTaskTable.deleteRows(at: [indexPath], with: .automatic)
-            self.arr.remove(at: indexPath.row)
-            taskManager.shared.deleteTask(key: arr[indexPath.row].id!) { (err) in
-                
-            }
-            // handle delete (by removing the data from your array and updating the tableview)
-        }
-    }
+//    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+//        if (editingStyle == .delete) {
+//            self.arr.remove(at: indexPath.row)
+//            self.mainTaskTable.deleteRows(at: [indexPath], with: .automatic)
+//
+//            taskManager.shared.deleteTask(key: arr[indexPath.row].id!) { (err) in
+//
+//            }
+//            // handle delete (by removing the data from your array and updating the tableview)
+//        }
+//    }
 
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -97,14 +110,14 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let object = arr[indexPath.row].name
-        let detailViewController = storyboard?.instantiateViewController(withIdentifier: "DetailViewController") as! editTaskViewController
-        navigationController?.pushViewController(detailViewController, animated: true)
+        self.selectedText = arr[indexPath.row].name
+        self.selectedKey = arr[indexPath.row].id
+        self.performSegue(withIdentifier: "edit", sender: self)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
-        let cell = mainTaskTable.dequeueReusableCell(withIdentifier: "cell") as! tasksTableViewCell
+         let cell = mainTaskTable.dequeueReusableCell(withIdentifier: "cell") as! tasksTableViewCell
         cell.selectedBackgroundView?.backgroundColor = UIColor.black
         cell.taskLabel.text = arr[indexPath.row].name
         let diff = moment(self.arr[indexPath.row].date!.dateValue()) - moment()
@@ -189,6 +202,24 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
 //        }
             arr.remove(at: sourceIndexPath.row)
             arr.insert(item, at: destinationIndexPath.row)
+    }
+    
+    func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let leftAction = UIContextualAction(style: .normal, title:  "delete", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
+            print("leftAction tapped")
+            success(true)
+        })
+        leftAction.backgroundColor = UIColor(red: 0, green: 150/255, blue: 255/255, alpha: 1)
+        return UISwipeActionsConfiguration(actions: [leftAction])
+    }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let rightAction = UIContextualAction(style: .normal, title:  "move", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
+            print("rightAction tapped")
+            success(true)
+        })
+        rightAction.backgroundColor = UIColor(red: 0, green: 150/255, blue: 255/255, alpha: 1)
+        return UISwipeActionsConfiguration(actions: [rightAction])
     }
 
 

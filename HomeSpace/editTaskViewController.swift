@@ -42,7 +42,7 @@ class editTaskViewController: UIViewController {
         guard let keyboardSize = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else {return}
         _ = keyboardSize.cgRectValue
         print(keyboardSize.cgRectValue)
-        toolsBottomConstraint.constant = keyboardSize.cgPointValue.y / -1.7
+        toolsBottomConstraint.constant = keyboardSize.cgPointValue.y / -1.6
         
         
     }

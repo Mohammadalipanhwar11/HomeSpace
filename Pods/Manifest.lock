@@ -97,6 +97,7 @@ PODS:
   - Protobuf (3.7.0)
   - SwiftMoment (0.7)
   - SwiftReorder (6.0.2)
+  - SwiftyWave (1.1.0)
 
 DEPENDENCIES:
   - CodableFirebase
@@ -106,6 +107,7 @@ DEPENDENCIES:
   - IQKeyboardManagerSwift
   - SwiftMoment
   - SwiftReorder
+  - SwiftyWave (~> 1.1.0)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -128,6 +130,7 @@ SPEC REPOS:
     - Protobuf
     - SwiftMoment
     - SwiftReorder
+    - SwiftyWave
 
 SPEC CHECKSUMS:
   BoringSSL-GRPC: 2a230d9cd93e7ce39916044f645cebb31f37dde6
@@ -149,7 +152,8 @@ SPEC CHECKSUMS:
   Protobuf: 7a877b7f3e5964e3fce995e2eb323dbc6831bb5a
   SwiftMoment: dc6dd27012e267819104cbb03f74ff9192dd0b42
   SwiftReorder: 60ef1faf6446cf68f9a647cb975530db8efd6620
+  SwiftyWave: 848e6d774d45c82574757d9f991735380628c36d
 
-PODFILE CHECKSUM: 874fd9e7bfc89ef77d7b05f4f9a577aad60cdfd3
+PODFILE CHECKSUM: ae8a2a3fff908eec2f4bf4e66e76ae48dfff91d6
 
 COCOAPODS: 1.6.1

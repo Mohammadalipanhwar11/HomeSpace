@@ -9,38 +9,47 @@
 import UIKit
 import FirebaseFirestore
 import Speech
+import SwiftyWave
 
 class addTaskViewController: UIViewController,UITextViewDelegate,SFSpeechRecognizerDelegate {
 
+ 
+    @IBOutlet weak var EZview: SwiftyWaveView!
     @IBOutlet weak var doneButton: UIButton!
     @IBOutlet weak var endButton: UIButton!
     @IBOutlet weak var recordButton: UIButton!
     @IBOutlet weak var mainText: UITextView!
 
-    @IBOutlet weak var backConstriant: NSLayoutConstraint!
+    @IBOutlet weak var backConstraint: NSLayoutConstraint!
+    @IBOutlet weak var recordCenterConstraint: NSLayoutConstraint!
+    
+    @IBOutlet weak var textViewBottomConstriant: NSLayoutConstraint!
     @IBOutlet weak var recordConstraint: NSLayoutConstraint!
     
     var oldIndex:[Int]?
     var index1:Int = 0
     var str:String?
-    
-    let speechRecognizer        = SFSpeechRecognizer(locale: Locale(identifier: "en-US"))
-    
-    var recognitionRequest      : SFSpeechAudioBufferRecognitionRequest?
-    var recognitionTask         : SFSpeechRecognitionTask?
-    let audioEngine             = AVAudioEngine()
-
+    let speechRecognizer = SFSpeechRecognizer(locale: Locale(identifier: "en-US"))
+    var recognitionRequest: SFSpeechAudioBufferRecognitionRequest?
+    var recognitionTask: SFSpeechRecognitionTask?
+    let audioEngine = AVAudioEngine()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        doneButton.cornerRadius = 20
         doneButton.isHidden = true
         endButton.isHidden = true
         self.mainText.delegate = self
         setupSpeech()
+        
 
         mainText.becomeFirstResponder()
     }
+    
+
+ 
+    
 
     
     
@@ -96,6 +105,15 @@ class addTaskViewController: UIViewController,UITextViewDelegate,SFSpeechRecogni
             }
         }
     }
+    
+
+    
+
+    
+
+    
+
+    
     
     func startRecording() {
         
@@ -175,6 +193,8 @@ class addTaskViewController: UIViewController,UITextViewDelegate,SFSpeechRecogni
 
  
     @IBAction func record(_ sender: Any) {
+        
+        
         mainText.endEditing(true)
         endButton.isHidden = false
         mainText.isHidden = false
@@ -184,13 +204,20 @@ class addTaskViewController: UIViewController,UITextViewDelegate,SFSpeechRecogni
             mainText.text = ""
         }
         if audioEngine.isRunning {
-            self.audioEngine.stop()
+//            self.audioEngine.stop()
             self.recognitionRequest?.endAudio()
             self.recordButton.isEnabled = false
 //            self.recordButton.setTitle("Start Recording", for: .normal)
             self.recordButton.setImage(UIImage(named: "record"), for: UIControl.State.normal)
         } else {
-            self.startRecording()
+//            self.startRecording()
+            self.mainText.cornerRadius = 3
+            self.mainText.borderWidth = 3
+            recordCenterConstraint.constant = 200
+            recordConstraint.constant = -80
+            backConstraint.constant = 20
+            textViewBottomConstriant.constant = -100
+            EZview.start()
             self.recordButton.setImage(UIImage(named: "pause"), for: UIControl.State.normal)
         }
     }
@@ -255,3 +282,6 @@ class addTaskViewController: UIViewController,UITextViewDelegate,SFSpeechRecogni
 
 
 
+fileprivate func convertFromAVAudioSessionCategory(_ input: AVAudioSession.Category) -> String {
+    return input.rawValue
+}

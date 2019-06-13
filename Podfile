@@ -14,7 +14,7 @@ target 'HomeSpace' do
   pod 'SwiftMoment'
   pod 'HPReorderTableView'
   pod 'CodableFirebase'
-  pod 'SwiftyWave', '~> 1.1.0'
+  pod 'SoundWave'
   target 'HomeSpaceTests' do
     inherit! :search_paths
     # Pods for testing

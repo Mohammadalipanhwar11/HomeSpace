@@ -116,21 +116,21 @@
 			<key>orderHint</key>
 			<integer>20</integer>
 		</dict>
-		<key>SwiftMoment.xcscheme</key>
+		<key>SoundWave.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
 			<integer>21</integer>
 		</dict>
-		<key>SwiftReorder.xcscheme</key>
+		<key>SwiftMoment.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
 			<integer>22</integer>
 		</dict>
-		<key>SwiftyWave.xcscheme</key>
+		<key>SwiftReorder.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>

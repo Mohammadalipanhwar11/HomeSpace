@@ -24,10 +24,16 @@
 		C289C5BA223945200042C00D /* tasksTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C289C5B9223945200042C00D /* tasksTableViewCell.swift */; };
 		C28E2EB122392C1200175556 /* moveGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C28E2EB022392C1200175556 /* moveGroupViewController.swift */; };
 		C28E2EB322392E7F00175556 /* designableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C28E2EB222392E7F00175556 /* designableButton.swift */; };
+		E21DC13022B1322B002CF7E1 /* SCSiriWaveformView.m in Sources */ = {isa = PBXBuildFile; fileRef = E21DC12F22B1322A002CF7E1 /* SCSiriWaveformView.m */; };
 		E2904A3C2294148900EEE096 /* LPRTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2904A3B2294148900EEE096 /* LPRTableView.swift */; };
 		E2AF95062292A58100936F69 /* Ubuntu-B.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E2AF95052292A43600936F69 /* Ubuntu-B.ttf */; };
 		E2AF95082292C4B200936F69 /* editTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2AF95072292C4B200936F69 /* editTaskViewController.swift */; };
 		E2DF5F85224A629300EA0C09 /* groupsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DF5F84224A629300EA0C09 /* groupsTableViewCell.swift */; };
+		E2FA4BFF22B2588000E5AF34 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2FA4BFE22B2588000E5AF34 /* ViewModel.swift */; };
+		E2FA4C0422B25B0200E5AF34 /* AudioPlayerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2FA4C0022B25AFA00E5AF34 /* AudioPlayerManager.swift */; };
+		E2FA4C0522B25B0200E5AF34 /* AudioRecorderManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2FA4C0122B25AFD00E5AF34 /* AudioRecorderManager.swift */; };
+		E2FA4C0622B25B0200E5AF34 /* AudioErrorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2FA4C0222B25AFF00E5AF34 /* AudioErrorType.swift */; };
+		E2FA4C0722B25B0200E5AF34 /* SoundWave+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2FA4C0322B25B0200E5AF34 /* SoundWave+Helpers.swift */; };
 		F7D0357A5A8896C6D99F18DB /* Pods_HomeSpaceTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 615EE6464D8E9ADC05BD7D0A /* Pods_HomeSpaceTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -84,10 +90,18 @@
 		D0EB2141CC7166790F93C2F3 /* Pods-HomeSpaceTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HomeSpaceTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HomeSpaceTests/Pods-HomeSpaceTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D4B684BD99C1B611CCCE1352 /* Pods-HomeSpaceTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HomeSpaceTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-HomeSpaceTests/Pods-HomeSpaceTests.release.xcconfig"; sourceTree = "<group>"; };
 		D6EBC693928EE0DBE87893C2 /* Pods-HomeSpaceUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HomeSpaceUITests.release.xcconfig"; path = "Target Support Files/Pods-HomeSpaceUITests/Pods-HomeSpaceUITests.release.xcconfig"; sourceTree = "<group>"; };
+		E21DC12D22B130A3002CF7E1 /* HomeSpace-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HomeSpace-Bridging-Header.h"; sourceTree = "<group>"; };
+		E21DC12E22B1322A002CF7E1 /* SCSiriWaveformView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCSiriWaveformView.h; sourceTree = "<group>"; };
+		E21DC12F22B1322A002CF7E1 /* SCSiriWaveformView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SCSiriWaveformView.m; path = "../../../Downloads/SCSiriWaveformView-master 2/SCSiriWaveformView/SCSiriWaveformView.m"; sourceTree = "<group>"; };
 		E2904A3B2294148900EEE096 /* LPRTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LPRTableView.swift; sourceTree = "<group>"; };
 		E2AF95052292A43600936F69 /* Ubuntu-B.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ubuntu-B.ttf"; sourceTree = "<group>"; };
 		E2AF95072292C4B200936F69 /* editTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = editTaskViewController.swift; sourceTree = "<group>"; };
 		E2DF5F84224A629300EA0C09 /* groupsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = groupsTableViewCell.swift; sourceTree = "<group>"; };
+		E2FA4BFE22B2588000E5AF34 /* ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		E2FA4C0022B25AFA00E5AF34 /* AudioPlayerManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioPlayerManager.swift; sourceTree = "<group>"; };
+		E2FA4C0122B25AFD00E5AF34 /* AudioRecorderManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioRecorderManager.swift; sourceTree = "<group>"; };
+		E2FA4C0222B25AFF00E5AF34 /* AudioErrorType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioErrorType.swift; sourceTree = "<group>"; };
+		E2FA4C0322B25B0200E5AF34 /* SoundWave+Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SoundWave+Helpers.swift"; sourceTree = "<group>"; };
 		E5DC2273CFF1FA4006E954F0 /* Pods_HomeSpaceUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HomeSpaceUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -173,8 +187,15 @@
 		C267F503223920A400D7771F /* HomeSpace */ = {
 			isa = PBXGroup;
 			children = (
+				E21DC12E22B1322A002CF7E1 /* SCSiriWaveformView.h */,
+				E21DC12F22B1322A002CF7E1 /* SCSiriWaveformView.m */,
 				E2AF95052292A43600936F69 /* Ubuntu-B.ttf */,
 				E2904A3B2294148900EEE096 /* LPRTableView.swift */,
+				E2FA4C0222B25AFF00E5AF34 /* AudioErrorType.swift */,
+				E2FA4C0022B25AFA00E5AF34 /* AudioPlayerManager.swift */,
+				E2FA4C0122B25AFD00E5AF34 /* AudioRecorderManager.swift */,
+				E2FA4C0322B25B0200E5AF34 /* SoundWave+Helpers.swift */,
+				E2FA4BFE22B2588000E5AF34 /* ViewModel.swift */,
 				C267F504223920A400D7771F /* AppDelegate.swift */,
 				C267F506223920A400D7771F /* ViewController.swift */,
 				C289C5B522393DC10042C00D /* Task.swift */,
@@ -191,6 +212,7 @@
 				C267F50D223920A600D7771F /* LaunchScreen.storyboard */,
 				C267F510223920A600D7771F /* Info.plist */,
 				84A6FCED226FA62D00C59149 /* GoogleService-Info.plist */,
+				E21DC12D22B130A3002CF7E1 /* HomeSpace-Bridging-Header.h */,
 			);
 			path = HomeSpace;
 			sourceTree = "<group>";
@@ -285,6 +307,7 @@
 				TargetAttributes = {
 					C267F500223920A400D7771F = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1010;
 					};
 					C267F514223920A600D7771F = {
 						CreatedOnToolsVersion = 10.1;
@@ -361,9 +384,9 @@
 				"${BUILT_PRODUCTS_DIR}/HPReorderTableView/HPReorderTableView.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/SoundWave/SoundWave.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftMoment/SwiftMoment.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftReorder/SwiftReorder.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftyWave/SwiftyWave.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC-C++/grpcpp.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
@@ -379,9 +402,9 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HPReorderTableView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SoundWave.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftMoment.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftReorder.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyWave.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpcpp.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
@@ -454,17 +477,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				C289C5B822393F0D0042C00D /* taskManager.swift in Sources */,
+				E2FA4C0422B25B0200E5AF34 /* AudioPlayerManager.swift in Sources */,
 				E2DF5F85224A629300EA0C09 /* groupsTableViewCell.swift in Sources */,
+				E21DC13022B1322B002CF7E1 /* SCSiriWaveformView.m in Sources */,
 				E2904A3C2294148900EEE096 /* LPRTableView.swift in Sources */,
 				C25E60D1223A7B8100EE9AFE /* designableView.swift in Sources */,
 				C267F53322392B8D00D7771F /* addTaskViewController.swift in Sources */,
+				E2FA4BFF22B2588000E5AF34 /* ViewModel.swift in Sources */,
+				E2FA4C0522B25B0200E5AF34 /* AudioRecorderManager.swift in Sources */,
 				C28E2EB322392E7F00175556 /* designableButton.swift in Sources */,
 				C267F507223920A400D7771F /* ViewController.swift in Sources */,
 				C289C5BA223945200042C00D /* tasksTableViewCell.swift in Sources */,
+				E2FA4C0722B25B0200E5AF34 /* SoundWave+Helpers.swift in Sources */,
 				C267F505223920A400D7771F /* AppDelegate.swift in Sources */,
 				C289C5B622393DC10042C00D /* Task.swift in Sources */,
 				C28E2EB122392C1200175556 /* moveGroupViewController.swift in Sources */,
 				E2AF95082292C4B200936F69 /* editTaskViewController.swift in Sources */,
+				E2FA4C0622B25B0200E5AF34 /* AudioErrorType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -640,6 +669,7 @@
 			baseConfigurationReference = 5A9673BEFF33C950491C855B /* Pods-HomeSpace.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -652,6 +682,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.FocusNow.Homespa;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "HomeSpace/HomeSpace-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -663,6 +695,7 @@
 			baseConfigurationReference = 53F9299AFE62181D7F1E0F61 /* Pods-HomeSpace.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -675,6 +708,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.FocusNow.Homespa;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "HomeSpace/HomeSpace-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";

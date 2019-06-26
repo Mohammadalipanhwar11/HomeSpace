@@ -15,7 +15,7 @@ class ViewController: UIViewController {
     var timers = [Timer]()
     var arr = [Task](){
         didSet{
-             //self.mainTaskTable.reloadData()
+             self.mainTaskTable.reloadData()
         }
     }
 
@@ -92,17 +92,6 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
         return true
     }
     
-//    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-//        if (editingStyle == .delete) {
-//            self.arr.remove(at: indexPath.row)
-//            self.mainTaskTable.deleteRows(at: [indexPath], with: .automatic)
-//
-//            taskManager.shared.deleteTask(key: arr[indexPath.row].id!) { (err) in
-//
-//            }
-//            // handle delete (by removing the data from your array and updating the tableview)
-//        }
-//    }
 
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -207,6 +196,13 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let leftAction = UIContextualAction(style: .normal, title:  "delete", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
             print("leftAction tapped")
+            
+                self.arr.remove(at: indexPath.row)
+                self.mainTaskTable.deleteRows(at: [indexPath], with: .automatic)
+            taskManager.shared.deleteTask(key: self.arr[indexPath.row].id!) { (err) in
+                    
+                }
+                // handle delete (by removing the data from your array and updating the tableview)
             success(true)
         })
         leftAction.backgroundColor = UIColor(red: 0, green: 150/255, blue: 255/255, alpha: 1)

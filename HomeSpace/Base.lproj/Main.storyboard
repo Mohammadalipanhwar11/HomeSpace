@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="DYd-d6-azB">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="DYd-d6-azB">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -178,7 +178,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="DO9-AP-uQl">
-                                <rect key="frame" x="20" y="56" width="374" height="266"/>
+                                <rect key="frame" x="20" y="56" width="374" height="265"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -197,7 +197,7 @@
                                 </userDefinedRuntimeAttributes>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I2X-Kb-fGm">
-                                <rect key="frame" x="292" y="354" width="69" height="29"/>
+                                <rect key="frame" x="292" y="353" width="69" height="30"/>
                                 <fontDescription key="fontDescription" name="Ubuntu-Bold" family="Ubuntu" pointSize="15"/>
                                 <state key="normal" title="Set">
                                     <color key="titleColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -224,7 +224,7 @@
                                 </userDefinedRuntimeAttributes>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="reminder: None" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="azW-FY-eJb">
-                                <rect key="frame" x="19.999999999999993" y="358" width="118.33333333333331" height="20.333333333333314"/>
+                                <rect key="frame" x="19.999999999999993" y="357" width="118.33333333333331" height="20.333333333333314"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -441,6 +441,7 @@
                             <constraint firstItem="mfe-HJ-5ps" firstAttribute="centerY" secondItem="f9y-84-eop" secondAttribute="centerY" constant="34" id="8kP-TX-8uR"/>
                             <constraint firstItem="2RJ-p9-1em" firstAttribute="trailing" secondItem="HAa-4k-qAo" secondAttribute="trailing" constant="5" id="9Z2-uW-LL3"/>
                             <constraint firstItem="mfe-HJ-5ps" firstAttribute="top" secondItem="70n-f5-B1W" secondAttribute="bottom" constant="10" id="Jck-Mn-xzH"/>
+                            <constraint firstItem="MMK-2C-WtN" firstAttribute="top" secondItem="mfe-HJ-5ps" secondAttribute="bottom" constant="236" id="Llm-CK-PUo"/>
                             <constraint firstItem="MMK-2C-WtN" firstAttribute="leading" secondItem="2RJ-p9-1em" secondAttribute="leading" id="Sa0-TA-INC"/>
                             <constraint firstItem="MMK-2C-WtN" firstAttribute="trailing" secondItem="2RJ-p9-1em" secondAttribute="trailing" id="TLJ-U5-xYf"/>
                             <constraint firstItem="C0H-Uh-Kmx" firstAttribute="top" secondItem="70n-f5-B1W" secondAttribute="bottom" constant="10" id="TYc-R8-dki"/>
@@ -460,6 +461,7 @@
                         <outlet property="doneButton" destination="mfe-HJ-5ps" id="PpO-jh-WgJ"/>
                         <outlet property="endButton" destination="HAa-4k-qAo" id="0gb-Wv-uRy"/>
                         <outlet property="mainText" destination="70n-f5-B1W" id="ZXD-80-jym"/>
+                        <outlet property="recordBottomConstraint" destination="Llm-CK-PUo" id="DJp-tY-g5s"/>
                         <outlet property="recordButton" destination="og8-D5-YtD" id="rmN-Zt-BJp"/>
                         <outlet property="recordCenterConstraint" destination="aph-TG-1FU" id="8Gk-Vh-F7J"/>
                         <outlet property="recordConstraint" destination="vgv-92-chm" id="MoZ-xq-yqP"/>

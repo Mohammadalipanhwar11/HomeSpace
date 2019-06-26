@@ -89,22 +89,22 @@ class taskManager {
                 taskSnap?.documentChanges.forEach({ (task) in
                     let object = task.document.data()
                     var taskData = try! FirestoreDecoder().decode(Task.self, from: object)
-
-//                    let json = try! JSONSerialization.data(withJSONObject: object, options: .prettyPrinted)
-//                    var taskData = try! JSONDecoder().decode(Task.self, from: json)
                     taskData.id = task.document.documentID
                     
                     if (task.type == .added) {
                         Task.shared.append(taskData)
-                        completion(Task.shared,nil)
                     }
                     if (task.type == .modified) {
                         let index = Task.shared.firstIndex(where: { $0.id ==  taskData.id})!
                         Task.shared[index] = taskData
                     }
+                    if (task.type == .removed) {
+                        let index = Task.shared.firstIndex(where: { $0.id ==  taskData.id})!
+                        Task.shared.remove(at: index)
+                    }
                 })
                 if error == nil{
-                    Task.shared.sort(by: {$0.rank! < $1.rank!})
+                    Task.shared.sort(by: {$0.rank! > $1.rank!})
                     completion(Task.shared,nil)
                 }else{
                     completion([],error?.localizedDescription)

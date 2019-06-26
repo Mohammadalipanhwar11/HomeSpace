@@ -178,7 +178,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="DO9-AP-uQl">
-                                <rect key="frame" x="20" y="56" width="374" height="265"/>
+                                <rect key="frame" x="20" y="56" width="374" height="266"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -197,7 +197,7 @@
                                 </userDefinedRuntimeAttributes>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I2X-Kb-fGm">
-                                <rect key="frame" x="292" y="353" width="69" height="30"/>
+                                <rect key="frame" x="292" y="354" width="69" height="29"/>
                                 <fontDescription key="fontDescription" name="Ubuntu-Bold" family="Ubuntu" pointSize="15"/>
                                 <state key="normal" title="Set">
                                     <color key="titleColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -224,7 +224,7 @@
                                 </userDefinedRuntimeAttributes>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="reminder: None" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="azW-FY-eJb">
-                                <rect key="frame" x="19.999999999999993" y="357" width="118.33333333333331" height="20.333333333333314"/>
+                                <rect key="frame" x="19.999999999999993" y="358" width="118.33333333333331" height="20.333333333333314"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -446,7 +446,7 @@
                             <constraint firstItem="MMK-2C-WtN" firstAttribute="trailing" secondItem="2RJ-p9-1em" secondAttribute="trailing" id="TLJ-U5-xYf"/>
                             <constraint firstItem="C0H-Uh-Kmx" firstAttribute="top" secondItem="70n-f5-B1W" secondAttribute="bottom" constant="10" id="TYc-R8-dki"/>
                             <constraint firstItem="MMK-2C-WtN" firstAttribute="bottom" secondItem="2RJ-p9-1em" secondAttribute="bottom" id="V7e-O3-UkU"/>
-                            <constraint firstItem="70n-f5-B1W" firstAttribute="top" secondItem="f9y-84-eop" secondAttribute="top" constant="20" id="aYf-Ix-63R"/>
+                            <constraint firstItem="70n-f5-B1W" firstAttribute="top" secondItem="2RJ-p9-1em" secondAttribute="top" id="aYf-Ix-63R"/>
                             <constraint firstItem="og8-D5-YtD" firstAttribute="centerY" secondItem="2RJ-p9-1em" secondAttribute="centerY" constant="-20" id="aph-TG-1FU"/>
                             <constraint firstItem="70n-f5-B1W" firstAttribute="leading" secondItem="2RJ-p9-1em" secondAttribute="leading" constant="5" id="lUm-df-32J"/>
                             <constraint firstItem="C0H-Uh-Kmx" firstAttribute="leading" secondItem="2RJ-p9-1em" secondAttribute="leading" constant="20" id="pTU-Bg-9Jb"/>

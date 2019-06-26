@@ -9,17 +9,17 @@
 import UIKit
 import SwiftMoment
 class ViewController: UIViewController {
- 
+    
     var selectedText:String?
     var selectedKey:String?
     var timers = [Timer]()
     var arr = [Task](){
         didSet{
-             self.mainTaskTable.reloadData()
+            self.mainTaskTable.reloadData()
         }
     }
-
-        
+    
+    
     @IBOutlet weak var dateOfToday: UILabel!
     @IBOutlet weak var mainTaskTable: LPRTableView!
     private var myReorderImage : UIImage? = UIImage(named: "image")!
@@ -31,22 +31,22 @@ class ViewController: UIViewController {
         formatter.dateFormat = "MMM dd"
         let result = formatter.string(from: date)
         dateOfToday.text = result
-//        mainTaskTable.allowsSelection = false
+        //        mainTaskTable.allowsSelection = false
         mainTaskTable.delegate = self
         mainTaskTable.dataSource = self
-//        mainTaskTable.isEditing = true
-       
+        //        mainTaskTable.isEditing = true
+        
         taskManager.shared.getAllTask { (taskArr, error) in
             if error == nil{
                 self.arr = taskArr
                 self.mainTaskTable.reloadData()
-//                taskArr.forEach({ (t) in
-//                    if self.arr.contains(where: {$0.0.id != t.id}){
-//                        self.arr.append((t,false))
-//                    }else{
-//                        self.arr.append((t,true))
-//                    }
-//                })
+                //                taskArr.forEach({ (t) in
+                //                    if self.arr.contains(where: {$0.0.id != t.id}){
+                //                        self.arr.append((t,false))
+                //                    }else{
+                //                        self.arr.append((t,true))
+                //                    }
+                //                })
             }else{
                 //alert
             }
@@ -55,7 +55,7 @@ class ViewController: UIViewController {
     }
     
     
-
+    
     @IBAction func option(_ sender: Any) {
         
     }
@@ -79,20 +79,20 @@ class ViewController: UIViewController {
 }
 
 extension ViewController: UITableViewDelegate, UITableViewDataSource{
-
     
     
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        self.performSegue(withIdentifier: "edit", sender: self)
-//        print(indexPath.row)
-//    }
+    
+    //    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    //        self.performSegue(withIdentifier: "edit", sender: self)
+    //        print(indexPath.row)
+    //    }
     
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
     
-
+    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return arr.count
@@ -105,15 +105,15 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
-         let cell = mainTaskTable.dequeueReusableCell(withIdentifier: "cell") as! tasksTableViewCell
+        
+        let cell = mainTaskTable.dequeueReusableCell(withIdentifier: "cell") as! tasksTableViewCell
         cell.selectedBackgroundView?.backgroundColor = UIColor.black
         cell.taskLabel.text = arr[indexPath.row].name
         let diff = moment(self.arr[indexPath.row].date!.dateValue()) - moment()
         let posDiff = diff.minutes * -1
         print(posDiff)
-
-
+        
+        
         return cell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -127,7 +127,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
         // Initially both are zero which we will use in index path is 0 so that first element is always zero
         var previousElementRank:Double = 0.0
         var updatedRank:Double = 0.0
-
+        
         if destinationIndexPath.row == 0{
             // By default zero
             //previousElementRank = 0
@@ -136,8 +136,8 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
             let after = self.arr[destinationIndexPath.row+1].rank!
             // Dont make it zero again
             updatedRank = (destinationRank + after) / 2.0
-//            arr[destinationIndexPath.row].rank! += 0.0001
-
+            //            arr[destinationIndexPath.row].rank! += 0.0001
+            
             taskManager.shared.updateTask(key: arr[destinationIndexPath.row].id!, updatedRank: updatedRank) { (success) in
                 if success{
                     print("Updated")
@@ -167,7 +167,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
                     print("Failed")
                 }
             }
-
+            
         }else{
             // Get previous element rank
             previousElementRank = arr[(destinationIndexPath.row - 1)].rank!
@@ -182,27 +182,27 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
                 }
             }
         }
-
-
+        
+        
         // Update rank in current array
-          arr[sourceIndexPath.row].rank = updatedRank
-//        if destinationIndexPath.row == 0 {
-//            item.rank = 0
-//        }
-            arr.remove(at: sourceIndexPath.row)
-            arr.insert(item, at: destinationIndexPath.row)
+        arr[sourceIndexPath.row].rank = updatedRank
+        //        if destinationIndexPath.row == 0 {
+        //            item.rank = 0
+        //        }
+        arr.remove(at: sourceIndexPath.row)
+        arr.insert(item, at: destinationIndexPath.row)
     }
     
     func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let leftAction = UIContextualAction(style: .normal, title:  "delete", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
             print("leftAction tapped")
             
-                self.arr.remove(at: indexPath.row)
-                self.mainTaskTable.deleteRows(at: [indexPath], with: .automatic)
+//            self.arr.remove(at: indexPath.row)
+//            self.mainTaskTable.deleteRows(at: [indexPath], with: .automatic)
             taskManager.shared.deleteTask(key: self.arr[indexPath.row].id!) { (err) in
-                    
-                }
-                // handle delete (by removing the data from your array and updating the tableview)
+                
+            }
+            // handle delete (by removing the data from your array and updating the tableview)
             success(true)
         })
         leftAction.backgroundColor = UIColor(red: 0, green: 150/255, blue: 255/255, alpha: 1)
@@ -217,7 +217,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
         rightAction.backgroundColor = UIColor(red: 0, green: 150/255, blue: 255/255, alpha: 1)
         return UISwipeActionsConfiguration(actions: [rightAction])
     }
-
-
+    
+    
 }
 

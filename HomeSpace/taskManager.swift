@@ -134,11 +134,11 @@ class taskManager {
     }
     func deleteTask(key:String,completion:@escaping(_ success:Bool)->Void) {
         Firestore.firestore().collection("tasks").document(key).delete { (err) in
-//            if err == nil {
-//                completion(true)
-//            }else{
-//                completion(false)
-//            }
+            if err == nil {
+                completion(true)
+            }else{
+                completion(false)
+            }
         }
     }
     

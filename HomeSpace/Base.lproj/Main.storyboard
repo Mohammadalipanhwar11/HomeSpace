@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="DYd-d6-azB">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="DYd-d6-azB">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -441,7 +441,6 @@
                             <constraint firstItem="mfe-HJ-5ps" firstAttribute="centerY" secondItem="f9y-84-eop" secondAttribute="centerY" constant="34" id="8kP-TX-8uR"/>
                             <constraint firstItem="2RJ-p9-1em" firstAttribute="trailing" secondItem="HAa-4k-qAo" secondAttribute="trailing" constant="5" id="9Z2-uW-LL3"/>
                             <constraint firstItem="mfe-HJ-5ps" firstAttribute="top" secondItem="70n-f5-B1W" secondAttribute="bottom" constant="10" id="Jck-Mn-xzH"/>
-                            <constraint firstItem="MMK-2C-WtN" firstAttribute="top" secondItem="mfe-HJ-5ps" secondAttribute="bottom" constant="236" id="Llm-CK-PUo"/>
                             <constraint firstItem="MMK-2C-WtN" firstAttribute="leading" secondItem="2RJ-p9-1em" secondAttribute="leading" id="Sa0-TA-INC"/>
                             <constraint firstItem="MMK-2C-WtN" firstAttribute="trailing" secondItem="2RJ-p9-1em" secondAttribute="trailing" id="TLJ-U5-xYf"/>
                             <constraint firstItem="C0H-Uh-Kmx" firstAttribute="top" secondItem="70n-f5-B1W" secondAttribute="bottom" constant="10" id="TYc-R8-dki"/>
@@ -461,7 +460,6 @@
                         <outlet property="doneButton" destination="mfe-HJ-5ps" id="PpO-jh-WgJ"/>
                         <outlet property="endButton" destination="HAa-4k-qAo" id="0gb-Wv-uRy"/>
                         <outlet property="mainText" destination="70n-f5-B1W" id="ZXD-80-jym"/>
-                        <outlet property="recordBottomConstraint" destination="Llm-CK-PUo" id="DJp-tY-g5s"/>
                         <outlet property="recordButton" destination="og8-D5-YtD" id="rmN-Zt-BJp"/>
                         <outlet property="recordCenterConstraint" destination="aph-TG-1FU" id="8Gk-Vh-F7J"/>
                         <outlet property="recordConstraint" destination="vgv-92-chm" id="MoZ-xq-yqP"/>

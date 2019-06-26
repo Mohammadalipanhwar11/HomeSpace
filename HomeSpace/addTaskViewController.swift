@@ -22,8 +22,7 @@ class addTaskViewController: UIViewController,UITextViewDelegate,SFSpeechRecogni
     @IBOutlet weak var endButton: UIButton!
     @IBOutlet weak var recordButton: UIButton!
     @IBOutlet weak var mainText: UITextView!
-    @IBOutlet weak var recordBottomConstraint: NSLayoutConstraint!
-    
+
     @IBOutlet weak var recordCenterConstraint: NSLayoutConstraint!
     @IBOutlet weak var textViewBottomConstriant: NSLayoutConstraint!
     @IBOutlet weak var recordConstraint: NSLayoutConstraint!
@@ -31,6 +30,7 @@ class addTaskViewController: UIViewController,UITextViewDelegate,SFSpeechRecogni
     var oldIndex:[Int]?
     var index1:Int = 0
     var str:String?
+    var recordedText:String?
     let speechRecognizer = SFSpeechRecognizer(locale: Locale(identifier: "en-US"))
     var recognitionRequest: SFSpeechAudioBufferRecognitionRequest?
     var recognitionTask: SFSpeechRecognitionTask?
@@ -176,9 +176,9 @@ class addTaskViewController: UIViewController,UITextViewDelegate,SFSpeechRecogni
             var isFinal = false
             
             if result != nil {
-                var recordedText:String?
-                recordedText = result?.bestTranscription.formattedString
-                self.mainText.text = recordedText
+                
+                self.recordedText = result?.bestTranscription.formattedString
+                self.mainText.text = self.recordedText
                 print(result?.bestTranscription.formattedString as Any)
                 
                 isFinal = (result?.isFinal)!
@@ -239,7 +239,7 @@ class addTaskViewController: UIViewController,UITextViewDelegate,SFSpeechRecogni
             do{
                 try self.viewModel.pausePlaying()
             } catch {
-//                self.showAlert(with: error)
+                self.showAlert(with: error)
             }
 
             self.audioEngine.stop()
@@ -252,7 +252,7 @@ class addTaskViewController: UIViewController,UITextViewDelegate,SFSpeechRecogni
             
             self.viewModel.startRecording { [weak self] soundRecord, error in
                 if let error = error {
-//                    self?.showAlert(with: error)
+                    self?.showAlert(with: error)
                     return
                 }
                 self?.chronometer = Chronometer()

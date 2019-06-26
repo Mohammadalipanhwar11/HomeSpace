@@ -15,7 +15,11 @@ class ViewController: UIViewController {
     var timers = [Timer]()
     var arr = [Task](){
         didSet{
+<<<<<<< HEAD
             self.mainTaskTable.reloadData()
+=======
+             //self.mainTaskTable.reloadData()
+>>>>>>> parent of 7942770... updated.
         }
     }
     
@@ -92,6 +96,22 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
         return true
     }
     
+<<<<<<< HEAD
+    
+=======
+//    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+//        if (editingStyle == .delete) {
+//            self.arr.remove(at: indexPath.row)
+//            self.mainTaskTable.deleteRows(at: [indexPath], with: .automatic)
+//
+//            taskManager.shared.deleteTask(key: arr[indexPath.row].id!) { (err) in
+//
+//            }
+//            // handle delete (by removing the data from your array and updating the tableview)
+//        }
+//    }
+
+>>>>>>> parent of 7942770... updated.
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return arr.count
@@ -195,11 +215,16 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let leftAction = UIContextualAction(style: .normal, title:  "delete", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
             print("leftAction tapped")
-
+<<<<<<< HEAD
+            
+//            self.arr.remove(at: indexPath.row)
+//            self.mainTaskTable.deleteRows(at: [indexPath], with: .automatic)
             taskManager.shared.deleteTask(key: self.arr[indexPath.row].id!) { (err) in
                 
             }
-
+            // handle delete (by removing the data from your array and updating the tableview)
+=======
+>>>>>>> parent of 7942770... updated.
             success(true)
         })
         leftAction.backgroundColor = UIColor(red: 0, green: 150/255, blue: 255/255, alpha: 1)

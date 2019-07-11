@@ -322,6 +322,7 @@ class addTaskViewController: UIViewController,UITextViewDelegate,SFSpeechRecogni
         if segue.identifier == "groups" {
             let dest = segue.destination as! moveGroupViewController
             dest.textData = mainText.text
+            dest.segue = false
         }
     }
     

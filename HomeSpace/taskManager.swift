@@ -89,6 +89,7 @@ class taskManager {
                 taskSnap?.documentChanges.forEach({ (task) in
                     let object = task.document.data()
                     var taskData = try! FirestoreDecoder().decode(Task.self, from: object)
+
                     taskData.id = task.document.documentID
                     
                     if (task.type == .added) {

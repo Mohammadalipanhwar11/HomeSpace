@@ -17,6 +17,7 @@ class moveGroupViewController: UIViewController {
 
     
     var textData:String?
+    var segue:Bool?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,10 +35,15 @@ class moveGroupViewController: UIViewController {
         _ = navigationController?.popToRootViewController(animated: true)
         sender.layer.borderColor = UIColor.orange.cgColor
         sender.titleLabel?.textColor = UIColor.orange
-        let t = Task(name: textData!, date: Date())
-        taskManager.shared.addTask(task:t) { (err) in
+        if segue == false {
+            let t = Task(name: textData!, date: Date())
+            taskManager.shared.addTask(task:t) { (err) in
+                
+            }
+        }else {
             
         }
+  
     }
     
     

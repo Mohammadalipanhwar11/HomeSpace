@@ -222,7 +222,7 @@
                                 <rect key="frame" x="0.0" y="668" width="414" height="68"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aLY-2l-3lK">
-                                        <rect key="frame" x="8" y="8" width="19" height="50"/>
+                                        <rect key="frame" x="8" y="8" width="16" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="Wtq-X9-An9"/>
                                         </constraints>

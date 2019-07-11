@@ -89,6 +89,7 @@ class taskManager {
                 taskSnap?.documentChanges.forEach({ (task) in
                     let object = task.document.data()
                     var taskData = try! FirestoreDecoder().decode(Task.self, from: object)
+
                     taskData.id = task.document.documentID
                     
                     if (task.type == .added) {
@@ -109,7 +110,6 @@ class taskManager {
                 }else{
                     completion([],error?.localizedDescription)
                 }
-                
         }
 
     }
@@ -134,11 +134,11 @@ class taskManager {
     }
     func deleteTask(key:String,completion:@escaping(_ success:Bool)->Void) {
         Firestore.firestore().collection("tasks").document(key).delete { (err) in
-            if err == nil {
-                completion(true)
-            }else{
-                completion(false)
-            }
+//            if err == nil {
+//                completion(true)
+//            }else{
+//                completion(false)
+//            }
         }
     }
     

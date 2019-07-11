@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -24,7 +24,6 @@
 		C289C5BA223945200042C00D /* tasksTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C289C5B9223945200042C00D /* tasksTableViewCell.swift */; };
 		C28E2EB122392C1200175556 /* moveGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C28E2EB022392C1200175556 /* moveGroupViewController.swift */; };
 		C28E2EB322392E7F00175556 /* designableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C28E2EB222392E7F00175556 /* designableButton.swift */; };
-		E21DC13022B1322B002CF7E1 /* SCSiriWaveformView.m in Sources */ = {isa = PBXBuildFile; fileRef = E21DC12F22B1322A002CF7E1 /* SCSiriWaveformView.m */; };
 		E2904A3C2294148900EEE096 /* LPRTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2904A3B2294148900EEE096 /* LPRTableView.swift */; };
 		E2AF95062292A58100936F69 /* Ubuntu-B.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E2AF95052292A43600936F69 /* Ubuntu-B.ttf */; };
 		E2AF95082292C4B200936F69 /* editTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2AF95072292C4B200936F69 /* editTaskViewController.swift */; };
@@ -91,8 +90,6 @@
 		D4B684BD99C1B611CCCE1352 /* Pods-HomeSpaceTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HomeSpaceTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-HomeSpaceTests/Pods-HomeSpaceTests.release.xcconfig"; sourceTree = "<group>"; };
 		D6EBC693928EE0DBE87893C2 /* Pods-HomeSpaceUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HomeSpaceUITests.release.xcconfig"; path = "Target Support Files/Pods-HomeSpaceUITests/Pods-HomeSpaceUITests.release.xcconfig"; sourceTree = "<group>"; };
 		E21DC12D22B130A3002CF7E1 /* HomeSpace-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HomeSpace-Bridging-Header.h"; sourceTree = "<group>"; };
-		E21DC12E22B1322A002CF7E1 /* SCSiriWaveformView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCSiriWaveformView.h; sourceTree = "<group>"; };
-		E21DC12F22B1322A002CF7E1 /* SCSiriWaveformView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SCSiriWaveformView.m; path = "../../../Downloads/SCSiriWaveformView-master 2/SCSiriWaveformView/SCSiriWaveformView.m"; sourceTree = "<group>"; };
 		E2904A3B2294148900EEE096 /* LPRTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LPRTableView.swift; sourceTree = "<group>"; };
 		E2AF95052292A43600936F69 /* Ubuntu-B.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ubuntu-B.ttf"; sourceTree = "<group>"; };
 		E2AF95072292C4B200936F69 /* editTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = editTaskViewController.swift; sourceTree = "<group>"; };
@@ -187,8 +184,6 @@
 		C267F503223920A400D7771F /* HomeSpace */ = {
 			isa = PBXGroup;
 			children = (
-				E21DC12E22B1322A002CF7E1 /* SCSiriWaveformView.h */,
-				E21DC12F22B1322A002CF7E1 /* SCSiriWaveformView.m */,
 				E2AF95052292A43600936F69 /* Ubuntu-B.ttf */,
 				E2904A3B2294148900EEE096 /* LPRTableView.swift */,
 				E2FA4C0222B25AFF00E5AF34 /* AudioErrorType.swift */,
@@ -375,40 +370,11 @@
 			files = (
 			);
 			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-HomeSpace/Pods-HomeSpace-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/BoringSSL-GRPC/openssl_grpc.framework",
-				"${BUILT_PRODUCTS_DIR}/CodableFirebase/CodableFirebase.framework",
-				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
-				"${BUILT_PRODUCTS_DIR}/HPReorderTableView/HPReorderTableView.framework",
-				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
-				"${BUILT_PRODUCTS_DIR}/SoundWave/SoundWave.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftMoment/SwiftMoment.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftReorder/SwiftReorder.framework",
-				"${BUILT_PRODUCTS_DIR}/gRPC-C++/grpcpp.framework",
-				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
-				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
-				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-HomeSpace/Pods-HomeSpace-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl_grpc.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CodableFirebase.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HPReorderTableView.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SoundWave.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftMoment.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftReorder.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpcpp.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-HomeSpace/Pods-HomeSpace-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -479,7 +445,6 @@
 				C289C5B822393F0D0042C00D /* taskManager.swift in Sources */,
 				E2FA4C0422B25B0200E5AF34 /* AudioPlayerManager.swift in Sources */,
 				E2DF5F85224A629300EA0C09 /* groupsTableViewCell.swift in Sources */,
-				E21DC13022B1322B002CF7E1 /* SCSiriWaveformView.m in Sources */,
 				E2904A3C2294148900EEE096 /* LPRTableView.swift in Sources */,
 				C25E60D1223A7B8100EE9AFE /* designableView.swift in Sources */,
 				C267F53322392B8D00D7771F /* addTaskViewController.swift in Sources */,
@@ -673,13 +638,13 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = SUBZ24DP5B;
+				DEVELOPMENT_TEAM = WB238HTF8G;
 				INFOPLIST_FILE = HomeSpace/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.FocusNow.Homespa;
+				PRODUCT_BUNDLE_IDENTIFIER = com.FocusNow.Homespace;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "HomeSpace/HomeSpace-Bridging-Header.h";
@@ -699,13 +664,13 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = SUBZ24DP5B;
+				DEVELOPMENT_TEAM = WB238HTF8G;
 				INFOPLIST_FILE = HomeSpace/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.FocusNow.Homespa;
+				PRODUCT_BUNDLE_IDENTIFIER = com.FocusNow.Homespace;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "HomeSpace/HomeSpace-Bridging-Header.h";

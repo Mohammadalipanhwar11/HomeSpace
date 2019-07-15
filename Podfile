@@ -15,6 +15,8 @@ target 'HomeSpace' do
   pod 'HPReorderTableView'
   pod 'CodableFirebase'
   pod 'SoundWave'
+  pod 'PageController'
+
   target 'HomeSpaceTests' do
     inherit! :search_paths
     # Pods for testing

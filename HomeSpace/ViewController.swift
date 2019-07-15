@@ -23,7 +23,8 @@ class ViewController: UIViewController,TableViewReorderDelegate{
         }
     }
 
-        
+    @IBOutlet weak var TitleLabel: UILabel!
+    
     @IBOutlet weak var dateOfToday: UILabel!
     @IBOutlet weak var mainTaskTable: UITableView!
     private var myReorderImage : UIImage? = UIImage(named: "image")!

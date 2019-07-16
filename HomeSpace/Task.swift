@@ -21,14 +21,16 @@ struct Task : Codable {
     let name : String?
     var id : String? = ""
     var rank: Double? = 0
+    let group: String?
     
     
     
     static var shared = [Task]()
     
-    init(name:String, date: Date) {
+    init(name:String, date: Date, group: String) {
         self.name = name
         self.date = Timestamp(date: date)
+        self.group = group
     }
     
     var toDic: [String:Any]{
@@ -43,6 +45,7 @@ struct Task : Codable {
         case date = "date"
         case name = "name"
         case rank = "rank"
+        case group = "group"
 
     }
     
@@ -51,7 +54,7 @@ struct Task : Codable {
         date = try values.decodeIfPresent(Timestamp.self, forKey: .date)
         name = try values.decodeIfPresent(String.self, forKey: .name)
         rank = try values.decodeIfPresent(Double.self, forKey: .rank)
-
+        group = try values.decodeIfPresent(String.self, forKey: .group)
         
     }
     

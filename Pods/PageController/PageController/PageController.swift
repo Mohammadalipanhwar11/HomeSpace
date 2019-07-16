@@ -28,6 +28,7 @@ open class PageController: UIViewController {
     public var viewControllers: [UIViewController] = [] {
         didSet {
             menuBar.items = viewControllers.map { $0.title ?? "" }
+            
         }
     }
     let containerView = ContainerView(frame: CGRect.zero)

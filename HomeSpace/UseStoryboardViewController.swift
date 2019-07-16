@@ -14,16 +14,27 @@ class UseStoryboardViewController: PageController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        menuBar.backgroundColor = .black
+        menuBar.register(UINib(nibName: "CustomMenuBarCell", bundle: nil))
+        menuBar.isAutoSelectDidEndUserInteractionEnabled = false
+        delegate = self
+
         viewControllers = createViewControllers()
-        menuBar.backgroundColor = .white
+
     }
+    
+    
 
     override var frameForMenuBar: CGRect {
         let frame = super.frameForMenuBar
 
-        return CGRect(x: frame.minX, y: frame.minY, width: frame.width, height: 30)
-    }
+        return CGRect(x: frame.minX, y: frame.minY, width: frame.width, height: 60)
 
+    }
+    
+ 
+    
+    
     func createViewControllers() -> [UIViewController] {
         let names = [
             "New",
@@ -46,6 +57,8 @@ class UseStoryboardViewController: PageController {
         let viewControllers = names.map { name -> ViewController in
             let viewController = storyboard?.instantiateViewController(withIdentifier: "new") as! ViewController
             viewController.title = name
+           
+
             if viewController.view != nil {
                 viewController.mainTaskTable?.scrollsToTop = false
                 viewController.mainTaskTable?.contentInset = contentInset
@@ -57,4 +70,14 @@ class UseStoryboardViewController: PageController {
 
         return viewControllers
     }
+}
+
+extension UseStoryboardViewController: PageControllerDelegate {
+    func pageController(_ pageController: PageController, didChangeVisibleController visibleViewController: UIViewController, fromViewController: UIViewController?) {
+        
+    }
+    
+    
+    
+    
 }

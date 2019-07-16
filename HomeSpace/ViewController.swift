@@ -31,6 +31,7 @@ class ViewController: UIViewController,TableViewReorderDelegate{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.mainTaskTable.estimatedRowHeight = 100 ;
         self.mainTaskTable.rowHeight = UITableView.automaticDimension;
         let date = Date()
@@ -45,8 +46,9 @@ class ViewController: UIViewController,TableViewReorderDelegate{
        
         taskManager.shared.getAllTask { (taskArr, error) in
             if error == nil{
+                
                 self.arr = taskArr
-                self.mainTaskTable.reloadData()
+//                self.mainTaskTable.reloadData()
 //                taskArr.forEach({ (t) in
 //                    if self.arr.contains(where: {$0.0.id != t.id}){
 //                        self.arr.append((t,false))
@@ -115,9 +117,10 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
         
         let cell = mainTaskTable.dequeueReusableCell(withIdentifier: "cell") as! tasksTableViewCell
         cell.selectedBackgroundView?.backgroundColor = UIColor.black
-        cell.taskLabel.text = arr[indexPath.row].name
-        let diff = moment(self.arr[indexPath.row].date!.dateValue()) - moment()
-        let posDiff = diff.minutes * -1
+        if arr[indexPath.row].group == TitleLabel.text {
+            cell.taskLabel.text = arr[indexPath.row].name
+        }
+        
 //        print(posDiff)
 
 
@@ -196,13 +199,6 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
                     taskManager.shared.updateTask(key: arr[initialSourceIndexPath.row].id!, updatedRank: updatedRank) { (success) in
                         if success{
                             print("Updated")
-//                            taskManager.shared.updateTask(key: self.arr[finalDestinationIndexPath.row].id!, updatedRank: updatedRank) { (success) in
-//                                if success{
-//                                    print("Updated")
-//                                }else{
-//                                    print("Failed")
-//                                }
-//                            }
                         }else{
                             print("Failed")
                         }

@@ -44,25 +44,18 @@ class ViewController: UIViewController,TableViewReorderDelegate{
 //        mainTaskTable.dataSource = self
 //        mainTaskTable.isEditing = true
        
-        taskManager.shared.getAllTask { (taskArr, error) in
+       
+        mainTaskTable.reorder.delegate = self
+        mainTaskTable.reorder.cellScale = 1.07
+        taskManager.shared.getAllTask(group: self.title!) { (taskArr, error) in
             if error == nil{
-                
                 self.arr = taskArr
-//                self.mainTaskTable.reloadData()
-//                taskArr.forEach({ (t) in
-//                    if self.arr.contains(where: {$0.0.id != t.id}){
-//                        self.arr.append((t,false))
-//                    }else{
-//                        self.arr.append((t,true))
-//                    }
-//                })
+                print(taskArr)
+                
             }else{
                 //alert
             }
         }
-        mainTaskTable.reorder.delegate = self
-        mainTaskTable.reorder.cellScale = 1.07
-
 
     }
     
@@ -85,7 +78,9 @@ class ViewController: UIViewController,TableViewReorderDelegate{
             let dest = segue.destination as! editTaskViewController
             dest.text = selectedText
             dest.key1 = selectedKey
+            dest.groupID = self.title!
         }
+        
     }
     
 }
@@ -117,9 +112,9 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
         
         let cell = mainTaskTable.dequeueReusableCell(withIdentifier: "cell") as! tasksTableViewCell
         cell.selectedBackgroundView?.backgroundColor = UIColor.black
-        if arr[indexPath.row].group == TitleLabel.text {
+ 
             cell.taskLabel.text = arr[indexPath.row].name
-        }
+        
         
 //        print(posDiff)
 
@@ -153,11 +148,11 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
                     updatedRank = (destinationRank + after) / 2.0
         //            arr[destinationIndexPath.row].rank! += 0.0001
         
-                    taskManager.shared.updateTask(key: arr[finalDestinationIndexPath.row].id!, updatedRank: updatedRank) { (success) in
+                    taskManager.shared.updateTask(key: arr[finalDestinationIndexPath.row].id!, group: self.title!, updatedRank: updatedRank) { (success) in
                         if success{
                             print("Updated")
                             // Update task rank
-                            taskManager.shared.updateTask(key: self.arr[initialSourceIndexPath.row].id!, updatedRank: 0) { (success) in
+                            taskManager.shared.updateTask(key: self.arr[initialSourceIndexPath.row].id!, group: self.title!, updatedRank: 0) { (success) in
                                 if success{
                                     print("Updated")
                                 }else{
@@ -175,7 +170,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
                     // update moved task rank so that it is more than existing last element
                     updatedRank = ((arr[(finalDestinationIndexPath.row)].rank!) + 0.1)
                     // Update task rank
-                    taskManager.shared.updateTask(key: arr[initialSourceIndexPath.row].id!, updatedRank: updatedRank) { (success) in
+                    taskManager.shared.updateTask(key: arr[initialSourceIndexPath.row].id!, group: self.title!, updatedRank: updatedRank) { (success) in
                         if success{
                             print("Updated")
                         }else{
@@ -196,7 +191,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
                     // Update task rank
                     print(previousElementRank,arr[(finalDestinationIndexPath.row)].rank!)
                     print(updatedRank)
-                    taskManager.shared.updateTask(key: arr[initialSourceIndexPath.row].id!, updatedRank: updatedRank) { (success) in
+                    taskManager.shared.updateTask(key: arr[initialSourceIndexPath.row].id!, group: self.title!, updatedRank: updatedRank) { (success) in
                         if success{
                             print("Updated")
                         }else{
@@ -226,7 +221,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
             let alert = UIAlertController(title: "Delete", message: "Do you really want to delete this note", preferredStyle: UIAlertController.Style.alert)
             alert.addAction(UIAlertAction(title: "cancel", style: UIAlertAction.Style.cancel, handler: nil))
             alert.addAction(UIAlertAction(title: "Yes", style: UIAlertAction.Style.default, handler: { (action) in
-                taskManager.shared.deleteTask(key: self.arr[indexPath.row].id!) { (err) in
+                taskManager.shared.deleteTask(key: self.arr[indexPath.row].id!, group: self.title!) { (err) in
                 }
                 success(true)
             }))

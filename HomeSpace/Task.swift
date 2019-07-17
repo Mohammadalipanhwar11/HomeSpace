@@ -25,7 +25,7 @@ struct Task : Codable {
     
     
     
-    static var shared = [Task]()
+    static var shared = [String:[Task]]()
     
     init(name:String, date: Date, group: String) {
         self.name = name
@@ -37,7 +37,8 @@ struct Task : Codable {
         return[
             "name":self.name ?? "",
             "date":self.date ?? Date(),
-            "rank":self.rank ?? 0
+            "rank":self.rank ?? 0,
+            "group":self.group ?? ""
         ]
     }
     

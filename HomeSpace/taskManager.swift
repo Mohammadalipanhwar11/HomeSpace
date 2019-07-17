@@ -16,27 +16,26 @@ class taskManager {
     static let shared = taskManager()
     typealias TasksCompletion = (_ tasks:[Task],_ error:String?)->Void
     typealias SucessCompletion = (_ error:String?)->Void
-
-  
+    
+    
     
     func addTask(task:Task,completion:@escaping SucessCompletion){
-        Firestore.firestore().collection("tasks").order(by: "rank", descending: true).limit(to: 1)
+        Firestore.firestore().collection("tasks").document(task.group!).collection("Tasks").order(by: "rank", descending: true).limit(to: 1)
             .getDocuments { (data, err) in
                 var rank = 0.0
                 if let object = data?.documents.first?.data(){
                     let maxTask = try! FirestoreDecoder().decode(Task.self, from: object)
-
-//                    let json = try! JSONSerialization.data(withJSONObject: object, options: .prettyPrinted)
-//                    let maxTask = try! JSONDecoder().decode(Task.self, from: json)
-                    
                     rank = maxTask.rank!
                     rank += 10
                 } 
                 var updated = task
                 updated.rank = rank
                 let data = try! FirestoreEncoder().encode(updated)
-                Firestore.firestore().collection("tasks").addDocument(data: data) { (err) in
-                    completion(err?.localizedDescription)
+                Firestore.firestore().collection("tasks")
+                    .document(task.group!)
+                    .collection("Tasks")
+                    .addDocument(data: data) { (err) in
+                        completion(err?.localizedDescription)
                 }
         }
     }
@@ -44,78 +43,43 @@ class taskManager {
     func add(){
         Firestore.firestore().collection("tasks").document().setData(["rank" : 5])
     }
-//
-//    func show(){
-//        let sfReference = Firestore.firestore().collection("cities").document("SF")
-//
-//        Firestore.firestore().runTransaction({ (transaction, errorPointer) -> Any? in
-//            let sfDocument: DocumentSnapshot
-//            do {
-//                try sfDocument = transaction.getDocument(sfReference)
-//            } catch let fetchError as NSError {
-//                errorPointer?.pointee = fetchError
-//                return nil
-//            }
-//
-//            guard let oldPopulation = sfDocument.data()?["population"] as? Int else {
-//                let error = NSError(
-//                    domain: "AppErrorDomain",
-//                    code: -1,
-//                    userInfo: [
-//                        NSLocalizedDescriptionKey: "Unable to retrieve population from snapshot \(sfDocument)"
-//                    ]
-//                )
-//                errorPointer?.pointee = error
-//                return nil
-//            }
-//
-//            // Note: this could be done without a transaction
-//            //       by updating the population using FieldValue.increment()
-//            transaction.updateData(["population": oldPopulation + 1], forDocument: sfReference)
-//            return nil
-//        }) { (object, error) in
-//            if let error = error {
-//                print("Transaction failed: \(error)")
-//            } else {
-//                print("Transaction successfully committed!")
-//            }
-//        }
-//            }
     
-    func getAllTask(completion:@escaping TasksCompletion){
-        
-        Firestore.firestore().collection("tasks").order(by: "rank", descending: false)
+    
+    func getAllTask(group: String,completion:@escaping TasksCompletion){
+        Firestore.firestore().collection("tasks").document(group).collection("Tasks").order(by: "rank", descending: false)
             .addSnapshotListener { taskSnap, error in
+                if Task.shared[group] == nil{
+                    Task.shared[group] = []
+                }
                 taskSnap?.documentChanges.forEach({ (task) in
                     let object = task.document.data()
                     var taskData = try! FirestoreDecoder().decode(Task.self, from: object)
-
                     taskData.id = task.document.documentID
                     
                     if (task.type == .added) {
-                        Task.shared.append(taskData)
+                        Task.shared[group]!.append(taskData)
                     }
                     if (task.type == .modified) {
-                        let index = Task.shared.firstIndex(where: { $0.id ==  taskData.id})!
-                        Task.shared[index] = taskData
+                        let index = Task.shared[group]!.firstIndex(where: { $0.id ==  taskData.id})!
+                        Task.shared[group]![index] = taskData
                     }
                     if (task.type == .removed) {
-                        let index = Task.shared.firstIndex(where: { $0.id ==  taskData.id})!
-                        Task.shared.remove(at: index)
+                        let index = Task.shared[group]!.firstIndex(where: { $0.id ==  taskData.id})!
+                        Task.shared[group]!.remove(at: index)
                     }
                 })
                 if error == nil{
-                    Task.shared.sort(by: {$0.rank! > $1.rank!})
-                    completion(Task.shared,nil)
+                    Task.shared[group]!.sort(by: {$0.rank! > $1.rank!})
+                    completion(Task.shared[group]!,nil)
                 }else{
                     completion([],error?.localizedDescription)
                 }
         }
-
+        
     }
     
-    func updateTask(key:String,updatedRank:Double,completion:@escaping(_ success:Bool)->Void){
-        Firestore.firestore().collection("tasks").document(key).updateData(["rank" : updatedRank]) { (error) in
+    func updateTask(key:String, group: String,updatedRank:Double,completion:@escaping(_ success:Bool)->Void){
+       Firestore.firestore().collection("tasks").document(group).collection("Tasks").document(key).updateData(["rank" : updatedRank]) { (error) in
             if error == nil{
                 completion(true)
             }else{
@@ -123,8 +87,8 @@ class taskManager {
             }
         }
     }
-    func updateText(key:String,updatedRank:String,completion:@escaping(_ success:Bool)->Void){
-        Firestore.firestore().collection("tasks").document(key).updateData(["name" : updatedRank]) { (error) in
+    func updateText(key:String,updatedRank:String, group: String,completion:@escaping(_ success:Bool)->Void){
+        Firestore.firestore().collection("tasks").document(group).collection("Tasks").document(key).updateData(["name" : updatedRank]) { (error) in
             if error == nil{
                 completion(true)
             }else{
@@ -132,13 +96,13 @@ class taskManager {
             }
         }
     }
-    func deleteTask(key:String,completion:@escaping(_ success:Bool)->Void) {
-        Firestore.firestore().collection("tasks").document(key).delete { (err) in
-//            if err == nil {
-//                completion(true)
-//            }else{
-//                completion(false)
-//            }
+    func deleteTask(key:String, group: String,completion:@escaping(_ success:Bool)->Void) {
+         Firestore.firestore().collection("tasks").document(group).collection("Tasks").document(key).delete { (err) in
+            //            if err == nil {
+            //                completion(true)
+            //            }else{
+            //                completion(false)
+            //            }
         }
     }
     

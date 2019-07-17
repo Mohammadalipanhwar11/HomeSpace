@@ -30,7 +30,7 @@
                         </userGuides>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="P9c-Qf-Wsp">
-                                <rect key="frame" x="0.0" y="75" width="414" height="544"/>
+                                <rect key="frame" x="0.0" y="75" width="414" height="562"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" focusStyle="custom" rowHeight="85" id="Ro3-2G-qjy" customClass="tasksTableViewCell" customModule="HomeSpace" customModuleProvider="target">
@@ -77,30 +77,30 @@
                                 </connections>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bEA-bx-Dhb">
-                                <rect key="frame" x="164.66666666666666" y="20" width="85" height="47"/>
+                                <rect key="frame" x="166.66666666666666" y="20" width="81" height="47"/>
                                 <fontDescription key="fontDescription" name="Ubuntu-Bold" family="Ubuntu" pointSize="40"/>
                                 <color key="textColor" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H47-RD-ws7">
-                                <rect key="frame" x="0.0" y="619" width="414" height="117"/>
+                                <rect key="frame" x="0.0" y="637" width="414" height="99"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i2O-OH-Ltg">
-                                        <rect key="frame" x="378" y="34" width="6" height="40"/>
+                                        <rect key="frame" x="368" y="34" width="16" height="22"/>
                                         <state key="normal" image="menu"/>
                                         <connections>
                                             <action selector="option:" destination="BYZ-38-t0r" eventType="touchUpInside" id="yUr-5e-2Lh"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O9F-2j-j1U">
-                                        <rect key="frame" x="8" y="34" width="34" height="40"/>
+                                        <rect key="frame" x="8" y="34" width="16" height="22"/>
                                         <state key="normal" image="search"/>
                                         <connections>
                                             <action selector="search:" destination="BYZ-38-t0r" eventType="touchUpInside" id="aHW-dg-2ce"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P5w-mk-W5w">
-                                        <rect key="frame" x="165.66666666666666" y="17" width="83" height="83"/>
+                                        <rect key="frame" x="199" y="17" width="16" height="65"/>
                                         <state key="normal" image="Add button"/>
                                         <connections>
                                             <action selector="addTask:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hUo-Fu-ihk"/>
@@ -122,7 +122,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Aug 31" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aSt-SX-wTA">
-                                <rect key="frame" x="257.66666666666669" y="47" width="156.33333333333331" height="20"/>
+                                <rect key="frame" x="255.66666666666663" y="47" width="158.33333333333337" height="20"/>
                                 <fontDescription key="fontDescription" name="Ubuntu-Bold" family="Ubuntu" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>

@@ -12,6 +12,7 @@ class editTaskViewController: UIViewController {
 
     var text:String?
     var key1:String?
+    var groupID: String?
     @IBOutlet weak var editText: UITextView!
     @IBOutlet weak var toolsBottomConstraint: NSLayoutConstraint!
     override func viewDidLoad() {
@@ -57,7 +58,7 @@ class editTaskViewController: UIViewController {
     @IBAction func done(_ sender: Any) {
 
         
-        taskManager.shared.updateText(key: key1!, updatedRank: self.editText.text!) { (err) in
+        taskManager.shared.updateText(key: key1!, updatedRank: self.editText.text!, group: self.groupID!) { (err) in
             
         }
         _ = navigationController?.popViewController(animated: true)

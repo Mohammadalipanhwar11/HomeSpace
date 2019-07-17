@@ -18,7 +18,6 @@ class UseStoryboardViewController: PageController {
         menuBar.register(UINib(nibName: "CustomMenuBarCell", bundle: nil))
         menuBar.isAutoSelectDidEndUserInteractionEnabled = false
         delegate = self
-
         viewControllers = createViewControllers()
 
     }
@@ -41,9 +40,9 @@ class UseStoryboardViewController: PageController {
             "Today",
             "Tomorrow",
             "Archive",
-            "Family",
-            "Work",
-            "Misc",
+            "Later-Family",
+            "Later-Work",
+            "Later-Misc",
             ]
 
         let top = adjustedContentInsetTop
@@ -74,6 +73,19 @@ class UseStoryboardViewController: PageController {
 
 extension UseStoryboardViewController: PageControllerDelegate {
     func pageController(_ pageController: PageController, didChangeVisibleController visibleViewController: UIViewController, fromViewController: UIViewController?) {
+        if pageController.visibleViewController == visibleViewController {
+            print("visibleViewController is assigned pageController.visibleViewController")
+        }
+        
+        if let viewController = fromViewController as? ViewController  {
+            viewController.mainTaskTable?.scrollsToTop = false
+        }
+        if let viewController = visibleViewController as? ViewController  {
+            viewController.mainTaskTable?.scrollsToTop = true
+            let title = viewController.title!
+            
+        }
+        
         
     }
     

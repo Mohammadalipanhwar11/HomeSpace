@@ -20,6 +20,14 @@ class UseStoryboardViewController: PageController {
         delegate = self
         viewControllers = createViewControllers()
 
+        removeSwipeGesture()
+    }
+    func removeSwipeGesture(){
+        for view in self.view.subviews {
+            if let subView = view as? UIScrollView {
+                subView.isScrollEnabled = false
+            }
+        }
     }
     
     

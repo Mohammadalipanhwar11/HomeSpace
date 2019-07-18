@@ -18,6 +18,9 @@ class moveGroupViewController: UIViewController {
     
     var textData:String?
     var segue:Bool?
+    var groupText: String?
+    var deleteID:String?
+    var deleteTitle:String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,7 +44,12 @@ class moveGroupViewController: UIViewController {
                 
             }
         }else {
-            
+            taskManager.shared.deleteTask(key: self.deleteID!, group: self.deleteTitle!) { (err) in
+            }
+            let t = Task(name: groupText!, date: Date(), group: sender.titleLabel!.text!)
+            taskManager.shared.addTask(task: t) { (err) in
+                
+            }
         }
     }
     

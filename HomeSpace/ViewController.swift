@@ -16,6 +16,9 @@ class ViewController: UIViewController,TableViewReorderDelegate{
  
     var selectedText:String?
     var selectedKey:String?
+    var moveText:String?
+    var deleteID:String?
+    var deleteTitle:String?
     var timers = [Timer]()
     var arr = [Task](){
         didSet{
@@ -79,6 +82,11 @@ class ViewController: UIViewController,TableViewReorderDelegate{
             dest.text = selectedText
             dest.key1 = selectedKey
             dest.groupID = self.title!
+        }else if segue.identifier == "Move"{
+            let dest = segue.destination as! moveGroupViewController
+            dest.groupText = moveText
+            dest.deleteID = self.deleteID
+            dest.deleteTitle = self.deleteTitle
         }
         
     }
@@ -221,8 +229,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
             let alert = UIAlertController(title: "Delete", message: "Do you really want to delete this note", preferredStyle: UIAlertController.Style.alert)
             alert.addAction(UIAlertAction(title: "cancel", style: UIAlertAction.Style.cancel, handler: nil))
             alert.addAction(UIAlertAction(title: "Yes", style: UIAlertAction.Style.default, handler: { (action) in
-                taskManager.shared.deleteTask(key: self.arr[indexPath.row].id!, group: self.title!) { (err) in
-                }
+                
                 success(true)
             }))
             self.present(alert, animated: true, completion: nil)
@@ -241,6 +248,9 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let rightAction = UIContextualAction(style: .normal, title:  "move", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
             print("rightAction tapped")
+            self.moveText = self.arr[indexPath.row].name
+            self.deleteID = self.arr[indexPath.row].id
+            self.deleteTitle = self.title!
             self.performSegue(withIdentifier: "Move", sender: self)
             success(true)
         })

@@ -98,11 +98,6 @@ class taskManager {
     }
     func deleteTask(key:String, group: String,completion:@escaping(_ success:Bool)->Void) {
          Firestore.firestore().collection("tasks").document(group).collection("Tasks").document(key).delete { (err) in
-            //            if err == nil {
-            //                completion(true)
-            //            }else{
-            //                completion(false)
-            //            }
         }
     }
     

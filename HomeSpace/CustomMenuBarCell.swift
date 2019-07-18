@@ -43,17 +43,19 @@ class CustomMenuBarCell: UIView, MenuBarCellable {
       }
 
     func setHighlighted(_ highlighted: Bool) {
-//        if titleLabel.isHighlighted == highlighted { return }
-//
-//        highlighted ? currentMarkView.fadeIn() : currentMarkView.fadeOut()
-//        titleLabel.isHighlighted = highlighted
-        titleLabel.textColor = UIColor(red: 0, green: 150/255, blue: 255/255, alpha: 1)
+        if titleLabel.isHighlighted == highlighted { return }
 
+        highlighted ? currentMarkView.fadeIn() : currentMarkView.fadeOut()
+        titleLabel.isHighlighted = highlighted
+        titleLabel.highlightedTextColor = .white
     }
 
     func prepareForUse() {
         currentMarkView.isHidden = true
         titleLabel.isHighlighted = false
+        
     }
+    
 
 }
+

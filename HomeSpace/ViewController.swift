@@ -42,12 +42,7 @@ class ViewController: UIViewController,TableViewReorderDelegate{
         formatter.dateFormat = "MMM dd"
         let result = formatter.string(from: date)
         dateOfToday.text = result
-//        mainTaskTable.allowsSelection = false
-//        mainTaskTable.delegate = self
-//        mainTaskTable.dataSource = self
-//        mainTaskTable.isEditing = true
-       
-       
+        
         mainTaskTable.reorder.delegate = self
         mainTaskTable.reorder.cellScale = 1.07
         taskManager.shared.getAllTask(group: self.title!) { (taskArr, error) in
@@ -123,8 +118,6 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
  
             cell.taskLabel.text = arr[indexPath.row].name
         
-        
-//        print(posDiff)
 
 
         return cell
@@ -229,7 +222,11 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
             let alert = UIAlertController(title: "Delete", message: "Do you really want to delete this note", preferredStyle: UIAlertController.Style.alert)
             alert.addAction(UIAlertAction(title: "cancel", style: UIAlertAction.Style.cancel, handler: nil))
             alert.addAction(UIAlertAction(title: "Yes", style: UIAlertAction.Style.default, handler: { (action) in
-                
+                taskManager.shared.deleteTask(key: self.arr[indexPath.row].id!, group: self.title!, completion: { (err) in
+                    if err != nil {
+                        print(err)
+                    }
+                })
                 success(true)
             }))
             self.present(alert, animated: true, completion: nil)

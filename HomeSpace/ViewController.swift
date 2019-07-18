@@ -26,9 +26,6 @@ class ViewController: UIViewController,TableViewReorderDelegate{
         }
     }
 
-    @IBOutlet weak var TitleLabel: UILabel!
-    
-    @IBOutlet weak var dateOfToday: UILabel!
     @IBOutlet weak var mainTaskTable: UITableView!
     private var myReorderImage : UIImage? = UIImage(named: "image")!
     
@@ -37,11 +34,6 @@ class ViewController: UIViewController,TableViewReorderDelegate{
         
         self.mainTaskTable.estimatedRowHeight = 100 ;
         self.mainTaskTable.rowHeight = UITableView.automaticDimension;
-        let date = Date()
-        let formatter = DateFormatter()
-        formatter.dateFormat = "MMM dd"
-        let result = formatter.string(from: date)
-        dateOfToday.text = result
         
         mainTaskTable.reorder.delegate = self
         mainTaskTable.reorder.cellScale = 1.07

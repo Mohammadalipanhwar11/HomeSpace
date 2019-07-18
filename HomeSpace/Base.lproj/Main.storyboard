@@ -30,7 +30,7 @@
                         </userGuides>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="P9c-Qf-Wsp">
-                                <rect key="frame" x="0.0" y="75" width="414" height="562"/>
+                                <rect key="frame" x="0.0" y="20" width="414" height="599"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" focusStyle="custom" rowHeight="85" id="Ro3-2G-qjy" customClass="tasksTableViewCell" customModule="HomeSpace" customModuleProvider="target">
@@ -76,31 +76,25 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="ckd-Fy-f8Z"/>
                                 </connections>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bEA-bx-Dhb">
-                                <rect key="frame" x="166.66666666666666" y="20" width="81" height="47"/>
-                                <fontDescription key="fontDescription" name="Ubuntu-Bold" family="Ubuntu" pointSize="40"/>
-                                <color key="textColor" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H47-RD-ws7">
-                                <rect key="frame" x="0.0" y="637" width="414" height="99"/>
+                                <rect key="frame" x="0.0" y="619" width="414" height="117"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i2O-OH-Ltg">
-                                        <rect key="frame" x="368" y="34" width="16" height="22"/>
+                                        <rect key="frame" x="378" y="34" width="6" height="40"/>
                                         <state key="normal" image="menu"/>
                                         <connections>
                                             <action selector="option:" destination="BYZ-38-t0r" eventType="touchUpInside" id="yUr-5e-2Lh"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O9F-2j-j1U">
-                                        <rect key="frame" x="8" y="34" width="16" height="22"/>
+                                        <rect key="frame" x="8" y="34" width="34.333333333333336" height="40"/>
                                         <state key="normal" image="search"/>
                                         <connections>
                                             <action selector="search:" destination="BYZ-38-t0r" eventType="touchUpInside" id="aHW-dg-2ce"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P5w-mk-W5w">
-                                        <rect key="frame" x="199" y="17" width="16" height="65"/>
+                                        <rect key="frame" x="165.66666666666666" y="17" width="83" height="83"/>
                                         <state key="normal" image="Add button"/>
                                         <connections>
                                             <action selector="addTask:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hUo-Fu-ihk"/>
@@ -121,24 +115,12 @@
                                     <constraint firstItem="P5w-mk-W5w" firstAttribute="centerY" secondItem="H47-RD-ws7" secondAttribute="centerY" id="ysA-ji-kva"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Aug 31" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aSt-SX-wTA">
-                                <rect key="frame" x="255.66666666666663" y="47" width="158.33333333333337" height="20"/>
-                                <fontDescription key="fontDescription" name="Ubuntu-Bold" family="Ubuntu" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="P9c-Qf-Wsp" secondAttribute="trailing" id="1CC-Kt-FS8"/>
-                            <constraint firstItem="aSt-SX-wTA" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="27" id="A0u-Hs-Kgf"/>
+                            <constraint firstItem="P9c-Qf-Wsp" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="7Yi-lc-Qs3"/>
                             <constraint firstAttribute="bottom" secondItem="H47-RD-ws7" secondAttribute="bottom" id="AkG-Ig-cHn"/>
-                            <constraint firstItem="aSt-SX-wTA" firstAttribute="leading" secondItem="bEA-bx-Dhb" secondAttribute="trailing" constant="8" id="HHw-Aa-6g2"/>
-                            <constraint firstItem="bEA-bx-Dhb" firstAttribute="centerX" secondItem="P9c-Qf-Wsp" secondAttribute="centerX" id="Ngt-0r-Al0"/>
-                            <constraint firstItem="bEA-bx-Dhb" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="bEI-rd-uqb"/>
-                            <constraint firstItem="P9c-Qf-Wsp" firstAttribute="top" secondItem="bEA-bx-Dhb" secondAttribute="bottom" constant="8" symbolic="YES" id="bzd-Aa-OaZ"/>
-                            <constraint firstItem="aSt-SX-wTA" firstAttribute="bottom" secondItem="bEA-bx-Dhb" secondAttribute="bottom" id="cLT-dm-qge"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="aSt-SX-wTA" secondAttribute="trailing" id="cOM-jn-sCl"/>
                             <constraint firstItem="H47-RD-ws7" firstAttribute="top" secondItem="P9c-Qf-Wsp" secondAttribute="bottom" id="gUp-Mx-BsI"/>
                             <constraint firstItem="P9c-Qf-Wsp" firstAttribute="trailing" secondItem="H47-RD-ws7" secondAttribute="trailing" id="ucE-i5-qUM"/>
                             <constraint firstItem="P9c-Qf-Wsp" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="vXR-tf-ZxY"/>
@@ -148,8 +130,6 @@
                     </view>
                     <navigationItem key="navigationItem" id="gzR-Ev-0PY"/>
                     <connections>
-                        <outlet property="TitleLabel" destination="bEA-bx-Dhb" id="K4O-Gu-KVY"/>
-                        <outlet property="dateOfToday" destination="aSt-SX-wTA" id="6tk-d7-kvD"/>
                         <outlet property="mainTaskTable" destination="P9c-Qf-Wsp" id="FZB-aw-pp1"/>
                         <segue destination="mrf-jF-s9K" kind="show" identifier="edit" id="Eip-Gt-EfJ"/>
                         <segue destination="foZ-ro-VNs" kind="show" identifier="Move" id="RJ5-cO-xO1"/>
@@ -574,10 +554,9 @@
         <!--Item-->
         <scene sceneID="m8t-Hp-BfI">
             <objects>
-                <navigationController id="IsQ-rk-pjG" sceneMemberID="viewController">
+                <navigationController navigationBarHidden="YES" id="IsQ-rk-pjG" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="sFW-tE-fUl"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="qmW-Ed-oa5">
-                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </navigationBar>

@@ -35,8 +35,7 @@ class UseStoryboardViewController: PageController {
     override var frameForMenuBar: CGRect {
         let frame = super.frameForMenuBar
 
-        return CGRect(x: frame.minX, y: frame.minY, width: frame.width, height: 60)
-
+        return CGRect(x: frame.minX, y: frame.minY, width: frame.width, height: 150)
     }
     
  
@@ -69,7 +68,6 @@ class UseStoryboardViewController: PageController {
             if viewController.view != nil {
                 viewController.mainTaskTable?.scrollsToTop = false
                 viewController.mainTaskTable?.contentInset = contentInset
-                viewController.TitleLabel.text = name
             }
             
             return viewController

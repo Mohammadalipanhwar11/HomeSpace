@@ -59,6 +59,8 @@ class ViewController: UIViewController,TableViewReorderDelegate{
     }
     @IBAction func search(_ sender: Any) {
         
+        
+        
     }
     
     
@@ -69,11 +71,20 @@ class ViewController: UIViewController,TableViewReorderDelegate{
             dest.text = selectedText
             dest.key1 = selectedKey
             dest.groupID = self.title!
-        }else if segue.identifier == "Move"{
-            let dest = segue.destination as! moveGroupViewController
-            dest.groupText = moveText
             dest.deleteID = self.deleteID
             dest.deleteTitle = self.deleteTitle
+        }
+        
+        
+    }
+    
+    @IBAction func unwindToVC1(segue:UIStoryboardSegue) {
+        
+        if segue.source is editTaskViewController {
+            if let senderVC = segue.source as? editTaskViewController {
+                
+                
+            }
         }
         
     }
@@ -97,6 +108,9 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.selectedText = arr[indexPath.row].name
         self.selectedKey = arr[indexPath.row].id
+        self.moveText = self.arr[indexPath.row].name
+        self.deleteID = self.arr[indexPath.row].id
+        self.deleteTitle = self.title!
         self.performSegue(withIdentifier: "edit", sender: self)
     }
     
@@ -208,44 +222,44 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
 //    }
     
     
-    func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let leftAction = UIContextualAction(style: .normal, title:  "delete", handler: { (ac:UIContextualAction, view:UIView, success:@escaping (Bool) -> Void) in
-        
-            let alert = UIAlertController(title: "Delete", message: "Do you really want to delete this note", preferredStyle: UIAlertController.Style.alert)
-            alert.addAction(UIAlertAction(title: "cancel", style: UIAlertAction.Style.cancel, handler: nil))
-            alert.addAction(UIAlertAction(title: "Yes", style: UIAlertAction.Style.default, handler: { (action) in
-                taskManager.shared.deleteTask(key: self.arr[indexPath.row].id!, group: self.title!, completion: { (err) in
-                    if err != nil {
-                        print(err)
-                    }
-                })
-                success(true)
-            }))
-            self.present(alert, animated: true, completion: nil)
-            
-            
-           
-            
-            
-            
-            
-        })
-        leftAction.backgroundColor = UIColor(red: 0, green: 150/255, blue: 255/255, alpha: 1)
-        return UISwipeActionsConfiguration(actions: [leftAction])
-    }
+//    func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+//        let leftAction = UIContextualAction(style: .normal, title:  "delete", handler: { (ac:UIContextualAction, view:UIView, success:@escaping (Bool) -> Void) in
+//
+//            let alert = UIAlertController(title: "Delete", message: "Do you really want to delete this note", preferredStyle: UIAlertController.Style.alert)
+//            alert.addAction(UIAlertAction(title: "cancel", style: UIAlertAction.Style.cancel, handler: nil))
+//            alert.addAction(UIAlertAction(title: "Yes", style: UIAlertAction.Style.default, handler: { (action) in
+//                taskManager.shared.deleteTask(key: self.arr[indexPath.row].id!, group: self.title!, completion: { (err) in
+//                    if err != nil {
+//                        print(err)
+//                    }
+//                })
+//                success(true)
+//            }))
+//            self.present(alert, animated: true, completion: nil)
+//
+//
+//
+//
+//
+//
+//
+//        })
+//        leftAction.backgroundColor = UIColor(red: 0, green: 150/255, blue: 255/255, alpha: 1)
+//        return UISwipeActionsConfiguration(actions: [leftAction])
+//    }
     
-    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let rightAction = UIContextualAction(style: .normal, title:  "move", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
-            print("rightAction tapped")
-            self.moveText = self.arr[indexPath.row].name
-            self.deleteID = self.arr[indexPath.row].id
-            self.deleteTitle = self.title!
-            self.performSegue(withIdentifier: "Move", sender: self)
-            success(true)
-        })
-        rightAction.backgroundColor = UIColor(red: 0, green: 150/255, blue: 255/255, alpha: 1)
-        return UISwipeActionsConfiguration(actions: [rightAction])
-    }
+//    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+//        let rightAction = UIContextualAction(style: .normal, title:  "move", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
+//            print("rightAction tapped")
+//            self.moveText = self.arr[indexPath.row].name
+//            self.deleteID = self.arr[indexPath.row].id
+//            self.deleteTitle = self.title!
+//            self.performSegue(withIdentifier: "Move", sender: self)
+//            success(true)
+//        })
+//        rightAction.backgroundColor = UIColor(red: 0, green: 150/255, blue: 255/255, alpha: 1)
+//        return UISwipeActionsConfiguration(actions: [rightAction])
+//    }
 
 
 }

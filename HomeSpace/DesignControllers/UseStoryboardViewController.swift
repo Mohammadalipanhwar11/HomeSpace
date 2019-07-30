@@ -8,19 +8,23 @@
 
 import UIKit
 import PageController
+import FirebaseFirestore
 
 class UseStoryboardViewController: PageController {
 
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
         menuBar.backgroundColor = .black
         menuBar.register(UINib(nibName: "CustomMenuBarCell", bundle: nil))
         menuBar.isAutoSelectDidEndUserInteractionEnabled = false
         delegate = self
-        viewControllers = createViewControllers()
+        self.viewControllers = self.createViewControllers()
 
-        removeSwipeGesture()
+       // removeSwipeGesture()
     }
     func removeSwipeGesture(){
         for view in self.view.subviews {
@@ -42,16 +46,7 @@ class UseStoryboardViewController: PageController {
     
     
     func createViewControllers() -> [UIViewController] {
-        let names = [
-            "New",
-            "Today",
-            "Tomorrow",
-            "Archive",
-            "Later-Family",
-            "Later-Work",
-            "Later-Misc",
-            ]
-
+        let names = ["Archive","New","Today","Tomorrow"]
         let top = adjustedContentInsetTop
         let bottom: CGFloat
         if #available(iOS 11.0, *) {

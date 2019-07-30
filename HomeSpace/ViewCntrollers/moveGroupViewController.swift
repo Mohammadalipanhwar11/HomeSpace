@@ -12,10 +12,15 @@ import FirebaseFirestore
 class moveGroupViewController: UIViewController {
     
     
-    let groupItems = ["New","Today","Tomorrow", "Archive", "Later-Family", "Later-Work", "Later-Misc"]
+    var groupItems = [String](){
+        didSet {
+            TableView.reloadData()
+        }
+    }
     @IBOutlet weak var TableView: UITableView!
 
     
+    @IBOutlet weak var createGroupButton: UIButton!
     var textData:String?
     var segue:Bool?
     var groupText: String?
@@ -24,9 +29,18 @@ class moveGroupViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        Firestore.firestore().collection("tasks")
+            .addSnapshotListener { (snap, err) in
+                snap?.documentChanges.forEach({ (group) in
+                    print(group.document.documentID)
+                    let arr = group.document.documentID
+                    self.groupItems.append(arr)
+                })
+        }
         TableView.delegate = self
         TableView.dataSource = self
         
+        createGroupButton.layer.cornerRadius = createGroupButton.frame.height/2
         
     }
     
@@ -54,6 +68,23 @@ class moveGroupViewController: UIViewController {
     }
     
     
+    @IBAction func createGroup(_ sender: Any) {
+        performSegue(withIdentifier: "newgroup", sender: self)
+    }
+    
+    @IBAction func unwindToVC1(segue:UIStoryboardSegue) {
+        
+        if segue.source is NewGroupViewController {
+            if let senderVC = segue.source as? NewGroupViewController {
+                self.groupItems.append(senderVC.mainText.text)
+                
+            }
+        }
+        
+    }
+    
+    
+    
     
 }
 
@@ -64,32 +95,8 @@ extension moveGroupViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "groups") as! groupsTableViewCell
         
         cell.groupItem.layer.cornerRadius = cell.groupItem.frame.height/2
-        if indexPath.row == 0 {
-            cell.groupItem.addTarget(self, action: #selector(cellButtonAction(_:)), for: .touchUpInside)
-
-            cell.groupItem.setTitle(groupItems[0], for: .normal)
-        }else if indexPath.row == 1{
-            cell.groupItem.addTarget(self, action: #selector(cellButtonAction(_:)), for: .touchUpInside)
-            cell.groupItem.setTitle(groupItems[1], for: .normal)
-        }else if indexPath.row == 2{
-            cell.groupItem.addTarget(self, action: #selector(cellButtonAction(_:)), for: .touchUpInside)
-            cell.groupItem.setTitle(groupItems[2], for: .normal)
-        }else if indexPath.row == 3{
-            cell.groupItem.addTarget(self, action: #selector(cellButtonAction(_:)), for: .touchUpInside)
-            cell.groupItem.setTitle(groupItems[3], for: .normal)
-        }else if indexPath.row == 4{
-            cell.groupItem.addTarget(self, action: #selector(cellButtonAction(_:)), for: .touchUpInside)
-            cell.groupItem.setTitle(groupItems[4], for: .normal)
-        }else if indexPath.row == 5{
-            cell.groupItem.addTarget(self, action: #selector(cellButtonAction(_:)), for: .touchUpInside)
-            cell.groupItem.setTitle(groupItems[5], for: .normal)
-        }else if indexPath.row == 6{
-            cell.groupItem.addTarget(self, action: #selector(cellButtonAction(_:)), for: .touchUpInside)
-            cell.groupItem.setTitle(groupItems[6], for: .normal)
-        }
-        
-        
-        
+        cell.groupItem.addTarget(self, action: #selector(cellButtonAction(_:)), for: .touchUpInside)
+        cell.groupItem.setTitle(groupItems[indexPath.row], for: .normal)
         return cell
 
     }

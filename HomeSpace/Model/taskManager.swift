@@ -37,12 +37,21 @@ class taskManager {
                     .addDocument(data: data) { (err) in
                         completion(err?.localizedDescription)
                 }
+                
+                Firestore.firestore().collection("tasks").document(task.group!).setData(["task" : "added"], completion: { (err) in
+                    
+                })
+                
+                
+                
         }
     }
     
     func add(){
         Firestore.firestore().collection("tasks").document().setData(["rank" : 5])
     }
+    
+    
     
     
     func getAllTask(group: String,completion:@escaping TasksCompletion){
@@ -100,6 +109,8 @@ class taskManager {
          Firestore.firestore().collection("tasks").document(group).collection("Tasks").document(key).delete { (err) in
         }
     }
+    
+
     
 }
 

@@ -27,6 +27,7 @@
 		DC16C4E522DE022F00AE744A /* CustomMenuBarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC16C4E322DE022E00AE744A /* CustomMenuBarCell.swift */; };
 		DC16C4E622DE022F00AE744A /* CustomMenuBarCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DC16C4E422DE022F00AE744A /* CustomMenuBarCell.xib */; };
 		DCB6F55722DCA99500DC17C8 /* UseStoryboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB6F55522DCA99500DC17C8 /* UseStoryboardViewController.swift */; };
+		DCFEB92122E72CAB00824533 /* NewGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCFEB92022E72CAB00824533 /* NewGroupViewController.swift */; };
 		E2904A3C2294148900EEE096 /* LPRTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2904A3B2294148900EEE096 /* LPRTableView.swift */; };
 		E2AF95062292A58100936F69 /* Ubuntu-B.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E2AF95052292A43600936F69 /* Ubuntu-B.ttf */; };
 		E2AF95082292C4B200936F69 /* editTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2AF95072292C4B200936F69 /* editTaskViewController.swift */; };
@@ -84,7 +85,7 @@
 		C267F524223920A600D7771F /* HomeSpaceUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSpaceUITests.swift; sourceTree = "<group>"; };
 		C267F526223920A600D7771F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C267F53222392B8D00D7771F /* addTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addTaskViewController.swift; sourceTree = "<group>"; };
-		C289C5B522393DC10042C00D /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
+		C289C5B522393DC10042C00D /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Task.swift; path = "../New Group/Task.swift"; sourceTree = "<group>"; };
 		C289C5B722393F0D0042C00D /* taskManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = taskManager.swift; sourceTree = "<group>"; };
 		C289C5B9223945200042C00D /* tasksTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tasksTableViewCell.swift; sourceTree = "<group>"; };
 		C28E2EB022392C1200175556 /* moveGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = moveGroupViewController.swift; sourceTree = "<group>"; };
@@ -95,6 +96,7 @@
 		DC16C4E322DE022E00AE744A /* CustomMenuBarCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomMenuBarCell.swift; sourceTree = "<group>"; };
 		DC16C4E422DE022F00AE744A /* CustomMenuBarCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomMenuBarCell.xib; sourceTree = "<group>"; };
 		DCB6F55522DCA99500DC17C8 /* UseStoryboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UseStoryboardViewController.swift; sourceTree = "<group>"; };
+		DCFEB92022E72CAB00824533 /* NewGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGroupViewController.swift; sourceTree = "<group>"; };
 		E21DC12D22B130A3002CF7E1 /* HomeSpace-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HomeSpace-Bridging-Header.h"; sourceTree = "<group>"; };
 		E2904A3B2294148900EEE096 /* LPRTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LPRTableView.swift; sourceTree = "<group>"; };
 		E2AF95052292A43600936F69 /* Ubuntu-B.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ubuntu-B.ttf"; sourceTree = "<group>"; };
@@ -190,30 +192,14 @@
 		C267F503223920A400D7771F /* HomeSpace */ = {
 			isa = PBXGroup;
 			children = (
-				E2AF95052292A43600936F69 /* Ubuntu-B.ttf */,
-				DCB6F55522DCA99500DC17C8 /* UseStoryboardViewController.swift */,
-				E2904A3B2294148900EEE096 /* LPRTableView.swift */,
-				E2FA4C0222B25AFF00E5AF34 /* AudioErrorType.swift */,
-				E2FA4C0022B25AFA00E5AF34 /* AudioPlayerManager.swift */,
-				E2FA4C0122B25AFD00E5AF34 /* AudioRecorderManager.swift */,
-				E2FA4C0322B25B0200E5AF34 /* SoundWave+Helpers.swift */,
-				E2FA4BFE22B2588000E5AF34 /* ViewModel.swift */,
+				DC12BBC422E71D8700A61C6D /* Model */,
+				DC12BBC322E71D4400A61C6D /* Views */,
+				DC12BBBF22E71B1500A61C6D /* ViewCntrollers */,
+				DC12BBC022E71B9300A61C6D /* ViewControllerCells */,
+				DC12BBC122E71BDB00A61C6D /* DesignControllers */,
+				DC12BBC222E71C4400A61C6D /* Supporting Files */,
 				C267F504223920A400D7771F /* AppDelegate.swift */,
-				C267F506223920A400D7771F /* ViewController.swift */,
-				C289C5B522393DC10042C00D /* Task.swift */,
-				C289C5B722393F0D0042C00D /* taskManager.swift */,
-				C289C5B9223945200042C00D /* tasksTableViewCell.swift */,
-				C267F53222392B8D00D7771F /* addTaskViewController.swift */,
-				DC16C4E322DE022E00AE744A /* CustomMenuBarCell.swift */,
-				DC16C4E422DE022F00AE744A /* CustomMenuBarCell.xib */,
-				C267F508223920A400D7771F /* Main.storyboard */,
-				E2AF95072292C4B200936F69 /* editTaskViewController.swift */,
-				E2DF5F84224A629300EA0C09 /* groupsTableViewCell.swift */,
-				C28E2EB222392E7F00175556 /* designableButton.swift */,
-				C25E60D0223A7B8100EE9AFE /* designableView.swift */,
-				C28E2EB022392C1200175556 /* moveGroupViewController.swift */,
 				C267F50B223920A600D7771F /* Assets.xcassets */,
-				C267F50D223920A600D7771F /* LaunchScreen.storyboard */,
 				C267F510223920A600D7771F /* Info.plist */,
 				84A6FCED226FA62D00C59149 /* GoogleService-Info.plist */,
 				E21DC12D22B130A3002CF7E1 /* HomeSpace-Bridging-Header.h */,
@@ -237,6 +223,71 @@
 				C267F526223920A600D7771F /* Info.plist */,
 			);
 			path = HomeSpaceUITests;
+			sourceTree = "<group>";
+		};
+		DC12BBBF22E71B1500A61C6D /* ViewCntrollers */ = {
+			isa = PBXGroup;
+			children = (
+				C267F506223920A400D7771F /* ViewController.swift */,
+				C267F53222392B8D00D7771F /* addTaskViewController.swift */,
+				E2AF95072292C4B200936F69 /* editTaskViewController.swift */,
+				C28E2EB022392C1200175556 /* moveGroupViewController.swift */,
+				DCFEB92022E72CAB00824533 /* NewGroupViewController.swift */,
+			);
+			path = ViewCntrollers;
+			sourceTree = "<group>";
+		};
+		DC12BBC022E71B9300A61C6D /* ViewControllerCells */ = {
+			isa = PBXGroup;
+			children = (
+				C289C5B9223945200042C00D /* tasksTableViewCell.swift */,
+				DC16C4E322DE022E00AE744A /* CustomMenuBarCell.swift */,
+				E2DF5F84224A629300EA0C09 /* groupsTableViewCell.swift */,
+			);
+			path = ViewControllerCells;
+			sourceTree = "<group>";
+		};
+		DC12BBC122E71BDB00A61C6D /* DesignControllers */ = {
+			isa = PBXGroup;
+			children = (
+				E2AF95052292A43600936F69 /* Ubuntu-B.ttf */,
+				DCB6F55522DCA99500DC17C8 /* UseStoryboardViewController.swift */,
+				E2904A3B2294148900EEE096 /* LPRTableView.swift */,
+				C28E2EB222392E7F00175556 /* designableButton.swift */,
+				C25E60D0223A7B8100EE9AFE /* designableView.swift */,
+			);
+			path = DesignControllers;
+			sourceTree = "<group>";
+		};
+		DC12BBC222E71C4400A61C6D /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				E2FA4C0222B25AFF00E5AF34 /* AudioErrorType.swift */,
+				E2FA4C0022B25AFA00E5AF34 /* AudioPlayerManager.swift */,
+				E2FA4C0122B25AFD00E5AF34 /* AudioRecorderManager.swift */,
+				E2FA4C0322B25B0200E5AF34 /* SoundWave+Helpers.swift */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		DC12BBC322E71D4400A61C6D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				DC16C4E422DE022F00AE744A /* CustomMenuBarCell.xib */,
+				C267F508223920A400D7771F /* Main.storyboard */,
+				C267F50D223920A600D7771F /* LaunchScreen.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		DC12BBC422E71D8700A61C6D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E2FA4BFE22B2588000E5AF34 /* ViewModel.swift */,
+				C289C5B522393DC10042C00D /* Task.swift */,
+				C289C5B722393F0D0042C00D /* taskManager.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -457,6 +508,7 @@
 				DC16C4E522DE022F00AE744A /* CustomMenuBarCell.swift in Sources */,
 				E2DF5F85224A629300EA0C09 /* groupsTableViewCell.swift in Sources */,
 				E2904A3C2294148900EEE096 /* LPRTableView.swift in Sources */,
+				DCFEB92122E72CAB00824533 /* NewGroupViewController.swift in Sources */,
 				C25E60D1223A7B8100EE9AFE /* designableView.swift in Sources */,
 				C267F53322392B8D00D7771F /* addTaskViewController.swift in Sources */,
 				E2FA4BFF22B2588000E5AF34 /* ViewModel.swift in Sources */,

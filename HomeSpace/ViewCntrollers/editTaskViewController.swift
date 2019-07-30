@@ -13,10 +13,21 @@ class editTaskViewController: UIViewController {
     var text:String?
     var key1:String?
     var groupID: String?
+    var deleteID: String?
+    var deleteTitle: String?
+    
     @IBOutlet weak var editText: UITextView!
+    @IBOutlet weak var setButton: UIButton!
+    @IBOutlet weak var moveButton: UIButton!
+    @IBOutlet weak var archiveButton: UIButton!
+    @IBOutlet weak var remiderLabel: UILabel!
     @IBOutlet weak var toolsBottomConstraint: NSLayoutConstraint!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setButton.cornerRadius = setButton.frame.height/2.5
+        moveButton.cornerRadius = moveButton.frame.height/2.5
+        archiveButton.cornerRadius = archiveButton.frame.height/2.5
 
         
         
@@ -44,13 +55,16 @@ class editTaskViewController: UIViewController {
         _ = keyboardSize.cgRectValue
         print(keyboardSize.cgRectValue)
         toolsBottomConstraint.constant = keyboardSize.cgPointValue.y / -1.6
+        moveButton.isHidden = true
+        archiveButton.isHidden = true
         
         
     }
     @objc func keyboardWillHide(notification: NSNotification) {
         guard notification.userInfo != nil else {return}
         toolsBottomConstraint.constant = 0
-        
+        moveButton.isHidden = false
+        archiveButton.isHidden = false
     }
     @IBAction func back(_ sender: Any) {
                         _ = navigationController?.popViewController(animated: true)
@@ -64,5 +78,35 @@ class editTaskViewController: UIViewController {
         _ = navigationController?.popViewController(animated: true)
         
     }
+    
+    
+    
+    @IBAction func archive(_ sender: Any) {
+        taskManager.shared.deleteTask(key: self.deleteID!, group: self.deleteTitle!) { (err) in
+        }
+        let t = Task(name: editText.text!, date: Date(), group: "Archive")
+        taskManager.shared.addTask(task: t) { (err) in
+            
+        }
+        performSegue(withIdentifier: "tovc", sender: self)
+    }
+    
+    @IBAction func move(_ sender: Any) {
+        performSegue(withIdentifier: "move", sender: self)
+    }
+    
+    @IBAction func set(_ sender: Any) {
+        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "move"{
+            let dest = segue.destination as! moveGroupViewController
+            dest.groupText = editText.text
+            dest.deleteID = deleteID
+            dest.deleteTitle = deleteTitle
+        }
+    }
+    
     
 }

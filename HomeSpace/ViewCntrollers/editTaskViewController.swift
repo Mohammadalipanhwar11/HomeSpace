@@ -15,6 +15,7 @@ class editTaskViewController: UIViewController {
     var groupID: String?
     var deleteID: String?
     var deleteTitle: String?
+    var reminder: String?
     
     @IBOutlet weak var editText: UITextView!
     @IBOutlet weak var setButton: UIButton!
@@ -25,10 +26,13 @@ class editTaskViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+   
+        
+        remiderLabel.text = "Reminder: \(reminder!)"
         setButton.cornerRadius = setButton.frame.height/2.5
         moveButton.cornerRadius = moveButton.frame.height/2.5
         archiveButton.cornerRadius = archiveButton.frame.height/2.5
-
+        
         
         
         self.editText.text = text
@@ -96,7 +100,8 @@ class editTaskViewController: UIViewController {
     }
     
     @IBAction func set(_ sender: Any) {
-        
+        self.performSegue(withIdentifier: "Date", sender: self)
+
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -105,7 +110,22 @@ class editTaskViewController: UIViewController {
             dest.groupText = editText.text
             dest.deleteID = deleteID
             dest.deleteTitle = deleteTitle
+        }else if segue.identifier == "Date"{
+            let dest = segue.destination as! ReminderViewController
+            dest.text = self.editText.text
+            dest.groupID = self.groupID
+            dest.TaskID = self.deleteID
         }
+    }
+    
+    @IBAction func unwindToVC1(segue:UIStoryboardSegue) {
+        
+        if segue.source is ReminderViewController {
+            if let senderVC = segue.source as? ReminderViewController {
+                setButton.setTitle("Change", for: .normal)
+            }
+        }
+        
     }
     
     

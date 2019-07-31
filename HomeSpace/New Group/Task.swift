@@ -21,7 +21,8 @@ struct Task : Codable {
     let name : String?
     var id : String? = ""
     var rank: Double? = 0
-    let group: String?
+    var group: String? = ""
+    var reminder:String? = ""
     
     
     
@@ -38,7 +39,8 @@ struct Task : Codable {
             "name":self.name ?? "",
             "date":self.date ?? Date(),
             "rank":self.rank ?? 0,
-            "group":self.group ?? ""
+            "group":self.group ?? "",
+            "reminder":self.reminder ?? ""
         ]
     }
     
@@ -47,6 +49,7 @@ struct Task : Codable {
         case name = "name"
         case rank = "rank"
         case group = "group"
+        case reminder = "reminder"
 
     }
     
@@ -56,7 +59,7 @@ struct Task : Codable {
         name = try values.decodeIfPresent(String.self, forKey: .name)
         rank = try values.decodeIfPresent(Double.self, forKey: .rank)
         group = try values.decodeIfPresent(String.self, forKey: .group)
-        
+        reminder = try values.decodeIfPresent(String.self, forKey: .reminder)
     }
     
     

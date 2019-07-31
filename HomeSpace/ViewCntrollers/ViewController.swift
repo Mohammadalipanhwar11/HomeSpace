@@ -19,6 +19,8 @@ class ViewController: UIViewController,TableViewReorderDelegate{
     var moveText:String?
     var deleteID:String?
     var deleteTitle:String?
+    var reminder:String?
+    
     var timers = [Timer]()
     var arr = [Task](){
         didSet{
@@ -73,6 +75,7 @@ class ViewController: UIViewController,TableViewReorderDelegate{
             dest.groupID = self.title!
             dest.deleteID = self.deleteID
             dest.deleteTitle = self.deleteTitle
+            dest.reminder = self.reminder
         }
         
         
@@ -111,6 +114,8 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
         self.moveText = self.arr[indexPath.row].name
         self.deleteID = self.arr[indexPath.row].id
         self.deleteTitle = self.title!
+        self.reminder = self.arr[indexPath.row].reminder
+        
         self.performSegue(withIdentifier: "edit", sender: self)
     }
     

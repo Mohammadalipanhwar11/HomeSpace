@@ -110,6 +110,16 @@ class taskManager {
         }
     }
     
+    func updateReminder(key:String, group: String, reminder:String,  completion:@escaping(_ success:Bool)->Void){
+        Firestore.firestore().collection("tasks").document(group).collection("Tasks").document(key).updateData(["reminder":reminder]) { (err) in
+            if err == nil {
+                completion(true)
+            }else{
+                completion(false)
+            }
+        }
+    }
+    
 
     
 }

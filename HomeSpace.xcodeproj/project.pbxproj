@@ -27,6 +27,7 @@
 		DC16C4E522DE022F00AE744A /* CustomMenuBarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC16C4E322DE022E00AE744A /* CustomMenuBarCell.swift */; };
 		DC16C4E622DE022F00AE744A /* CustomMenuBarCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DC16C4E422DE022F00AE744A /* CustomMenuBarCell.xib */; };
 		DCB6F55722DCA99500DC17C8 /* UseStoryboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB6F55522DCA99500DC17C8 /* UseStoryboardViewController.swift */; };
+		DCF6271A22F19C9D00E129CD /* ReminderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF6271922F19C9D00E129CD /* ReminderViewController.swift */; };
 		DCFEB92122E72CAB00824533 /* NewGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCFEB92022E72CAB00824533 /* NewGroupViewController.swift */; };
 		E2904A3C2294148900EEE096 /* LPRTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2904A3B2294148900EEE096 /* LPRTableView.swift */; };
 		E2AF95062292A58100936F69 /* Ubuntu-B.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E2AF95052292A43600936F69 /* Ubuntu-B.ttf */; };
@@ -96,6 +97,7 @@
 		DC16C4E322DE022E00AE744A /* CustomMenuBarCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomMenuBarCell.swift; sourceTree = "<group>"; };
 		DC16C4E422DE022F00AE744A /* CustomMenuBarCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomMenuBarCell.xib; sourceTree = "<group>"; };
 		DCB6F55522DCA99500DC17C8 /* UseStoryboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UseStoryboardViewController.swift; sourceTree = "<group>"; };
+		DCF6271922F19C9D00E129CD /* ReminderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderViewController.swift; sourceTree = "<group>"; };
 		DCFEB92022E72CAB00824533 /* NewGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGroupViewController.swift; sourceTree = "<group>"; };
 		E21DC12D22B130A3002CF7E1 /* HomeSpace-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HomeSpace-Bridging-Header.h"; sourceTree = "<group>"; };
 		E2904A3B2294148900EEE096 /* LPRTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LPRTableView.swift; sourceTree = "<group>"; };
@@ -233,6 +235,7 @@
 				E2AF95072292C4B200936F69 /* editTaskViewController.swift */,
 				C28E2EB022392C1200175556 /* moveGroupViewController.swift */,
 				DCFEB92022E72CAB00824533 /* NewGroupViewController.swift */,
+				DCF6271922F19C9D00E129CD /* ReminderViewController.swift */,
 			);
 			path = ViewCntrollers;
 			sourceTree = "<group>";
@@ -505,6 +508,7 @@
 			files = (
 				C289C5B822393F0D0042C00D /* taskManager.swift in Sources */,
 				E2FA4C0422B25B0200E5AF34 /* AudioPlayerManager.swift in Sources */,
+				DCF6271A22F19C9D00E129CD /* ReminderViewController.swift in Sources */,
 				DC16C4E522DE022F00AE744A /* CustomMenuBarCell.swift in Sources */,
 				E2DF5F85224A629300EA0C09 /* groupsTableViewCell.swift in Sources */,
 				E2904A3C2294148900EEE096 /* LPRTableView.swift in Sources */,

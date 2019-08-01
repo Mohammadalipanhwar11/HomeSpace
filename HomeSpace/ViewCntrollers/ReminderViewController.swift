@@ -22,14 +22,13 @@ class ReminderViewController: UIViewController {
     var text:String?
     var groupID: String?
     var TaskID: String?
+    var reminderDate:String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.doneButton.cornerRadius = self.doneButton.frame.height/2
         
-
-      
-
         let now = Date()
         pickerView.minimumDate = now
         self.textView.text = text
@@ -74,7 +73,7 @@ class ReminderViewController: UIViewController {
         dateFormatter.timeStyle = DateFormatter.Style.short
         
         let strDate = dateFormatter.string(from: pickerView.date)
-        
+        reminderDate = strDate
         
         taskManager.shared.updateReminder(key: TaskID!, group: groupID!, reminder: strDate) { (err) in
             

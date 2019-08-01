@@ -17,6 +17,7 @@ class editTaskViewController: UIViewController {
     var deleteTitle: String?
     var reminder: String?
     
+    @IBOutlet weak var deleteButton: UIButton!
     @IBOutlet weak var editText: UITextView!
     @IBOutlet weak var setButton: UIButton!
     @IBOutlet weak var moveButton: UIButton!
@@ -25,14 +26,18 @@ class editTaskViewController: UIViewController {
     @IBOutlet weak var toolsBottomConstraint: NSLayoutConstraint!
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-   
+        if reminder != "" {
+            setButton.setTitle("Change", for: UIControl.State.normal)
+        }else{
+            setButton.setTitle("Set", for: UIControl.State.normal)
+
+        }
         
         remiderLabel.text = "Reminder: \(reminder!)"
         setButton.cornerRadius = setButton.frame.height/2.5
         moveButton.cornerRadius = moveButton.frame.height/2.5
         archiveButton.cornerRadius = archiveButton.frame.height/2.5
-        
+        deleteButton.cornerRadius = archiveButton.frame.height/2.5
         
         
         self.editText.text = text
@@ -104,6 +109,14 @@ class editTaskViewController: UIViewController {
 
     }
     
+    @IBAction func delete1(_ sender: Any) {
+        taskManager.shared.deleteTask(key: deleteID!, group: groupID!) { (err) in
+            
+        }
+        _ = navigationController?.popViewController(animated: true)
+
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "move"{
             let dest = segue.destination as! moveGroupViewController
@@ -123,6 +136,8 @@ class editTaskViewController: UIViewController {
         if segue.source is ReminderViewController {
             if let senderVC = segue.source as? ReminderViewController {
                 setButton.setTitle("Change", for: .normal)
+                
+                self.remiderLabel.text = "Reminder: \(senderVC.reminderDate ?? "")"
             }
         }
         

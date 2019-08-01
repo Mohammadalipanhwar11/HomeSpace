@@ -10,7 +10,7 @@ import UIKit
 import SwiftMoment
 import SwiftReorder
 
-class ViewController: UIViewController,TableViewReorderDelegate{
+class ViewController: UIViewController,TableViewReorderDelegate,UISearchBarDelegate{
    
     
  
@@ -20,7 +20,12 @@ class ViewController: UIViewController,TableViewReorderDelegate{
     var deleteID:String?
     var deleteTitle:String?
     var reminder:String?
-    
+    var index:Int?
+    var currentTask = [Task](){
+        didSet{
+            self.mainTaskTable.reloadData()
+        }
+    }
     var timers = [Timer]()
     var arr = [Task](){
         didSet{
@@ -28,12 +33,15 @@ class ViewController: UIViewController,TableViewReorderDelegate{
         }
     }
 
+    @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var mainTaskTable: UITableView!
     private var myReorderImage : UIImage? = UIImage(named: "image")!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
+        searchBar.backgroundColor = UIColor.black
+        searchBar.delegate = self
         self.mainTaskTable.estimatedRowHeight = 100 ;
         self.mainTaskTable.rowHeight = UITableView.automaticDimension;
         
@@ -43,12 +51,19 @@ class ViewController: UIViewController,TableViewReorderDelegate{
             if error == nil{
                 self.arr = taskArr
                 print(taskArr)
-                
+                self.currentTask = taskArr
             }else{
                 //alert
             }
         }
 
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        guard !searchText.isEmpty else {currentTask = arr; return}
+        currentTask = arr.filter({ (task) -> Bool in
+            (task.name?.contains(searchText))!
+        })
     }
     
     
@@ -102,10 +117,13 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
         return true
     }
     
+    
+    
+    
 
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return arr.count
+        return currentTask.count
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -120,25 +138,68 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         if let spacer = tableView.reorder.spacerCell(for: indexPath) {
             return spacer
         }
         
-        let cell = mainTaskTable.dequeueReusableCell(withIdentifier: "cell") as! tasksTableViewCell
-        cell.selectedBackgroundView?.backgroundColor = UIColor.black
- 
-            cell.taskLabel.text = arr[indexPath.row].name
         
-
-
-        return cell
+        if  let cell1 = mainTaskTable.dequeueReusableCell(withIdentifier: "cell") as? tasksTableViewCell{
+            cell1.selectedBackgroundView?.backgroundColor = UIColor.black
+            cell1.taskLabel.text = currentTask[indexPath.row].name
+            return cell1
+            
+        }else if let cell2 = mainTaskTable.dequeueReusableCell(withIdentifier: "cell1") as? tasksTableViewCell{
+            let date = arr[indexPath.row].date?.dateValue()
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "MMMM d, yyyy"
+            let dateString = dateFormatter.string(from: date! as Date)
+            
+            
+            if indexPath.row > 0 {
+                let previousExpensesData = arr[indexPath.row - 1].date
+                let day = Calendar.current.component(.day, from: date!) // Do not add above 'date' value here, you might get some garbage value. I know the code is redundant. You can adjust that.
+                let previousDay = Calendar.current.component(.day, from: (arr[indexPath.row - 1].date?.dateValue())!)
+                if day == previousDay {
+                    cell2.dateLabel.text = ""
+                } else {
+                    cell2.dateLabel.text = dateString
+                }
+            }else{
+                cell2.dateLabel.text = dateString
+                print("Cannot return previous Message Index...\n\n")
+            }
+        }
+        return UITableViewCell()
+        
     }
+
+
+    
+//    func tableView(_ tableView: UITableView,
+//                   heightForRowAt indexPath: IndexPath) -> CGFloat
+//    {
+//        let expense = arr[indexPath.row].date?.dateValue()
+//        
+//        if indexPath.row > 0{
+//            let day = Calendar.current.component(.day, from: expense!)
+//            let previousDay = Calendar.current.component(.day, from: (arr[indexPath.row - 1].date?.dateValue())!)
+//            if day == previousDay {
+//                return 0.0
+//            }else{
+//                return 20.0
+//            }
+//        }
+//        return 20.0
+//    }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
         return UITableView.automaticDimension
     }
     func tableView(_ tableView: UITableView, reorderRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         
     }
+    
     
 //    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
 //        return UITableView.automaticDimension
@@ -269,3 +330,8 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
 
 }
 
+extension Int64 {
+    func dateFromMilliseconds() -> Date {
+        return Date(timeIntervalSince1970: TimeInterval(self)/1000)
+    }
+}

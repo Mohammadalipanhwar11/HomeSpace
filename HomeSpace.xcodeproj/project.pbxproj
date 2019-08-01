@@ -27,6 +27,7 @@
 		DC16C4E522DE022F00AE744A /* CustomMenuBarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC16C4E322DE022E00AE744A /* CustomMenuBarCell.swift */; };
 		DC16C4E622DE022F00AE744A /* CustomMenuBarCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DC16C4E422DE022F00AE744A /* CustomMenuBarCell.xib */; };
 		DCB6F55722DCA99500DC17C8 /* UseStoryboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB6F55522DCA99500DC17C8 /* UseStoryboardViewController.swift */; };
+		DCF4F28022F2D95E0023C7FB /* editGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF4F27F22F2D95E0023C7FB /* editGroupViewController.swift */; };
 		DCF6271A22F19C9D00E129CD /* ReminderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF6271922F19C9D00E129CD /* ReminderViewController.swift */; };
 		DCFEB92122E72CAB00824533 /* NewGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCFEB92022E72CAB00824533 /* NewGroupViewController.swift */; };
 		E2904A3C2294148900EEE096 /* LPRTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2904A3B2294148900EEE096 /* LPRTableView.swift */; };
@@ -97,6 +98,7 @@
 		DC16C4E322DE022E00AE744A /* CustomMenuBarCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomMenuBarCell.swift; sourceTree = "<group>"; };
 		DC16C4E422DE022F00AE744A /* CustomMenuBarCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomMenuBarCell.xib; sourceTree = "<group>"; };
 		DCB6F55522DCA99500DC17C8 /* UseStoryboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UseStoryboardViewController.swift; sourceTree = "<group>"; };
+		DCF4F27F22F2D95E0023C7FB /* editGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = editGroupViewController.swift; sourceTree = "<group>"; };
 		DCF6271922F19C9D00E129CD /* ReminderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderViewController.swift; sourceTree = "<group>"; };
 		DCFEB92022E72CAB00824533 /* NewGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGroupViewController.swift; sourceTree = "<group>"; };
 		E21DC12D22B130A3002CF7E1 /* HomeSpace-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HomeSpace-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -236,6 +238,7 @@
 				C28E2EB022392C1200175556 /* moveGroupViewController.swift */,
 				DCFEB92022E72CAB00824533 /* NewGroupViewController.swift */,
 				DCF6271922F19C9D00E129CD /* ReminderViewController.swift */,
+				DCF4F27F22F2D95E0023C7FB /* editGroupViewController.swift */,
 			);
 			path = ViewCntrollers;
 			sourceTree = "<group>";
@@ -518,6 +521,7 @@
 				E2FA4BFF22B2588000E5AF34 /* ViewModel.swift in Sources */,
 				E2FA4C0522B25B0200E5AF34 /* AudioRecorderManager.swift in Sources */,
 				C28E2EB322392E7F00175556 /* designableButton.swift in Sources */,
+				DCF4F28022F2D95E0023C7FB /* editGroupViewController.swift in Sources */,
 				C267F507223920A400D7771F /* ViewController.swift in Sources */,
 				DCB6F55722DCA99500DC17C8 /* UseStoryboardViewController.swift in Sources */,
 				C289C5BA223945200042C00D /* tasksTableViewCell.swift in Sources */,

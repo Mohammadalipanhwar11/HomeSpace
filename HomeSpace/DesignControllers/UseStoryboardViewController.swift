@@ -12,22 +12,37 @@ import FirebaseFirestore
 
 class UseStoryboardViewController: PageController {
 
-    
+    var names:[String] = []
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        
+        Firestore.firestore().collection("tasks").getDocuments { (snap, err) in
+            snap?.documentChanges.forEach({ (group) in
+                print(group.document.documentID)
+                let arr = group.document.documentID
+                self.names.append(arr)
+                self.viewControllers = self.createViewControllers()
+
+                
+            })
+        }
 
         
         menuBar.backgroundColor = .black
+        
         menuBar.register(UINib(nibName: "CustomMenuBarCell", bundle: nil))
         menuBar.isAutoSelectDidEndUserInteractionEnabled = false
         delegate = self
-        self.viewControllers = self.createViewControllers()
+        
 
-       // removeSwipeGesture()
+        removeSwipeGesture()
     }
     func removeSwipeGesture(){
-        for view in self.view.subviews {
+        for view in self.menuBar.subviews {
             if let subView = view as? UIScrollView {
                 subView.isScrollEnabled = false
             }
@@ -46,7 +61,11 @@ class UseStoryboardViewController: PageController {
     
     
     func createViewControllers() -> [UIViewController] {
-        let names = ["Archive","New","Today","Tomorrow"]
+
+
+        
+
+        
         let top = adjustedContentInsetTop
         let bottom: CGFloat
         if #available(iOS 11.0, *) {
@@ -58,7 +77,7 @@ class UseStoryboardViewController: PageController {
         let viewControllers = names.map { name -> ViewController in
             let viewController = storyboard?.instantiateViewController(withIdentifier: "new") as! ViewController
             viewController.title = name
-           
+
 
             if viewController.view != nil {
                 viewController.mainTaskTable?.scrollsToTop = false
@@ -73,8 +92,11 @@ class UseStoryboardViewController: PageController {
 }
 
 extension UseStoryboardViewController: PageControllerDelegate {
+    
+    
     func pageController(_ pageController: PageController, didChangeVisibleController visibleViewController: UIViewController, fromViewController: UIViewController?) {
         if pageController.visibleViewController == visibleViewController {
+           
             print("visibleViewController is assigned pageController.visibleViewController")
         }
         

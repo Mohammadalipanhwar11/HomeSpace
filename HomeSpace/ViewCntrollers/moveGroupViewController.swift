@@ -26,15 +26,17 @@ class moveGroupViewController: UIViewController {
     var groupText: String?
     var deleteID:String?
     var deleteTitle:String?
+    var groupName:String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         Firestore.firestore().collection("tasks")
-            .addSnapshotListener { (snap, err) in
+            .getDocuments { (snap, err) in
                 snap?.documentChanges.forEach({ (group) in
                     print(group.document.documentID)
                     let arr = group.document.documentID
                     self.groupItems.append(arr)
+                    
                 })
         }
         TableView.delegate = self
@@ -73,10 +75,11 @@ class moveGroupViewController: UIViewController {
     }
     
     @IBAction func unwindToVC1(segue:UIStoryboardSegue) {
-        
+
         if segue.source is NewGroupViewController {
             if let senderVC = segue.source as? NewGroupViewController {
-                self.groupItems.append(senderVC.mainText.text)
+                
+                self.groupItems.append(senderVC.groupText!)
                 
             }
         }

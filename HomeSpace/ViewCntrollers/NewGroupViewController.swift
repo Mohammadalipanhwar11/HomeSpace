@@ -29,6 +29,7 @@ class NewGroupViewController: UIViewController,UITextViewDelegate,SFSpeechRecogn
     @IBOutlet weak var textViewBottomConstriant: NSLayoutConstraint!
     @IBOutlet weak var recordConstraint: NSLayoutConstraint!
     
+    var groupText:String?
     var oldIndex:[Int]?
     var index1:Int = 0
     let speechRecognizer = SFSpeechRecognizer(locale: Locale(identifier: "en-US"))
@@ -48,6 +49,7 @@ class NewGroupViewController: UIViewController,UITextViewDelegate,SFSpeechRecogn
     override func viewDidLoad() {
         super.viewDidLoad()
         
+
         self.bottomwWave.meteringLevelBarWidth = 5.0
         self.bottomwWave.meteringLevelBarInterItem = 2.0
         self.bottomwWave.meteringLevelBarCornerRadius = 0.0
@@ -282,6 +284,7 @@ class NewGroupViewController: UIViewController,UITextViewDelegate,SFSpeechRecogn
                 
             }
             alert.addAction(action)
+            mainText.text = ""
             self.present(alert, animated: true, completion: nil)
         }
         
@@ -295,7 +298,7 @@ class NewGroupViewController: UIViewController,UITextViewDelegate,SFSpeechRecogn
     @IBAction func done(_ sender: Any) {
         
         
-        
+                groupText = mainText.text
         if mainText.text != "type" && mainText.text != ""{
             performSegue(withIdentifier: "backTo", sender: self)
         }else{

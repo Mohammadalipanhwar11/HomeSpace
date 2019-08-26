@@ -120,6 +120,22 @@ class taskManager {
         }
     }
     
+    
+    func deleteGroup(Name:String,  completion:@escaping(_ success:Bool)->Void){
+        Firestore.firestore().collection("tasks").document(Name).delete { (err) in
+            if err == nil {
+                completion(true)
+            }else{
+                completion(false)
+            }
+        }
+    }
+    func editGroup(Name:String, completion:@escaping(_ success:Bool)->Void){
+//        Firestore.firestore().collection("tasks").getDocuments(source: Name) { (snap, err) in
+//            
+//        }
+    
+    }
 
     
 }

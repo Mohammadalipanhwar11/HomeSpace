@@ -12,7 +12,7 @@ import FirebaseFirestore
 
 class UseStoryboardViewController: PageController {
 
-    var names:[String] = []
+    var names:[String] = ["Archive","New", "Today"]
 
     
     override func viewDidLoad() {
@@ -20,16 +20,16 @@ class UseStoryboardViewController: PageController {
         
         
         
-        Firestore.firestore().collection("tasks").getDocuments { (snap, err) in
-            snap?.documentChanges.forEach({ (group) in
-                print(group.document.documentID)
-                let arr = group.document.documentID
-                self.names.append(arr)
-                self.viewControllers = self.createViewControllers()
-
-                
-            })
-        }
+//        Firestore.firestore().collection("tasks").getDocuments { (snap, err) in
+//            snap?.documentChanges.forEach({ (group) in
+//                print(group.document.documentID)
+//                let arr = group.document.documentID
+//                self.names.append(arr)
+//
+//
+//            })
+//
+//        }
 
         
         menuBar.backgroundColor = .black
@@ -40,6 +40,8 @@ class UseStoryboardViewController: PageController {
         
 
         removeSwipeGesture()
+        self.viewControllers = self.createViewControllers()
+
     }
     func removeSwipeGesture(){
         for view in self.menuBar.subviews {

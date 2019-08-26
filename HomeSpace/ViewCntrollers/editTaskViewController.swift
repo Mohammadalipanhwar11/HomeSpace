@@ -22,18 +22,18 @@ class editTaskViewController: UIViewController {
     @IBOutlet weak var setButton: UIButton!
     @IBOutlet weak var moveButton: UIButton!
     @IBOutlet weak var archiveButton: UIButton!
-    @IBOutlet weak var remiderLabel: UILabel!
+//    @IBOutlet weak var remiderLabel: UILabel!
     @IBOutlet weak var toolsBottomConstraint: NSLayoutConstraint!
     override func viewDidLoad() {
         super.viewDidLoad()
         if reminder != "" {
-            setButton.setTitle("Change", for: UIControl.State.normal)
+//            setButton.setTitle("Change", for: UIControl.State.normal)
         }else{
-            setButton.setTitle("Set", for: UIControl.State.normal)
+//            setButton.setTitle("Set", for: UIControl.State.normal)
 
         }
         
-        remiderLabel.text = "Reminder: \(reminder!)"
+//        remiderLabel.text = "Reminder: \(reminder!)"
         setButton.cornerRadius = setButton.frame.height/2.5
         moveButton.cornerRadius = moveButton.frame.height/2.5
         archiveButton.cornerRadius = archiveButton.frame.height/2.5
@@ -104,10 +104,10 @@ class editTaskViewController: UIViewController {
         performSegue(withIdentifier: "move", sender: self)
     }
     
-    @IBAction func set(_ sender: Any) {
-        self.performSegue(withIdentifier: "Date", sender: self)
-
-    }
+//    @IBAction func set(_ sender: Any) {
+//        self.performSegue(withIdentifier: "Date", sender: self)
+//
+//    }
     
     @IBAction func delete1(_ sender: Any) {
         taskManager.shared.deleteTask(key: deleteID!, group: groupID!) { (err) in
@@ -135,9 +135,9 @@ class editTaskViewController: UIViewController {
         
         if segue.source is ReminderViewController {
             if let senderVC = segue.source as? ReminderViewController {
-                setButton.setTitle("Change", for: .normal)
+//                setButton.setTitle("Change", for: .normal)
                 
-                self.remiderLabel.text = "Reminder: \(senderVC.reminderDate ?? "")"
+//                self.remiderLabel.text = "Reminder: \(senderVC.reminderDate ?? "")"
             }
         }
         

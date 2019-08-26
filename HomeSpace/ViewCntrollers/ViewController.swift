@@ -33,6 +33,7 @@ class ViewController: UIViewController,TableViewReorderDelegate,UISearchBarDeleg
         }
     }
 
+    
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var mainTaskTable: UITableView!
     private var myReorderImage : UIImage? = UIImage(named: "image")!
@@ -40,8 +41,8 @@ class ViewController: UIViewController,TableViewReorderDelegate,UISearchBarDeleg
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        searchBar.backgroundColor = UIColor.black
-        searchBar.delegate = self
+//        searchBar.backgroundColor = UIColor.black
+//        searchBar.delegate = self
         self.mainTaskTable.estimatedRowHeight = 100 ;
         self.mainTaskTable.rowHeight = UITableView.automaticDimension;
         

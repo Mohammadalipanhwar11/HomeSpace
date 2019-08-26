@@ -34,6 +34,8 @@ class ViewController: UIViewController,TableViewReorderDelegate,UISearchBarDeleg
     }
 
     
+
+    @IBOutlet weak var optionsButton: UIButton!
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var mainTaskTable: UITableView!
     private var myReorderImage : UIImage? = UIImage(named: "image")!
@@ -69,17 +71,29 @@ class ViewController: UIViewController,TableViewReorderDelegate,UISearchBarDeleg
     
     
 
-    @IBAction func option(_ sender: Any) {
+    @IBAction func option(_ sender: UIButton) {
+        guard let popVC = storyboard?.instantiateViewController(withIdentifier: "pop") else { return }
         
+        popVC.modalPresentationStyle = .popover
+        
+        let popOverVC = popVC.popoverPresentationController
+        popOverVC?.delegate = self
+        popOverVC?.sourceView = self.optionsButton
+        popOverVC?.sourceRect = CGRect(x: self.optionsButton.bounds.midX, y: self.optionsButton.bounds.minY, width: 0, height: 0)
+        popVC.preferredContentSize = CGSize(width: 250, height: 75)
+        
+        self.present(popVC, animated: true)
     }
     @IBAction func addTask(_ sender: Any) {
         
     }
-    @IBAction func search(_ sender: Any) {
+    @IBAction func search(_ sender: UIButton) {
         
-        
+
+
         
     }
+
     
     
     
@@ -334,5 +348,11 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
 extension Int64 {
     func dateFromMilliseconds() -> Date {
         return Date(timeIntervalSince1970: TimeInterval(self)/1000)
+    }
+}
+extension ViewController: UIPopoverPresentationControllerDelegate {
+    
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+        return .none
     }
 }

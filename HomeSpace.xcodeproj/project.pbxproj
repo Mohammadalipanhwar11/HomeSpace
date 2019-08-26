@@ -29,6 +29,8 @@
 		DCB6F55722DCA99500DC17C8 /* UseStoryboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB6F55522DCA99500DC17C8 /* UseStoryboardViewController.swift */; };
 		DCF4F28022F2D95E0023C7FB /* editGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF4F27F22F2D95E0023C7FB /* editGroupViewController.swift */; };
 		DCF6271A22F19C9D00E129CD /* ReminderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF6271922F19C9D00E129CD /* ReminderViewController.swift */; };
+		DCF9ABF92314218700105D65 /* popOverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF9ABF82314218700105D65 /* popOverViewController.swift */; };
+		DCF9ABFB2314266E00105D65 /* popOverTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF9ABFA2314266E00105D65 /* popOverTableViewCell.swift */; };
 		DCFEB92122E72CAB00824533 /* NewGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCFEB92022E72CAB00824533 /* NewGroupViewController.swift */; };
 		E2904A3C2294148900EEE096 /* LPRTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2904A3B2294148900EEE096 /* LPRTableView.swift */; };
 		E2AF95062292A58100936F69 /* Ubuntu-B.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E2AF95052292A43600936F69 /* Ubuntu-B.ttf */; };
@@ -100,6 +102,8 @@
 		DCB6F55522DCA99500DC17C8 /* UseStoryboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UseStoryboardViewController.swift; sourceTree = "<group>"; };
 		DCF4F27F22F2D95E0023C7FB /* editGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = editGroupViewController.swift; sourceTree = "<group>"; };
 		DCF6271922F19C9D00E129CD /* ReminderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderViewController.swift; sourceTree = "<group>"; };
+		DCF9ABF82314218700105D65 /* popOverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = popOverViewController.swift; sourceTree = "<group>"; };
+		DCF9ABFA2314266E00105D65 /* popOverTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = popOverTableViewCell.swift; sourceTree = "<group>"; };
 		DCFEB92022E72CAB00824533 /* NewGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGroupViewController.swift; sourceTree = "<group>"; };
 		E21DC12D22B130A3002CF7E1 /* HomeSpace-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HomeSpace-Bridging-Header.h"; sourceTree = "<group>"; };
 		E2904A3B2294148900EEE096 /* LPRTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LPRTableView.swift; sourceTree = "<group>"; };
@@ -239,6 +243,7 @@
 				DCFEB92022E72CAB00824533 /* NewGroupViewController.swift */,
 				DCF6271922F19C9D00E129CD /* ReminderViewController.swift */,
 				DCF4F27F22F2D95E0023C7FB /* editGroupViewController.swift */,
+				DCF9ABF82314218700105D65 /* popOverViewController.swift */,
 			);
 			path = ViewCntrollers;
 			sourceTree = "<group>";
@@ -249,6 +254,7 @@
 				C289C5B9223945200042C00D /* tasksTableViewCell.swift */,
 				DC16C4E322DE022E00AE744A /* CustomMenuBarCell.swift */,
 				E2DF5F84224A629300EA0C09 /* groupsTableViewCell.swift */,
+				DCF9ABFA2314266E00105D65 /* popOverTableViewCell.swift */,
 			);
 			path = ViewControllerCells;
 			sourceTree = "<group>";
@@ -512,6 +518,7 @@
 				C289C5B822393F0D0042C00D /* taskManager.swift in Sources */,
 				E2FA4C0422B25B0200E5AF34 /* AudioPlayerManager.swift in Sources */,
 				DCF6271A22F19C9D00E129CD /* ReminderViewController.swift in Sources */,
+				DCF9ABFB2314266E00105D65 /* popOverTableViewCell.swift in Sources */,
 				DC16C4E522DE022F00AE744A /* CustomMenuBarCell.swift in Sources */,
 				E2DF5F85224A629300EA0C09 /* groupsTableViewCell.swift in Sources */,
 				E2904A3C2294148900EEE096 /* LPRTableView.swift in Sources */,
@@ -531,6 +538,7 @@
 				C28E2EB122392C1200175556 /* moveGroupViewController.swift in Sources */,
 				E2AF95082292C4B200936F69 /* editTaskViewController.swift in Sources */,
 				E2FA4C0622B25B0200E5AF34 /* AudioErrorType.swift in Sources */,
+				DCF9ABF92314218700105D65 /* popOverViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

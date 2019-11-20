@@ -13,20 +13,15 @@ import SoundWave
 
 class addTaskViewController: UIViewController,UITextViewDelegate,SFSpeechRecognizerDelegate {
 
- 
-    
-    
-    
     @IBOutlet weak var EZview: AudioVisualizationView!
+    @IBOutlet weak var _doneButton: UIButton!
     @IBOutlet weak var doneButton: UIButton!
     @IBOutlet weak var endButton: UIButton!
     @IBOutlet weak var recordButton: UIButton!
     @IBOutlet weak var mainText: UITextView!
-    @IBOutlet weak var recordBottomConstraint: NSLayoutConstraint!
     
-    @IBOutlet weak var recordCenterConstraint: NSLayoutConstraint!
-    @IBOutlet weak var textViewBottomConstriant: NSLayoutConstraint!
-    @IBOutlet weak var recordConstraint: NSLayoutConstraint!
+    @IBOutlet weak var mainTextHeight: NSLayoutConstraint!
+    @IBOutlet weak var back: UIButton!
     
     var oldIndex:[Int]?
     var index1:Int = 0
@@ -35,32 +30,34 @@ class addTaskViewController: UIViewController,UITextViewDelegate,SFSpeechRecogni
     var recognitionRequest: SFSpeechAudioBufferRecognitionRequest?
     var recognitionTask: SFSpeechRecognitionTask?
     let audioEngine = AVAudioEngine()
-    
 
     private let viewModel = ViewModel()
     private var chronometer: Chronometer?
+    
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
 
-    
-   
-    
-
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        self.EZview.meteringLevelBarWidth = 5.0
-        self.EZview.meteringLevelBarInterItem = 2.0
-        self.EZview.meteringLevelBarCornerRadius = 0.0
+        
+        if let dict = UserDefaults.standard.value(forKey: "dict") as? [String:String]{
+            var dict = dict
+            if let _ = dict["openGroup"]{
+                dict["openGroup"] = ""
+                UserDefaults.standard.set(dict, forKey: "dict")
+            }
+        }
+        
         self.EZview.gradientStartColor = .white
         self.EZview.gradientEndColor = .black
-        doneButton.cornerRadius = 20
-        doneButton.isHidden = true
-        endButton.isHidden = true
-        self.mainText.delegate = self
-        setupSpeech()
         
+        self.EZview.meteringLevelBarWidth = 3.0
+        self.EZview.meteringLevelBarInterItem = 2.0
 
-        mainText.becomeFirstResponder()
+        self._doneButton.isHidden = false
+        self.back.isHidden = true
+        
         
         self.viewModel.askAudioRecordingPermission()
         
@@ -68,38 +65,83 @@ class addTaskViewController: UIViewController,UITextViewDelegate,SFSpeechRecogni
             guard let self = self, self.EZview.audioVisualizationMode == .write else {
                 return
             }
-            self.EZview.add(meteringLevel: meteringLevel)
+            if meteringLevel > 0.012{
+                let mtrLvl = meteringLevel * 14
+                self.EZview.add(meteringLevel: mtrLvl)
+            }else{
+                self.EZview.add(meteringLevel: meteringLevel)
+            }
         }
         
         self.viewModel.audioDidFinish = { [weak self] in
             self?.EZview.stop()
         }
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(editTaskViewController.keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(editTaskViewController.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        
     }
     
-
- 
+    override func viewDidAppear(_ animated: Bool) {
+        if self.mainText.text == "" || self.mainText.text == "Type"{
+            self.doneButton.isHidden = true
+        }else{
+            self.doneButton .isHidden = false
+        }
+        print(doneButton.isHidden)
+    }
     
-
+    override func viewWillAppear(_ animated: Bool) {
+        mainText.becomeFirstResponder()
+        print(self.mainText.text)
+    }
     
+    @objc func keyboardWillShow(notification: NSNotification) {
+            guard let userInfo = notification.userInfo else {return}
+            guard let keyboardSize = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else {return}
+            _ = keyboardSize.cgRectValue
+            mainTextHeight.constant = keyboardSize.cgRectValue.height + 90
+            self._doneButton.isHidden = false
+            self.back.isHidden = true
+        }
+        @objc func keyboardWillHide(notification: NSNotification) {
+            guard notification.userInfo != nil else {return}
+            mainTextHeight.constant = 180
+            self._doneButton.isHidden = true
+            self.back.isHidden = false
+        }
     
     func textViewDidBeginEditing(_ textView: UITextView) {
-      
-        
-        
-   
         endButton.isHidden = true
         doneButton.isHidden = true
         
     }
+    
     func textViewDidChange(_ textView: UITextView) {
-        if mainText.text >= "type" {
+        if mainText.text.count == 1{
+            mainText.text = mainText.text.uppercased()
+        }
+        if mainText.text >= "Type" {
+            self.mainText.borderColor = UIColor(red: 50/255, green: 150/255, blue: 247/255, alpha: 1.0)
             mainText.textColor = UIColor.white
             mainText.font = UIFont.boldSystemFont(ofSize: 17)
-            mainText.text = ""
+            let t = mainText.text
+            if t!.components(separatedBy: "Type").count > 1{
+                mainText.text = t!.components(separatedBy: "Type")[1]
+            }
             mainText.cornerRadius = 3
             mainText.borderWidth = 3
             recordButton.isHidden = true
             doneButton.isHidden = false
+            if mainText.text.count == 1{
+                mainText.text = mainText.text.uppercased()
+            }
+        }else if mainText.text == ""{
+            self.mainText.text = "Type"
+            self.mainText.borderColor = .clear
+            self.doneButton.isHidden = true
+            self.recordButton.isHidden = false
         }
     }
     
@@ -134,15 +176,6 @@ class addTaskViewController: UIViewController,UITextViewDelegate,SFSpeechRecogni
             }
         }
     }
-    
-
-    
-
-    
-
-    
-
-    
     
     func startRecording() {
         
@@ -179,6 +212,10 @@ class addTaskViewController: UIViewController,UITextViewDelegate,SFSpeechRecogni
                 var recordedText:String?
                 recordedText = result?.bestTranscription.formattedString
                 self.mainText.text = recordedText
+                
+                let range = NSMakeRange(self.mainText.text.count - 1, 0)
+                self.mainText.scrollRangeToVisible(range)
+                
                 print(result?.bestTranscription.formattedString as Any)
                 
                 isFinal = (result?.isFinal)!
@@ -228,6 +265,12 @@ class addTaskViewController: UIViewController,UITextViewDelegate,SFSpeechRecogni
         mainText.endEditing(true)
         endButton.isHidden = false
         mainText.isHidden = false
+        doneButton.isHidden = true
+        
+        
+        self.mainText.text = ""
+        self.mainTextHeight.constant = 180
+        self.mainText.borderColor = UIColor(red: 43/255, green: 152/255, blue: 240/255, alpha: 1.0)
         if mainText.text >= "type" {
             mainText.textColor = UIColor.white
             mainText.font = UIFont.boldSystemFont(ofSize: 17)
@@ -245,7 +288,6 @@ class addTaskViewController: UIViewController,UITextViewDelegate,SFSpeechRecogni
             self.audioEngine.stop()
             self.recognitionRequest?.endAudio()
             self.recordButton.isEnabled = false
-//            self.recordButton.setTitle("Start Recording", for: .normal)
             self.recordButton.setImage(UIImage(named: "record"), for: UIControl.State.normal)
         } else {
             self.EZview.audioVisualizationMode = .write
@@ -261,10 +303,7 @@ class addTaskViewController: UIViewController,UITextViewDelegate,SFSpeechRecogni
             self.startRecording()
             self.mainText.cornerRadius = 3
             self.mainText.borderWidth = 3
-            recordCenterConstraint.constant = 200
-            recordConstraint.constant = -80
-            textViewBottomConstriant.constant = -100
-            self.recordButton.setImage(UIImage(named: "pause"), for: UIControl.State.normal)
+            self.recordButton.isHidden = true
         }
     }
 
@@ -277,12 +316,7 @@ class addTaskViewController: UIViewController,UITextViewDelegate,SFSpeechRecogni
         if mainText.text != "type" && mainText.text != ""{
             performSegue(withIdentifier: "groups", sender: self)
         }else{
-            let alert = UIAlertController(title: "No Voice", message: "Please Say Someting to continoue", preferredStyle: UIAlertController.Style.alert)
-            let action = UIAlertAction(title: "Ok", style: UIAlertAction.Style.cancel) { (action) in
-                
-            }
-            alert.addAction(action)
-            self.present(alert, animated: true, completion: nil)
+            successAlert(title: "message", msg: "Note name should not be empty", controller: self)
         }
 
     }
@@ -294,26 +328,11 @@ class addTaskViewController: UIViewController,UITextViewDelegate,SFSpeechRecogni
     
     @IBAction func done(_ sender: Any) {
         
-        
-        
         if mainText.text != "type" && mainText.text != ""{
            performSegue(withIdentifier: "groups", sender: self)
         }else{
-            let alert = UIAlertController(title: "No Text Found", message: "Please type Someting to continoue", preferredStyle: UIAlertController.Style.alert)
-            let action = UIAlertAction(title: "Ok", style: UIAlertAction.Style.cancel) { (action) in
-                self.recordButton.isHidden = false
-                self.endButton.isHidden = true
-                self.doneButton.isHidden = true
-                self.mainText.textColor = UIColor(red: 0, green: 150/255, blue: 255/255, alpha: 1)
-                self.mainText.font = UIFont.boldSystemFont(ofSize: 40)
-                self.view.endEditing(true)
-                self.mainText.text = "type"
-            }
-            alert.addAction(action)
-            self.present(alert, animated: true, completion: nil)
+            successAlert(title: "message", msg: "Note name should not be empty", controller: self)
         }
-        
-        mainText.text = ""
 
    
     }
@@ -327,9 +346,6 @@ class addTaskViewController: UIViewController,UITextViewDelegate,SFSpeechRecogni
     }
     
 }
-
-
-
 
 fileprivate func convertFromAVAudioSessionCategory(_ input: AVAudioSession.Category) -> String {
     return input.rawValue

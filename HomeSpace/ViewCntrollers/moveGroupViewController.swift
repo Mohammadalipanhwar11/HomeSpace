@@ -8,17 +8,21 @@
 
 import UIKit
 import FirebaseFirestore
+import Firebase
+import CodableFirebase
+import FirebaseAuth
 
 class moveGroupViewController: UIViewController {
     
     
-    var groupItems = [String](){
+    var groupItems = [Group](){
         didSet {
             TableView.reloadData()
         }
     }
+    
     @IBOutlet weak var TableView: UITableView!
-
+    
     
     @IBOutlet weak var createGroupButton: UIButton!
     var textData:String?
@@ -27,68 +31,72 @@ class moveGroupViewController: UIViewController {
     var deleteID:String?
     var deleteTitle:String?
     var groupName:String?
+    let delegate = UIApplication.shared.delegate as! AppDelegate
+    
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        Firestore.firestore().collection("tasks")
-            .getDocuments { (snap, err) in
-                snap?.documentChanges.forEach({ (group) in
-                    print(group.document.documentID)
-                    let arr = group.document.documentID
-                    self.groupItems.append(arr)
-                    
-                })
+        
+        taskManager.shared.getAllGroup { (gArr, err) in
+            self.groupItems = gArr
         }
         TableView.delegate = self
         TableView.dataSource = self
-        
-        createGroupButton.layer.cornerRadius = createGroupButton.frame.height/2
-        
     }
     
-
- 
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+    }
     
-
     @objc func cellButtonAction(_ sender: UIButton) {
-        _ = navigationController?.popToRootViewController(animated: true)
+        
         sender.layer.borderColor = UIColor.orange.cgColor
         sender.titleLabel?.textColor = UIColor.orange
         if segue == false {
-            let t = Task(name: textData!, date: Date(), group: (sender.titleLabel?.text!)!)
-            taskManager.shared.addTask(task:t) { (err) in
+            print(Auth.auth().currentUser!.uid)
+            let t = Task(name: textData!, date: Date(), group: self.groupItems[sender.tag].id!, uid: Auth.auth().currentUser!.uid)
+            taskManager.shared.addTask(task:t) { (err) in }
+            let controllers = self.navigationController?.viewControllers
+            if let cont = controllers![1] as? PageTabMenuViewController{
+                self.navigationController?.popToViewController(cont, animated: true)
                 
             }
         }else {
-            taskManager.shared.deleteTask(key: self.deleteID!, group: self.deleteTitle!) { (err) in
+            taskManager.shared.deleteTask(key: self.deleteID!) { (err) in}
+            let t = Task(name: self.groupText!, date: Date(), group: self.groupItems[sender.tag].id!, uid: Auth.auth().currentUser!.uid)
+                           taskManager.shared.addTask(task: t) { (err) in }
+            let controllers = self.navigationController?.viewControllers
+            if let cont = controllers![1] as? PageTabMenuViewController{
+                self.navigationController?.popToViewController(cont, animated: true)
             }
-            let t = Task(name: groupText!, date: Date(), group: sender.titleLabel!.text!)
-            taskManager.shared.addTask(task: t) { (err) in
-                
-            }
+            
+            
         }
     }
     
     
     @IBAction func createGroup(_ sender: Any) {
+//        self.navigationController?.popViewController(animated: true)
         performSegue(withIdentifier: "newgroup", sender: self)
     }
     
-    @IBAction func unwindToVC1(segue:UIStoryboardSegue) {
-
-        if segue.source is NewGroupViewController {
-            if let senderVC = segue.source as? NewGroupViewController {
-                
-                self.groupItems.append(senderVC.groupText!)
-                
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "newgroup" {
+            let dest = segue.destination as! NewGroupViewController
+            if self.textData != nil{
+                dest.taskText = self.textData
+            }else if self.groupText != nil{
+                dest.taskText = self.groupText
             }
         }
-        
     }
     
-    
-    
-    
+    @IBAction func back(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+    }
 }
 
 
@@ -96,17 +104,14 @@ extension moveGroupViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "groups") as! groupsTableViewCell
-        
-        cell.groupItem.layer.cornerRadius = cell.groupItem.frame.height/2
         cell.groupItem.addTarget(self, action: #selector(cellButtonAction(_:)), for: .touchUpInside)
-        cell.groupItem.setTitle(groupItems[indexPath.row], for: .normal)
+        cell.groupItem.setTitle(groupItems[indexPath.row].name, for: .normal)
+        cell.groupItem.tag = indexPath.row
+        cell.groupItem.layer.cornerRadius = 26
         return cell
-
+        
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return groupItems.count
-    }
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
     }
 }

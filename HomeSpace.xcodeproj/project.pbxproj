@@ -7,7 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		121910072362D04200265EE1 /* DesignableSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121910062362D04200265EE1 /* DesignableSwitch.swift */; };
+		12BA4189236C5F23002CF50F /* SearchAllGroupsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12BA4188236C5F23002CF50F /* SearchAllGroupsViewController.swift */; };
+		12D068E32361D96200ACF00B /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D068E22361D96100ACF00B /* Group.swift */; };
+		12D8A49023858B7A0077775B /* chime.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 12D8A48F23858B7A0077775B /* chime.mp3 */; };
+		12D8A49223858CB20077775B /* TunePocket-Trendy-Audio-Logo-Preview.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 12D8A49123858CB20077775B /* TunePocket-Trendy-Audio-Logo-Preview.mp3 */; };
+		12D8A49423858E830077775B /* ring.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 12D8A49323858E830077775B /* ring.mp3 */; };
+		12E362DC236897E900E09B83 /* LIstOfGroupsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E362DB236897E900E09B83 /* LIstOfGroupsViewController.swift */; };
 		7495B6866E83E1BD3B595F90 /* Pods_HomeSpaceUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5DC2273CFF1FA4006E954F0 /* Pods_HomeSpaceUITests.framework */; };
+		8454413A233D02900005C8EE /* GroupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84544139233D02900005C8EE /* GroupTableViewCell.swift */; };
 		84A6FCEE226FA62D00C59149 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 84A6FCED226FA62D00C59149 /* GoogleService-Info.plist */; };
 		9A37E1FC0F00AE0B50AC81C1 /* Pods_HomeSpace.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55CFAE3A0FE8C51FD14AAE2E /* Pods_HomeSpace.framework */; };
 		C25E60D1223A7B8100EE9AFE /* designableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25E60D0223A7B8100EE9AFE /* designableView.swift */; };
@@ -32,8 +40,44 @@
 		DCF9ABF92314218700105D65 /* popOverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF9ABF82314218700105D65 /* popOverViewController.swift */; };
 		DCF9ABFB2314266E00105D65 /* popOverTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF9ABFA2314266E00105D65 /* popOverTableViewCell.swift */; };
 		DCFEB92122E72CAB00824533 /* NewGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCFEB92022E72CAB00824533 /* NewGroupViewController.swift */; };
+		E15ED93223798E0D009324EB /* RoundRectPageOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15ED93123798E0D009324EB /* RoundRectPageOptions.swift */; };
+		E15ED93423799EF9009324EB /* PageTabMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15ED93323799EF9009324EB /* PageTabMenuViewController.swift */; };
+		E15ED9362379A26E009324EB /* staticLinker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15ED9352379A26E009324EB /* staticLinker.swift */; };
+		E15ED9382379A310009324EB /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15ED9372379A310009324EB /* RootViewController.swift */; };
+		E15ED93A2379A383009324EB /* customView1.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15ED9392379A383009324EB /* customView1.swift */; };
+		E15ED93C2379A42A009324EB /* customView1.xib in Resources */ = {isa = PBXBuildFile; fileRef = E15ED93B2379A42A009324EB /* customView1.xib */; };
+		E15ED93E2379B7DF009324EB /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15ED93D2379B7DF009324EB /* Theme.swift */; };
+		E15ED9402379B85D009324EB /* UnderlinePagerOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15ED93F2379B85D009324EB /* UnderlinePagerOptions.swift */; };
+		E1737FE52376E36000093699 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1737FE42376E36000093699 /* Notifications.swift */; };
+		E1A721D8237450210021A3C4 /* Auth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1A721D7237450210021A3C4 /* Auth.storyboard */; };
+		E1A721E623745F290021A3C4 /* NewMainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A721DE23745F290021A3C4 /* NewMainVC.swift */; };
+		E1A721E723745F2A0021A3C4 /* EmailLoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A721DF23745F290021A3C4 /* EmailLoginVC.swift */; };
+		E1A721E823745F2A0021A3C4 /* ChangePasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A721E023745F290021A3C4 /* ChangePasswordVC.swift */; };
+		E1A721E923745F2A0021A3C4 /* ForgotPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A721E123745F290021A3C4 /* ForgotPasswordVC.swift */; };
+		E1A721EA23745F2A0021A3C4 /* NewSignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A721E223745F290021A3C4 /* NewSignUpVC.swift */; };
+		E1A721EB23745F2A0021A3C4 /* PhoneLoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A721E323745F290021A3C4 /* PhoneLoginVC.swift */; };
+		E1A721EC23745F2A0021A3C4 /* PhoneVerificationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A721E423745F290021A3C4 /* PhoneVerificationVC.swift */; };
+		E1A721ED23745F2A0021A3C4 /* welcomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A721E523745F290021A3C4 /* welcomeVC.swift */; };
+		E1A721F123745F330021A3C4 /* extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A721EE23745F320021A3C4 /* extensions.swift */; };
+		E1A721F223745F330021A3C4 /* designableButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A721EF23745F320021A3C4 /* designableButtons.swift */; };
+		E1A721F323745F330021A3C4 /* supportFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A721F023745F320021A3C4 /* supportFunctions.swift */; };
+		E1A721F523745F390021A3C4 /* UserServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A721F423745F390021A3C4 /* UserServices.swift */; };
+		E1A721F723745F400021A3C4 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A721F623745F400021A3C4 /* User.swift */; };
+		E1A72213237479670021A3C4 /* Ubuntu-C.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E1A721FE2374752E0021A3C4 /* Ubuntu-C.ttf */; };
+		E1A72214237479670021A3C4 /* Ubuntu-L.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E1A722002374752F0021A3C4 /* Ubuntu-L.ttf */; };
+		E1A72215237479670021A3C4 /* Ubuntu-LI.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E1A721FF2374752E0021A3C4 /* Ubuntu-LI.ttf */; };
+		E1A72216237479670021A3C4 /* Ubuntu-M.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E1A721F92374752E0021A3C4 /* Ubuntu-M.ttf */; };
+		E1A72217237479670021A3C4 /* Ubuntu-MI.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E1A722032374752F0021A3C4 /* Ubuntu-MI.ttf */; };
+		E1A72218237479670021A3C4 /* Ubuntu-R.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E1A722012374752F0021A3C4 /* Ubuntu-R.ttf */; };
+		E1A72219237479670021A3C4 /* Ubuntu-RI.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E1A721FC2374752E0021A3C4 /* Ubuntu-RI.ttf */; };
+		E1A7221A237479670021A3C4 /* Ubuntu-Th.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E1A721FB2374752E0021A3C4 /* Ubuntu-Th.ttf */; };
+		E1A7221B237479670021A3C4 /* UbuntuMono-B.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E1A722052374752F0021A3C4 /* UbuntuMono-B.ttf */; };
+		E1A7221C237479670021A3C4 /* UbuntuMono-BI.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E1A722042374752F0021A3C4 /* UbuntuMono-BI.ttf */; };
+		E1A7221D237479670021A3C4 /* Ubuntu-BI.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E1A722022374752F0021A3C4 /* Ubuntu-BI.ttf */; };
+		E1A7221E237479670021A3C4 /* UbuntuMono-RI.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E1A721FD2374752E0021A3C4 /* UbuntuMono-RI.ttf */; };
+		E1A7221F237479670021A3C4 /* Ubuntu-B.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E2AF95052292A43600936F69 /* Ubuntu-B.ttf */; };
+		E1A72220237479670021A3C4 /* UbuntuMono-R.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E1A721FA2374752E0021A3C4 /* UbuntuMono-R.ttf */; };
 		E2904A3C2294148900EEE096 /* LPRTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2904A3B2294148900EEE096 /* LPRTableView.swift */; };
-		E2AF95062292A58100936F69 /* Ubuntu-B.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E2AF95052292A43600936F69 /* Ubuntu-B.ttf */; };
 		E2AF95082292C4B200936F69 /* editTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2AF95072292C4B200936F69 /* editTaskViewController.swift */; };
 		E2DF5F85224A629300EA0C09 /* groupsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DF5F84224A629300EA0C09 /* groupsTableViewCell.swift */; };
 		E2FA4BFF22B2588000E5AF34 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2FA4BFE22B2588000E5AF34 /* ViewModel.swift */; };
@@ -63,6 +107,13 @@
 
 /* Begin PBXFileReference section */
 		115AD55C5B9B055904023265 /* Pods-HomeSpace.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HomeSpace.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HomeSpace/Pods-HomeSpace.debug.xcconfig"; sourceTree = "<group>"; };
+		121910062362D04200265EE1 /* DesignableSwitch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignableSwitch.swift; sourceTree = "<group>"; };
+		12BA4188236C5F23002CF50F /* SearchAllGroupsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchAllGroupsViewController.swift; sourceTree = "<group>"; };
+		12D068E22361D96100ACF00B /* Group.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
+		12D8A48F23858B7A0077775B /* chime.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = chime.mp3; sourceTree = "<group>"; };
+		12D8A49123858CB20077775B /* TunePocket-Trendy-Audio-Logo-Preview.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "TunePocket-Trendy-Audio-Logo-Preview.mp3"; sourceTree = "<group>"; };
+		12D8A49323858E830077775B /* ring.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ring.mp3; sourceTree = "<group>"; };
+		12E362DB236897E900E09B83 /* LIstOfGroupsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LIstOfGroupsViewController.swift; sourceTree = "<group>"; };
 		232603890BF9BF9387FCADDA /* Pods-HomeSpaceUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HomeSpaceUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HomeSpaceUITests/Pods-HomeSpaceUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		273ADEA4F27DB9C81A0A10A7 /* Pods-HomeSpaceUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HomeSpaceUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-HomeSpaceUITests/Pods-HomeSpaceUITests.release.xcconfig"; sourceTree = "<group>"; };
 		4A4A173C63466D1140D69724 /* Pods-HomeSpaceUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HomeSpaceUITests.debug.xcconfig"; path = "Target Support Files/Pods-HomeSpaceUITests/Pods-HomeSpaceUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -71,6 +122,7 @@
 		55CFAE3A0FE8C51FD14AAE2E /* Pods_HomeSpace.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HomeSpace.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A9673BEFF33C950491C855B /* Pods-HomeSpace.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HomeSpace.debug.xcconfig"; path = "Target Support Files/Pods-HomeSpace/Pods-HomeSpace.debug.xcconfig"; sourceTree = "<group>"; };
 		615EE6464D8E9ADC05BD7D0A /* Pods_HomeSpaceTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HomeSpaceTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		84544139233D02900005C8EE /* GroupTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupTableViewCell.swift; sourceTree = "<group>"; };
 		84A6FCED226FA62D00C59149 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		937583AAC09932A6680CB808 /* Pods-HomeSpaceTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HomeSpaceTests.debug.xcconfig"; path = "Target Support Files/Pods-HomeSpaceTests/Pods-HomeSpaceTests.debug.xcconfig"; sourceTree = "<group>"; };
 		B9CA4E11498A27B59AB3D72D /* Pods-HomeSpaceTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HomeSpaceTests.release.xcconfig"; path = "Target Support Files/Pods-HomeSpaceTests/Pods-HomeSpaceTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -105,6 +157,43 @@
 		DCF9ABF82314218700105D65 /* popOverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = popOverViewController.swift; sourceTree = "<group>"; };
 		DCF9ABFA2314266E00105D65 /* popOverTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = popOverTableViewCell.swift; sourceTree = "<group>"; };
 		DCFEB92022E72CAB00824533 /* NewGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGroupViewController.swift; sourceTree = "<group>"; };
+		E15ED93123798E0D009324EB /* RoundRectPageOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundRectPageOptions.swift; sourceTree = "<group>"; };
+		E15ED93323799EF9009324EB /* PageTabMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageTabMenuViewController.swift; sourceTree = "<group>"; };
+		E15ED9352379A26E009324EB /* staticLinker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = staticLinker.swift; sourceTree = "<group>"; };
+		E15ED9372379A310009324EB /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
+		E15ED9392379A383009324EB /* customView1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = customView1.swift; sourceTree = "<group>"; };
+		E15ED93B2379A42A009324EB /* customView1.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = customView1.xib; sourceTree = "<group>"; };
+		E15ED93D2379B7DF009324EB /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		E15ED93F2379B85D009324EB /* UnderlinePagerOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderlinePagerOptions.swift; sourceTree = "<group>"; };
+		E1737FE42376E36000093699 /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
+		E1A721D7237450210021A3C4 /* Auth.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Auth.storyboard; sourceTree = "<group>"; };
+		E1A721DE23745F290021A3C4 /* NewMainVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewMainVC.swift; sourceTree = "<group>"; };
+		E1A721DF23745F290021A3C4 /* EmailLoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailLoginVC.swift; sourceTree = "<group>"; };
+		E1A721E023745F290021A3C4 /* ChangePasswordVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangePasswordVC.swift; sourceTree = "<group>"; };
+		E1A721E123745F290021A3C4 /* ForgotPasswordVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPasswordVC.swift; sourceTree = "<group>"; };
+		E1A721E223745F290021A3C4 /* NewSignUpVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewSignUpVC.swift; sourceTree = "<group>"; };
+		E1A721E323745F290021A3C4 /* PhoneLoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneLoginVC.swift; sourceTree = "<group>"; };
+		E1A721E423745F290021A3C4 /* PhoneVerificationVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneVerificationVC.swift; sourceTree = "<group>"; };
+		E1A721E523745F290021A3C4 /* welcomeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = welcomeVC.swift; sourceTree = "<group>"; };
+		E1A721EE23745F320021A3C4 /* extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = extensions.swift; sourceTree = "<group>"; };
+		E1A721EF23745F320021A3C4 /* designableButtons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = designableButtons.swift; sourceTree = "<group>"; };
+		E1A721F023745F320021A3C4 /* supportFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = supportFunctions.swift; sourceTree = "<group>"; };
+		E1A721F423745F390021A3C4 /* UserServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserServices.swift; sourceTree = "<group>"; };
+		E1A721F623745F400021A3C4 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		E1A721F8237467300021A3C4 /* HomeSpace.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HomeSpace.entitlements; sourceTree = "<group>"; };
+		E1A721F92374752E0021A3C4 /* Ubuntu-M.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ubuntu-M.ttf"; sourceTree = "<group>"; };
+		E1A721FA2374752E0021A3C4 /* UbuntuMono-R.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "UbuntuMono-R.ttf"; sourceTree = "<group>"; };
+		E1A721FB2374752E0021A3C4 /* Ubuntu-Th.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ubuntu-Th.ttf"; sourceTree = "<group>"; };
+		E1A721FC2374752E0021A3C4 /* Ubuntu-RI.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ubuntu-RI.ttf"; sourceTree = "<group>"; };
+		E1A721FD2374752E0021A3C4 /* UbuntuMono-RI.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "UbuntuMono-RI.ttf"; sourceTree = "<group>"; };
+		E1A721FE2374752E0021A3C4 /* Ubuntu-C.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ubuntu-C.ttf"; sourceTree = "<group>"; };
+		E1A721FF2374752E0021A3C4 /* Ubuntu-LI.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ubuntu-LI.ttf"; sourceTree = "<group>"; };
+		E1A722002374752F0021A3C4 /* Ubuntu-L.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ubuntu-L.ttf"; sourceTree = "<group>"; };
+		E1A722012374752F0021A3C4 /* Ubuntu-R.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ubuntu-R.ttf"; sourceTree = "<group>"; };
+		E1A722022374752F0021A3C4 /* Ubuntu-BI.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ubuntu-BI.ttf"; sourceTree = "<group>"; };
+		E1A722032374752F0021A3C4 /* Ubuntu-MI.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ubuntu-MI.ttf"; sourceTree = "<group>"; };
+		E1A722042374752F0021A3C4 /* UbuntuMono-BI.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "UbuntuMono-BI.ttf"; sourceTree = "<group>"; };
+		E1A722052374752F0021A3C4 /* UbuntuMono-B.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "UbuntuMono-B.ttf"; sourceTree = "<group>"; };
 		E21DC12D22B130A3002CF7E1 /* HomeSpace-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HomeSpace-Bridging-Header.h"; sourceTree = "<group>"; };
 		E2904A3B2294148900EEE096 /* LPRTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LPRTableView.swift; sourceTree = "<group>"; };
 		E2AF95052292A43600936F69 /* Ubuntu-B.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ubuntu-B.ttf"; sourceTree = "<group>"; };
@@ -200,6 +289,10 @@
 		C267F503223920A400D7771F /* HomeSpace */ = {
 			isa = PBXGroup;
 			children = (
+				E1A721F8237467300021A3C4 /* HomeSpace.entitlements */,
+				E1A721DD237458C30021A3C4 /* Networking */,
+				E1A721DC237458A80021A3C4 /* Utilities */,
+				E1A721D9237454510021A3C4 /* AuthControllers */,
 				DC12BBC422E71D8700A61C6D /* Model */,
 				DC12BBC322E71D4400A61C6D /* Views */,
 				DC12BBBF22E71B1500A61C6D /* ViewCntrollers */,
@@ -208,6 +301,9 @@
 				DC12BBC222E71C4400A61C6D /* Supporting Files */,
 				C267F504223920A400D7771F /* AppDelegate.swift */,
 				C267F50B223920A600D7771F /* Assets.xcassets */,
+				12D8A48F23858B7A0077775B /* chime.mp3 */,
+				12D8A49323858E830077775B /* ring.mp3 */,
+				12D8A49123858CB20077775B /* TunePocket-Trendy-Audio-Logo-Preview.mp3 */,
 				C267F510223920A600D7771F /* Info.plist */,
 				84A6FCED226FA62D00C59149 /* GoogleService-Info.plist */,
 				E21DC12D22B130A3002CF7E1 /* HomeSpace-Bridging-Header.h */,
@@ -236,14 +332,19 @@
 		DC12BBBF22E71B1500A61C6D /* ViewCntrollers */ = {
 			isa = PBXGroup;
 			children = (
+				12E362DB236897E900E09B83 /* LIstOfGroupsViewController.swift */,
 				C267F506223920A400D7771F /* ViewController.swift */,
+				12BA4188236C5F23002CF50F /* SearchAllGroupsViewController.swift */,
 				C267F53222392B8D00D7771F /* addTaskViewController.swift */,
+				DCFEB92022E72CAB00824533 /* NewGroupViewController.swift */,
 				E2AF95072292C4B200936F69 /* editTaskViewController.swift */,
 				C28E2EB022392C1200175556 /* moveGroupViewController.swift */,
-				DCFEB92022E72CAB00824533 /* NewGroupViewController.swift */,
 				DCF6271922F19C9D00E129CD /* ReminderViewController.swift */,
 				DCF4F27F22F2D95E0023C7FB /* editGroupViewController.swift */,
 				DCF9ABF82314218700105D65 /* popOverViewController.swift */,
+				E15ED93123798E0D009324EB /* RoundRectPageOptions.swift */,
+				E15ED93323799EF9009324EB /* PageTabMenuViewController.swift */,
+				E15ED9372379A310009324EB /* RootViewController.swift */,
 			);
 			path = ViewCntrollers;
 			sourceTree = "<group>";
@@ -251,6 +352,7 @@
 		DC12BBC022E71B9300A61C6D /* ViewControllerCells */ = {
 			isa = PBXGroup;
 			children = (
+				84544139233D02900005C8EE /* GroupTableViewCell.swift */,
 				C289C5B9223945200042C00D /* tasksTableViewCell.swift */,
 				DC16C4E322DE022E00AE744A /* CustomMenuBarCell.swift */,
 				E2DF5F84224A629300EA0C09 /* groupsTableViewCell.swift */,
@@ -262,11 +364,28 @@
 		DC12BBC122E71BDB00A61C6D /* DesignControllers */ = {
 			isa = PBXGroup;
 			children = (
+				E1A721FE2374752E0021A3C4 /* Ubuntu-C.ttf */,
+				E1A722002374752F0021A3C4 /* Ubuntu-L.ttf */,
+				E1A721FF2374752E0021A3C4 /* Ubuntu-LI.ttf */,
+				E1A721F92374752E0021A3C4 /* Ubuntu-M.ttf */,
+				E1A722032374752F0021A3C4 /* Ubuntu-MI.ttf */,
+				E1A722012374752F0021A3C4 /* Ubuntu-R.ttf */,
+				E1A721FC2374752E0021A3C4 /* Ubuntu-RI.ttf */,
+				E1A721FB2374752E0021A3C4 /* Ubuntu-Th.ttf */,
+				E1A722052374752F0021A3C4 /* UbuntuMono-B.ttf */,
+				E1A722042374752F0021A3C4 /* UbuntuMono-BI.ttf */,
+				E1A722022374752F0021A3C4 /* Ubuntu-BI.ttf */,
+				E1A721FD2374752E0021A3C4 /* UbuntuMono-RI.ttf */,
 				E2AF95052292A43600936F69 /* Ubuntu-B.ttf */,
+				E1A721FA2374752E0021A3C4 /* UbuntuMono-R.ttf */,
 				DCB6F55522DCA99500DC17C8 /* UseStoryboardViewController.swift */,
 				E2904A3B2294148900EEE096 /* LPRTableView.swift */,
 				C28E2EB222392E7F00175556 /* designableButton.swift */,
 				C25E60D0223A7B8100EE9AFE /* designableView.swift */,
+				121910062362D04200265EE1 /* DesignableSwitch.swift */,
+				E15ED9392379A383009324EB /* customView1.swift */,
+				E15ED93D2379B7DF009324EB /* Theme.swift */,
+				E15ED93F2379B85D009324EB /* UnderlinePagerOptions.swift */,
 			);
 			path = DesignControllers;
 			sourceTree = "<group>";
@@ -278,6 +397,7 @@
 				E2FA4C0022B25AFA00E5AF34 /* AudioPlayerManager.swift */,
 				E2FA4C0122B25AFD00E5AF34 /* AudioRecorderManager.swift */,
 				E2FA4C0322B25B0200E5AF34 /* SoundWave+Helpers.swift */,
+				E15ED9352379A26E009324EB /* staticLinker.swift */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -285,9 +405,11 @@
 		DC12BBC322E71D4400A61C6D /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				E15ED93B2379A42A009324EB /* customView1.xib */,
 				DC16C4E422DE022F00AE744A /* CustomMenuBarCell.xib */,
 				C267F508223920A400D7771F /* Main.storyboard */,
 				C267F50D223920A600D7771F /* LaunchScreen.storyboard */,
+				E1A721D7237450210021A3C4 /* Auth.storyboard */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -295,11 +417,47 @@
 		DC12BBC422E71D8700A61C6D /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				E1A721F623745F400021A3C4 /* User.swift */,
+				12D068E22361D96100ACF00B /* Group.swift */,
 				E2FA4BFE22B2588000E5AF34 /* ViewModel.swift */,
 				C289C5B522393DC10042C00D /* Task.swift */,
 				C289C5B722393F0D0042C00D /* taskManager.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		E1A721D9237454510021A3C4 /* AuthControllers */ = {
+			isa = PBXGroup;
+			children = (
+				E1A721E023745F290021A3C4 /* ChangePasswordVC.swift */,
+				E1A721DF23745F290021A3C4 /* EmailLoginVC.swift */,
+				E1A721E123745F290021A3C4 /* ForgotPasswordVC.swift */,
+				E1A721DE23745F290021A3C4 /* NewMainVC.swift */,
+				E1A721E223745F290021A3C4 /* NewSignUpVC.swift */,
+				E1A721E323745F290021A3C4 /* PhoneLoginVC.swift */,
+				E1A721E423745F290021A3C4 /* PhoneVerificationVC.swift */,
+				E1A721E523745F290021A3C4 /* welcomeVC.swift */,
+			);
+			path = AuthControllers;
+			sourceTree = "<group>";
+		};
+		E1A721DC237458A80021A3C4 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				E1A721EF23745F320021A3C4 /* designableButtons.swift */,
+				E1A721EE23745F320021A3C4 /* extensions.swift */,
+				E1A721F023745F320021A3C4 /* supportFunctions.swift */,
+				E1737FE42376E36000093699 /* Notifications.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		E1A721DD237458C30021A3C4 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				E1A721F423745F390021A3C4 /* UserServices.swift */,
+			);
+			path = Networking;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -412,11 +570,29 @@
 			buildActionMask = 2147483647;
 			files = (
 				C267F50F223920A600D7771F /* LaunchScreen.storyboard in Resources */,
-				E2AF95062292A58100936F69 /* Ubuntu-B.ttf in Resources */,
+				12D8A49223858CB20077775B /* TunePocket-Trendy-Audio-Logo-Preview.mp3 in Resources */,
+				E15ED93C2379A42A009324EB /* customView1.xib in Resources */,
+				12D8A49023858B7A0077775B /* chime.mp3 in Resources */,
+				E1A7221C237479670021A3C4 /* UbuntuMono-BI.ttf in Resources */,
+				E1A72216237479670021A3C4 /* Ubuntu-M.ttf in Resources */,
+				E1A72220237479670021A3C4 /* UbuntuMono-R.ttf in Resources */,
+				E1A72217237479670021A3C4 /* Ubuntu-MI.ttf in Resources */,
+				12D8A49423858E830077775B /* ring.mp3 in Resources */,
 				84A6FCEE226FA62D00C59149 /* GoogleService-Info.plist in Resources */,
+				E1A7221E237479670021A3C4 /* UbuntuMono-RI.ttf in Resources */,
 				C267F50C223920A600D7771F /* Assets.xcassets in Resources */,
 				C267F50A223920A400D7771F /* Main.storyboard in Resources */,
+				E1A72218237479670021A3C4 /* Ubuntu-R.ttf in Resources */,
+				E1A72214237479670021A3C4 /* Ubuntu-L.ttf in Resources */,
+				E1A7221B237479670021A3C4 /* UbuntuMono-B.ttf in Resources */,
+				E1A7221D237479670021A3C4 /* Ubuntu-BI.ttf in Resources */,
+				E1A7221F237479670021A3C4 /* Ubuntu-B.ttf in Resources */,
 				DC16C4E622DE022F00AE744A /* CustomMenuBarCell.xib in Resources */,
+				E1A72219237479670021A3C4 /* Ubuntu-RI.ttf in Resources */,
+				E1A72215237479670021A3C4 /* Ubuntu-LI.ttf in Resources */,
+				E1A7221A237479670021A3C4 /* Ubuntu-Th.ttf in Resources */,
+				E1A721D8237450210021A3C4 /* Auth.storyboard in Resources */,
+				E1A72213237479670021A3C4 /* Ubuntu-C.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -517,13 +693,32 @@
 			files = (
 				C289C5B822393F0D0042C00D /* taskManager.swift in Sources */,
 				E2FA4C0422B25B0200E5AF34 /* AudioPlayerManager.swift in Sources */,
+				E1737FE52376E36000093699 /* Notifications.swift in Sources */,
+				E15ED93A2379A383009324EB /* customView1.swift in Sources */,
+				12E362DC236897E900E09B83 /* LIstOfGroupsViewController.swift in Sources */,
+				E15ED9362379A26E009324EB /* staticLinker.swift in Sources */,
+				E1A721E823745F2A0021A3C4 /* ChangePasswordVC.swift in Sources */,
+				E1A721F223745F330021A3C4 /* designableButtons.swift in Sources */,
 				DCF6271A22F19C9D00E129CD /* ReminderViewController.swift in Sources */,
+				12BA4189236C5F23002CF50F /* SearchAllGroupsViewController.swift in Sources */,
 				DCF9ABFB2314266E00105D65 /* popOverTableViewCell.swift in Sources */,
+				E15ED9402379B85D009324EB /* UnderlinePagerOptions.swift in Sources */,
 				DC16C4E522DE022F00AE744A /* CustomMenuBarCell.swift in Sources */,
+				12D068E32361D96200ACF00B /* Group.swift in Sources */,
+				E1A721E723745F2A0021A3C4 /* EmailLoginVC.swift in Sources */,
+				E15ED93423799EF9009324EB /* PageTabMenuViewController.swift in Sources */,
 				E2DF5F85224A629300EA0C09 /* groupsTableViewCell.swift in Sources */,
+				E1A721ED23745F2A0021A3C4 /* welcomeVC.swift in Sources */,
+				E1A721EA23745F2A0021A3C4 /* NewSignUpVC.swift in Sources */,
+				8454413A233D02900005C8EE /* GroupTableViewCell.swift in Sources */,
+				E15ED93223798E0D009324EB /* RoundRectPageOptions.swift in Sources */,
+				E15ED93E2379B7DF009324EB /* Theme.swift in Sources */,
 				E2904A3C2294148900EEE096 /* LPRTableView.swift in Sources */,
+				E1A721F523745F390021A3C4 /* UserServices.swift in Sources */,
 				DCFEB92122E72CAB00824533 /* NewGroupViewController.swift in Sources */,
+				E1A721E923745F2A0021A3C4 /* ForgotPasswordVC.swift in Sources */,
 				C25E60D1223A7B8100EE9AFE /* designableView.swift in Sources */,
+				E1A721F723745F400021A3C4 /* User.swift in Sources */,
 				C267F53322392B8D00D7771F /* addTaskViewController.swift in Sources */,
 				E2FA4BFF22B2588000E5AF34 /* ViewModel.swift in Sources */,
 				E2FA4C0522B25B0200E5AF34 /* AudioRecorderManager.swift in Sources */,
@@ -531,10 +726,17 @@
 				DCF4F28022F2D95E0023C7FB /* editGroupViewController.swift in Sources */,
 				C267F507223920A400D7771F /* ViewController.swift in Sources */,
 				DCB6F55722DCA99500DC17C8 /* UseStoryboardViewController.swift in Sources */,
+				E1A721F123745F330021A3C4 /* extensions.swift in Sources */,
+				E1A721E623745F290021A3C4 /* NewMainVC.swift in Sources */,
 				C289C5BA223945200042C00D /* tasksTableViewCell.swift in Sources */,
+				E1A721EC23745F2A0021A3C4 /* PhoneVerificationVC.swift in Sources */,
 				E2FA4C0722B25B0200E5AF34 /* SoundWave+Helpers.swift in Sources */,
+				E1A721F323745F330021A3C4 /* supportFunctions.swift in Sources */,
+				E15ED9382379A310009324EB /* RootViewController.swift in Sources */,
+				121910072362D04200265EE1 /* DesignableSwitch.swift in Sources */,
 				C267F505223920A400D7771F /* AppDelegate.swift in Sources */,
 				C289C5B622393DC10042C00D /* Task.swift in Sources */,
+				E1A721EB23745F2A0021A3C4 /* PhoneLoginVC.swift in Sources */,
 				C28E2EB122392C1200175556 /* moveGroupViewController.swift in Sources */,
 				E2AF95082292C4B200936F69 /* editTaskViewController.swift in Sources */,
 				E2FA4C0622B25B0200E5AF34 /* AudioErrorType.swift in Sources */,
@@ -715,9 +917,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = HomeSpace/HomeSpace.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 24;
 				DEVELOPMENT_TEAM = WB238HTF8G;
 				INFOPLIST_FILE = HomeSpace/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -741,9 +944,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = HomeSpace/HomeSpace.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 24;
 				DEVELOPMENT_TEAM = WB238HTF8G;
 				INFOPLIST_FILE = HomeSpace/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (

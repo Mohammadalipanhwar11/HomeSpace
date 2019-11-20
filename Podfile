@@ -9,6 +9,8 @@ target 'HomeSpace' do
 
   pod 'Firebase/Core'
   pod 'Firebase/Firestore'
+  pod 'Firebase/Auth'
+  pod 'Firebase/Storage'
   pod 'IQKeyboardManagerSwift'
   pod 'SwiftReorder'
   pod 'SwiftMoment'
@@ -16,6 +18,11 @@ target 'HomeSpace' do
   pod 'CodableFirebase'
   pod 'SoundWave'
   pod 'PageController'
+  pod 'FlagPhoneNumber'
+  pod 'JVFloatLabeledTextField'
+  pod 'MBProgressHUD', '~> 1.1.0'
+  pod 'Swift_PageMenu', '~> 1.4'
+  
 
   target 'HomeSpaceTests' do
     inherit! :search_paths

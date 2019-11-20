@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 import UserNotifications
 
 
@@ -23,6 +24,11 @@ class ReminderViewController: UIViewController {
     var groupID: String?
     var TaskID: String?
     var reminderDate:String?
+    var uid:String!
+    
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,13 +44,7 @@ class ReminderViewController: UIViewController {
         self.switchView.isOn = true
         pickerView.isUserInteractionEnabled = true
 
-        
-        
     }
-    
-
-    
-    
     
     @IBAction func picker(_ sender: Any) {
         
@@ -62,11 +62,9 @@ class ReminderViewController: UIViewController {
     
     
     @IBAction func done(_ sender: Any) {
-       
-        
         // convert to Integer
         
-        self.appDelegate?.scheduleNotification(notificationType: notifications, time: self.pickerView.date, body: self.textView.text)
+        self.appDelegate?.scheduleNotification(notificationType: notifications, time: self.pickerView.date, body: self.textView.text,groupID: self.groupID!, taskID: self.TaskID!, UID: "1")
         let dateFormatter = DateFormatter()
         
         dateFormatter.dateStyle = DateFormatter.Style.short
@@ -86,11 +84,15 @@ class ReminderViewController: UIViewController {
             }
         }
         
-        self.performSegue(withIdentifier: "ToEdit", sender: self)
+                let controllers = self.navigationController?.viewControllers    
+        if let cont = controllers![controllers!.count-3] as? PageTabMenuViewController{
+            self.navigationController?.popToViewController(cont, animated: true)
+        }
 
     }
     
-    
-
+    @IBAction func back(_ sender: Any) {
+        _ = navigationController?.popViewController(animated: true)
+    }
 
 }

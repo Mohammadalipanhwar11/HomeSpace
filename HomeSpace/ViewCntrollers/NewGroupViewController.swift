@@ -14,20 +14,16 @@ import SoundWave
 class NewGroupViewController: UIViewController,UITextViewDelegate,SFSpeechRecognizerDelegate {
     
     
-    
-    
-    
     @IBOutlet weak var bottomwWave: AudioVisualizationView!
+    @IBOutlet weak var _doneButton: UIButton!
     @IBOutlet weak var doneButton: UIButton!
-    @IBOutlet weak var endButton: UIButton!
+    @IBOutlet weak var endBtn: UIButton!
     @IBOutlet weak var recordButton: UIButton!
     @IBOutlet weak var mainText: UITextView!
-    @IBOutlet weak var recordBottomConstraint: NSLayoutConstraint!
     
+    @IBOutlet weak var backBtn: UIButton!
     
-    @IBOutlet weak var recordCenterConstraint: NSLayoutConstraint!
-    @IBOutlet weak var textViewBottomConstriant: NSLayoutConstraint!
-    @IBOutlet weak var recordConstraint: NSLayoutConstraint!
+    @IBOutlet weak var mainTextHeight: NSLayoutConstraint!
     
     var groupText:String?
     var oldIndex:[Int]?
@@ -36,31 +32,31 @@ class NewGroupViewController: UIViewController,UITextViewDelegate,SFSpeechRecogn
     var recognitionRequest: SFSpeechAudioBufferRecognitionRequest?
     var recognitionTask: SFSpeechRecognitionTask?
     let audioEngine = AVAudioEngine()
+    var taskText:String!
     
+    let delegate = UIApplication.shared.delegate as! AppDelegate
     
     private let viewModel = ViewModel()
     private var chronometer: Chronometer?
     
     
-    
-    
-    
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-
-        self.bottomwWave.meteringLevelBarWidth = 5.0
-        self.bottomwWave.meteringLevelBarInterItem = 2.0
-        self.bottomwWave.meteringLevelBarCornerRadius = 0.0
+        self._doneButton.isHidden = false
+        self.backBtn.isHidden = true
+        
         self.bottomwWave.gradientStartColor = .white
         self.bottomwWave.gradientEndColor = .black
         doneButton.cornerRadius = 20
         doneButton.isHidden = true
-        endButton.isHidden = true
+        endBtn.isHidden = true
         self.mainText.delegate = self
         setupSpeech()
-        
         
         mainText.becomeFirstResponder()
         
@@ -70,38 +66,68 @@ class NewGroupViewController: UIViewController,UITextViewDelegate,SFSpeechRecogn
             guard let self = self, self.bottomwWave.audioVisualizationMode == .write else {
                 return
             }
-            self.bottomwWave.add(meteringLevel: meteringLevel)
+            if meteringLevel > 0.012{
+                let mtrLvl = meteringLevel * 14
+                self.bottomwWave.add(meteringLevel: mtrLvl)
+            }else{
+                self.bottomwWave.add(meteringLevel: meteringLevel)
+            }
         }
         
         self.viewModel.audioDidFinish = { [weak self] in
             self?.bottomwWave.stop()
         }
-    }
-    
-    
-    
-    
-    
-    
-    
+    NotificationCenter.default.addObserver(self, selector: #selector(editTaskViewController.keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+            
+            NotificationCenter.default.addObserver(self, selector: #selector(editTaskViewController.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+            
+        }
+        
+        @objc func keyboardWillShow(notification: NSNotification) {
+                guard let userInfo = notification.userInfo else {return}
+                guard let keyboardSize = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else {return}
+                _ = keyboardSize.cgRectValue
+                print(keyboardSize.cgRectValue.height)
+                mainTextHeight.constant = keyboardSize.cgRectValue.height + 90
+                self._doneButton.isHidden = false
+                self.backBtn.isHidden = true
+            }
+            @objc func keyboardWillHide(notification: NSNotification) {
+                guard notification.userInfo != nil else {return}
+                mainTextHeight.constant = 180
+                self._doneButton.isHidden = true
+                self.backBtn.isHidden = false
+            }
     func textViewDidBeginEditing(_ textView: UITextView) {
-        
-        
-        
-        
-        endButton.isHidden = true
+        endBtn.isHidden = true
         doneButton.isHidden = true
         
     }
     func textViewDidChange(_ textView: UITextView) {
-        if mainText.text >= "type" {
+        if mainText.text.count == 1{
+            mainText.text = mainText.text.uppercased()
+        }
+        if mainText.text >= "Type" {
+            self.mainText.borderColor = UIColor(red: 50/255, green: 150/255, blue: 247/255, alpha: 1.0)
             mainText.textColor = UIColor.white
             mainText.font = UIFont.boldSystemFont(ofSize: 17)
-            mainText.text = ""
+            let t = mainText.text
+            print(t!.components(separatedBy: "Type"))
+            if t!.components(separatedBy: "Type").count > 1{
+                mainText.text = t!.components(separatedBy: "Type")[1]
+            }
             mainText.cornerRadius = 3
             mainText.borderWidth = 3
             recordButton.isHidden = true
             doneButton.isHidden = false
+            if mainText.text.count == 1{
+                mainText.text = mainText.text.uppercased()
+            }
+        }else if mainText.text == ""{
+            self.mainText.text = "Type"
+            self.mainText.borderColor = .clear
+            self.doneButton.isHidden = true
+            self.recordButton.isHidden = false
         }
     }
     
@@ -136,16 +162,6 @@ class NewGroupViewController: UIViewController,UITextViewDelegate,SFSpeechRecogn
             }
         }
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     func startRecording() {
         
         // Clear all previous session data and cancel task
@@ -181,6 +197,10 @@ class NewGroupViewController: UIViewController,UITextViewDelegate,SFSpeechRecogn
                 var recordedText:String?
                 recordedText = result?.bestTranscription.formattedString
                 self.mainText.text = recordedText
+                
+                let range = NSMakeRange(self.mainText.text.count - 1, 0)
+                self.mainText.scrollRangeToVisible(range)
+                
                 print(result?.bestTranscription.formattedString as Any)
                 
                 isFinal = (result?.isFinal)!
@@ -222,19 +242,23 @@ class NewGroupViewController: UIViewController,UITextViewDelegate,SFSpeechRecogn
         }
     }
     
-    
-    
-    
     @IBAction func record(_ sender: Any) {
         
         mainText.endEditing(true)
-        endButton.isHidden = false
+        endBtn.isHidden = false
         mainText.isHidden = false
+        
+        self.mainText.text = ""
+        
+        self.mainTextHeight.constant = 190
+        
+        self.mainText.borderColor = UIColor(red: 50/255, green: 150/255, blue: 247/255, alpha: 1.0)
         if mainText.text >= "type" {
             mainText.textColor = UIColor.white
             mainText.font = UIFont.boldSystemFont(ofSize: 17)
             mainText.text = ""
         }
+        
         if audioEngine.isRunning {
             self.chronometer?.pause()
             self.chronometer = nil
@@ -250,6 +274,7 @@ class NewGroupViewController: UIViewController,UITextViewDelegate,SFSpeechRecogn
             //            self.recordButton.setTitle("Start Recording", for: .normal)
             self.recordButton.setImage(UIImage(named: "record"), for: UIControl.State.normal)
         } else {
+            self.recordButton.isHidden = true
             self.bottomwWave.audioVisualizationMode = .write
             
             self.viewModel.startRecording { [weak self] soundRecord, error in
@@ -263,10 +288,7 @@ class NewGroupViewController: UIViewController,UITextViewDelegate,SFSpeechRecogn
             self.startRecording()
             self.mainText.cornerRadius = 3
             self.mainText.borderWidth = 3
-            recordCenterConstraint.constant = 200
-            recordConstraint.constant = -80
-            textViewBottomConstriant.constant = -100
-            self.recordButton.setImage(UIImage(named: "pause"), for: UIControl.State.normal)
+//            self.recordButton.setImage(UIImage(named: "record"), for: UIControl.State.normal)
         }
     }
     
@@ -277,15 +299,14 @@ class NewGroupViewController: UIViewController,UITextViewDelegate,SFSpeechRecogn
         self.chronometer = nil
         
         if mainText.text != "type" && mainText.text != ""{
-//            performSegue(withIdentifier: "groups", sender: self)
+            
+            taskManager.shared.addTaskToNewGroup(mainText: mainText.text, taskText: self.taskText!)
+            let controllers = self.navigationController?.viewControllers
+            if let cont = controllers![controllers!.count-4] as? PageTabMenuViewController{
+                self.navigationController?.popToViewController(cont, animated: true)                        }
+            
         }else{
-            let alert = UIAlertController(title: "No Voice", message: "Please Say Someting to continoue", preferredStyle: UIAlertController.Style.alert)
-            let action = UIAlertAction(title: "Ok", style: UIAlertAction.Style.cancel) { (action) in
-                
-            }
-            alert.addAction(action)
-            mainText.text = ""
-            self.present(alert, animated: true, completion: nil)
+            successAlert(title: "message", msg: "Group name should not be empty", controller: self)
         }
         
     }
@@ -296,37 +317,22 @@ class NewGroupViewController: UIViewController,UITextViewDelegate,SFSpeechRecogn
     
     
     @IBAction func done(_ sender: Any) {
-        
-        
-                groupText = mainText.text
+        groupText = mainText.text
         if mainText.text != "type" && mainText.text != ""{
-            performSegue(withIdentifier: "backTo", sender: self)
+            
+            taskManager.shared.addTaskToNewGroup(mainText: mainText.text, taskText: self.taskText!)
+            
+            let controllers = self.navigationController?.viewControllers
+            if let cont = controllers![controllers!.count-4] as? PageTabMenuViewController{
+                self.navigationController?.popToViewController(cont, animated: true)}
+                
         }else{
-            let alert = UIAlertController(title: "No Text Found", message: "Please type Someting to continoue", preferredStyle: UIAlertController.Style.alert)
-            let action = UIAlertAction(title: "Ok", style: UIAlertAction.Style.cancel) { (action) in
-                self.recordButton.isHidden = false
-                self.endButton.isHidden = true
-                self.doneButton.isHidden = true
-                self.mainText.textColor = UIColor(red: 0, green: 150/255, blue: 255/255, alpha: 1)
-                self.mainText.font = UIFont.boldSystemFont(ofSize: 40)
-                self.view.endEditing(true)
-                self.mainText.text = "type"
-            }
-            alert.addAction(action)
-            self.present(alert, animated: true, completion: nil)
+            successAlert(title: "message", msg: "Group name should not be empty", controller: self)
         }
         
         mainText.text = ""
-        
-        
     }
-    
-
-    
 }
-
-
-
 
 fileprivate func convertFromAVAudioSessionCategory(_ input: AVAudioSession.Category) -> String {
     return input.rawValue

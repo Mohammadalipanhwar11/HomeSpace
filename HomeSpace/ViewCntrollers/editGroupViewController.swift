@@ -11,16 +11,27 @@ import UIKit
 class editGroupViewController: UIViewController {
 
     @IBOutlet weak var doneButton: UIButton!
-    @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var editTextField: UITextField!
-    @IBOutlet weak var bottomView: UIView!
+
+    @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
+    
+    var group:Group?
+        var previosVC:LIstOfGroupsViewController!
+    
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.editTextField.text = self.group?.name
+         if self.editTextField.text == "Home" || self.editTextField.text == "Archive" || self.editTextField.text == "Personal"{
+            self.editTextField.isEnabled = false
+        }
         self.doneButton.cornerRadius = doneButton.frame.height/2
         editTextField.becomeFirstResponder()
         self.editTextField.cornerRadius = editTextField.frame.height/2
         NotificationCenter.default.addObserver(self, selector: #selector(editGroupViewController.keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
-        
         NotificationCenter.default.addObserver(self, selector: #selector(editGroupViewController.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         // Do any additional setup after loading the view.
     }
@@ -31,36 +42,46 @@ class editGroupViewController: UIViewController {
         guard let keyboardSize = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else {return}
         _ = keyboardSize.cgRectValue
         print(keyboardSize.cgRectValue)
-        bottomConstraint.constant = keyboardSize.cgPointValue.y / -1.6
+        self.bottomConstraint.constant = -keyboardSize.cgRectValue.height
         
         
     }
+    
     @objc func keyboardWillHide(notification: NSNotification) {
         guard notification.userInfo != nil else {return}
         bottomConstraint.constant = 0
         
     }
-    
-    
 
     @IBAction func deleteGroup(_ sender: Any) {
-        taskManager.shared.deleteGroup(Name: "khk") { (err) in
-            
+        if self.editTextField.text == "Home" || self.editTextField.text == "Archive" || self.editTextField.text == "Personal"{
+            successAlert(title: "Message", msg: "Home, Archive and Personal cannot be deleted.", controller: self)
+        }else{
+            let alert = UIAlertController(title: nil, message: "Are you sure you want to delete group?", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (_) in
+                taskManager.shared.deleteGroup(group: self.group!) { (flag) in
+                    self.dismiss(animated: true, completion: self.previosVC.goBack)
+                }
+                
+            }))
+            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+            present(alert, animated: true)
         }
     }
+    
     @IBAction func done(_ sender: Any) {
-    }
-    @IBAction func back(_ sender: Any) {
+        if self.editTextField.text == ""{
+            successAlert(title: "message", msg: "Group name should not be empty", controller: self)
+        }else{
+            self.group?.name = self.editTextField.text!
+            taskManager.shared.editGroup(group: self.group!) { (flag) in
+                self.dismiss(animated: true, completion: self.previosVC.goBack)
+            }
+        }
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func back(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
     }
-    */
 
 }

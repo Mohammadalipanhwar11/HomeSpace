@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Ubuntu-R.ttf">
+            <string>Ubuntu</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--View Controller-->
         <scene sceneID="EHf-IW-A2E">
@@ -18,18 +21,34 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HomeSpace" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zrk-Il-3KO">
-                                <rect key="frame" x="0.0" y="319.5" width="375" height="48"/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="40"/>
-                                <color key="textColor" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home" translatesAutoresizingMaskIntoConstraints="NO" id="PxQ-Ea-my3">
+                                <rect key="frame" x="159.5" y="305.5" width="56" height="56"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="PxQ-Ea-my3" secondAttribute="height" multiplier="1:1" id="3kW-je-mKG"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HOME" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wdk-Ll-PEA">
+                                <rect key="frame" x="37.5" y="311" width="117" height="45"/>
+                                <fontDescription key="fontDescription" name="Ubuntu" family="Ubuntu" pointSize="40"/>
+                                <color key="textColor" red="0.1670728326" green="0.59662199019999995" blue="0.94129896160000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SPACE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fJi-wx-jTP">
+                                <rect key="frame" x="220.5" y="311" width="117" height="45"/>
+                                <fontDescription key="fontDescription" name="Ubuntu" family="Ubuntu" pointSize="40"/>
+                                <color key="textColor" red="0.16862745100000001" green="0.59607843140000005" blue="0.94117647059999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="Zrk-Il-3KO" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="0GO-A6-nsU"/>
-                            <constraint firstItem="Zrk-Il-3KO" firstAttribute="width" secondItem="Ze5-6b-2t3" secondAttribute="width" id="R9g-2K-e6r"/>
-                            <constraint firstItem="Zrk-Il-3KO" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="a8t-av-Gzd"/>
+                            <constraint firstItem="PxQ-Ea-my3" firstAttribute="leading" secondItem="Wdk-Ll-PEA" secondAttribute="trailing" constant="5" id="BwK-y1-NPr"/>
+                            <constraint firstItem="fJi-wx-jTP" firstAttribute="leading" secondItem="PxQ-Ea-my3" secondAttribute="trailing" constant="5" id="EIR-Nk-Jcb"/>
+                            <constraint firstItem="PxQ-Ea-my3" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="Gh4-RV-7F0"/>
+                            <constraint firstItem="fJi-wx-jTP" firstAttribute="centerY" secondItem="PxQ-Ea-my3" secondAttribute="centerY" id="HKv-d6-EI6"/>
+                            <constraint firstItem="Wdk-Ll-PEA" firstAttribute="centerY" secondItem="PxQ-Ea-my3" secondAttribute="centerY" id="qUT-MN-CGI"/>
+                            <constraint firstItem="PxQ-Ea-my3" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="v4z-MB-Fhs"/>
+                            <constraint firstItem="PxQ-Ea-my3" firstAttribute="width" secondItem="Ze5-6b-2t3" secondAttribute="width" multiplier="0.15" id="yJD-d9-jzL"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -39,4 +58,7 @@
             <point key="canvasLocation" x="53" y="375"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="home" width="250" height="250"/>
+    </resources>
 </document>

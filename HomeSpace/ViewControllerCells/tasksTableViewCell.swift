@@ -12,10 +12,12 @@ class tasksTableViewCell: UITableViewCell {
 
     @IBOutlet weak var taskLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var reminder: UIView!
     
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.reminder.layer.cornerRadius = 7.5
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

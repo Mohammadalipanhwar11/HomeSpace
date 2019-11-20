@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="customView1" customModule="HomeSpace" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="117"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LZz-dV-XYg">
+                    <rect key="frame" x="165.5" y="17" width="83" height="83"/>
+                    <state key="normal" image="Add button"/>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MoW-5P-U1m">
+                    <rect key="frame" x="359" y="44" width="40" height="29"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="40" id="ANc-80-bA2"/>
+                    </constraints>
+                    <state key="normal" image="menu"/>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tam-7u-HXU">
+                    <rect key="frame" x="30" y="42.5" width="32" height="32"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="32" id="uWX-pW-hje"/>
+                        <constraint firstAttribute="width" constant="32" id="yE6-NP-oYD"/>
+                    </constraints>
+                    <state key="normal" image="search"/>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="MoW-5P-U1m" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" id="8db-5K-4Xg"/>
+                <constraint firstItem="tam-7u-HXU" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="30" id="DEb-gD-eZN"/>
+                <constraint firstItem="LZz-dV-XYg" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" id="Mwm-QX-OqZ"/>
+                <constraint firstItem="LZz-dV-XYg" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="brE-g0-no5"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="MoW-5P-U1m" secondAttribute="trailing" constant="15" id="mva-mo-nMM"/>
+                <constraint firstItem="tam-7u-HXU" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" id="pRS-77-Azb"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="add" destination="LZz-dV-XYg" id="FHQ-O6-VKI"/>
+                <outlet property="optionsButton" destination="MoW-5P-U1m" id="jDc-Fd-Dep"/>
+                <outlet property="search" destination="tam-7u-HXU" id="3fr-f8-iWD"/>
+            </connections>
+            <point key="canvasLocation" x="137.59999999999999" y="97.601199400299862"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="Add button" width="83" height="83"/>
+        <image name="menu" width="6" height="29"/>
+        <image name="search" width="34.5" height="32"/>
+    </resources>
+</document>

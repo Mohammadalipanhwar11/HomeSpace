@@ -23,15 +23,18 @@ struct Task : Codable {
     var rank: Double? = 0
     var group: String? = ""
     var reminder:String? = ""
+    var uid : String?
     
     
+    static var shared = [String:[String:Task]]()
+    static var sharedSearch = [(group:Group,tasks:[Task])]()
+
     
-    static var shared = [String:[Task]]()
-    
-    init(name:String, date: Date, group: String) {
+    init(name:String, date: Date, group: String, uid: String) {
         self.name = name
         self.date = Timestamp(date: date)
         self.group = group
+        self.uid = uid
     }
     
     var toDic: [String:Any]{
@@ -40,7 +43,8 @@ struct Task : Codable {
             "date":self.date ?? Date(),
             "rank":self.rank ?? 0,
             "group":self.group ?? "",
-            "reminder":self.reminder ?? ""
+            "reminder":self.reminder ?? "",
+            "uid":self.uid ?? ""
         ]
     }
     
@@ -50,7 +54,7 @@ struct Task : Codable {
         case rank = "rank"
         case group = "group"
         case reminder = "reminder"
-
+        case uid = "uid"
     }
     
     init(from decoder: Decoder) throws {
@@ -60,6 +64,7 @@ struct Task : Codable {
         rank = try values.decodeIfPresent(Double.self, forKey: .rank)
         group = try values.decodeIfPresent(String.self, forKey: .group)
         reminder = try values.decodeIfPresent(String.self, forKey: .reminder)
+        uid = try values.decodeIfPresent(String.self, forKey: .uid)
     }
     
     

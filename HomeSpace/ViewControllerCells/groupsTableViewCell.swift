@@ -15,11 +15,14 @@ class groupsTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
-        
+        groupItem.layer.cornerRadius = 26
         // Initialization code
     }
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        groupItem.layer.cornerRadius = 26
 
+    }
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 

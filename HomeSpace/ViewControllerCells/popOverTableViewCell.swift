@@ -10,16 +10,13 @@ import UIKit
 
 class popOverTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var Groups: UIButton!
+    @IBOutlet weak var Groups: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
 
 }
